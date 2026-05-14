@@ -1473,46 +1473,56 @@
 </div>
 
 <script>
-  const bajaImages = [
-  "images/weld1.jpg",
-  "images/Braking.jpg",
-  "images/grind1.jpg",
-  "images/baja4.jpg",
-  "images/baja5.jpg"
-];
+  function showPage(pageName) {
+    // Hide all pages
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    
+    // Show the selected page
+    const selectedPage = document.getElementById(`page-${pageName}`);
+    if (selectedPage) {
+      selectedPage.classList.add('active');
+    }
+    
+    // Update active nav button
+    const navButtons = document.querySelectorAll('.nav-links button');
+    navButtons.forEach(btn => btn.classList.remove('active'));
+    const activeBtn = document.getElementById(`nav-${pageName}`);
+    if (activeBtn) {
+      activeBtn.classList.add('active');
+    }
+  }
 
-let bajaIndex = 0;
+  // Scroll reveal animation for elements
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    reveals.forEach(element => {
+      const windowHeight = window.innerHeight;
+      const elementTop = element.getBoundingClientRect().top;
+      
+      if (elementTop < windowHeight - 100) {
+        element.classList.add('visible');
+      }
+    });
+  }
 
-setInterval(() => {
-  const img = document.getElementById("bajaSlide");
-  if (!img) return;
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // Initial check
 
-  bajaIndex = (bajaIndex + 1) % bajaImages.length;
-  img.src = bajaImages[bajaIndex];
-}, 2500);
+  // Slideshow functionality for Baja gallery
+  let bajaSlideIndex = 0;
+  const bajaSlides = ['images/baja1.jpg', 'images/baja2.jpg', 'images/baja3.jpg'];
   
-  function showPage(id) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    document.getElementById('page-' + id).classList.add('active');
-    document.getElementById('nav-' + id).classList.add('active');
-    window.scrollTo(0, 0);
-    initReveal();
+  function rotateSlide() {
+    const slideElement = document.getElementById('bajaSlide');
+    if (slideElement && bajaSlides.length > 0) {
+      slideElement.src = bajaSlides[bajaSlideIndex];
+      bajaSlideIndex = (bajaSlideIndex + 1) % bajaSlides.length;
+    }
   }
-
-  function initReveal() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  }
-
-  // Init on load
-  initReveal();
+  
+  // Change slide every 5 seconds
+  setInterval(rotateSlide, 5000);
 </script>
 </body>
 </html>
