@@ -1549,9 +1549,10 @@ function showPage(id) {
   page.classList.add('active');
   if (nav) nav.classList.add('active');
 
-  window.scrollTo({ top: 0, behavior: "instant" });
+  window.scrollTo({ top: 0, behavior: "auto" }); // ✅ FIXED
 }
-  window.showPage = showPage;
+
+window.showPage = showPage;
   
   function initReveal() {
     const observer = new IntersectionObserver((entries) => {
