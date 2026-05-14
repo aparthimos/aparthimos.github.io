@@ -329,79 +329,50 @@
     margin-bottom: 10px;
   }
 
-  /* ─── EDUCATION PAGE ─── */
-  .edu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
+  /* ─── EDUCATION IMAGE BLOCKS ─── */
 
-  .edu-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 32px;
-    border-radius: 8px;
-    position: relative;
-    overflow: hidden;
-  }
-  .edu-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0.6;
-  }
+.edu-media {
+  margin-top: 20px;
+  display: grid;
+  gap: 12px;
+}
 
-  .edu-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(46,44,32,0.8);
-  }
-  .edu-item:last-child { border-bottom: none; }
+/* SAE logo small image */
+.edu-logo {
+  width: 140px;
+  height: auto;
+  opacity: 0.9;
+  filter: brightness(1.1);
+}
 
-  .edu-level {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    color: var(--accent);
-    opacity: 0.7;
-  }
-  .edu-school {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-bright);
-  }
+/* Baja image gallery */
+.baja-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
 
-  .extracurricular-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 8px;
-  }
+.baja-gallery img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  transition: transform 0.25s, border-color 0.25s;
+}
 
-  .extra-item {
-    padding: 18px 20px;
-    background: rgba(201,168,76,0.04);
-    border: 1px solid rgba(201,168,76,0.1);
-    border-left: 2px solid rgba(201,168,76,0.4);
-    border-radius: 4px;
-  }
+.baja-gallery img:hover {
+  transform: scale(1.03);
+  border-color: rgba(201,168,76,0.3);
+}
 
-  .extra-title {
-    font-family: var(--sans);
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--accent);
-    letter-spacing: 0.3px;
-    margin-bottom: 6px;
-    opacity: 0.9;
-  }
-
-  p { font-size: 14px; line-height: 1.7; color: var(--text-dim); }
-
+/* make Baja section visually stronger */
+.extra-item.baja {
+  padding: 18px;
+  background: rgba(201,168,76,0.03);
+  border-left: 2px solid rgba(201,168,76,0.5);
+}
  /* ─── PROJECTS PAGE (FULL WIDTH LAYOUT) ─── */
 
 .projects-grid {
@@ -880,48 +851,44 @@
   </footer>
 </div>
 
-<!-- ══════════════════════════════════════════════ EDUCATION ══ -->
-<div id="page-education" class="page">
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2>Education</h2>
-    </div>
-    <div class="edu-grid">
-      <div class="edu-card reveal">
-        <h3 style="margin-bottom:20px;">Academic History</h3>
-        <div class="edu-item">
-          <span class="edu-level">University</span>
-          <span class="edu-school">Concordia University</span>
-          <span style="font-size:13px; color:var(--text-dim);">B.Eng Mechanical Engineering (CO-OP)</span>
-        </div>
-        <div class="edu-item">
-          <span class="edu-level">CEGEP</span>
-          <span class="edu-school">Marianopolis College</span>
-        </div>
-        <div class="edu-item">
-          <span class="edu-level">High School</span>
-          <span class="edu-school">Loyola High School</span>
-        </div>
-        <div class="edu-item">
-          <span class="edu-level">Elementary</span>
-          <span class="edu-school">Souvenir Elementary School</span>
-        </div>
+<div class="edu-card reveal" style="animation-delay:0.1s">
+  <h3 style="margin-bottom:20px;">Extra-Curriculars</h3>
+
+  <div class="extracurricular-list">
+
+    <!-- SAE PRESIDENT -->
+    <div class="extra-item">
+      <div class="extra-title">Concordia SAE — President</div>
+
+      <div class="edu-media">
+        <!-- SAE LOGO -->
+        <img src="images/sae-logo.png" alt="SAE Logo" class="edu-logo">
       </div>
-      <div class="edu-card reveal" style="animation-delay:0.1s">
-        <h3 style="margin-bottom:20px;">Extra-Curriculars</h3>
-        <div class="extracurricular-list">
-          <div class="extra-item">
-            <div class="extra-title">Concordia SAE — President</div>
-            <p>Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams. Led membership growth, fundraising, and independence as a non-profit.</p>
-          </div>
-          <div class="extra-item">
-            <div class="extra-title">SAE Baja Racing — Member</div>
-            <p>Spent countless hours designing, manufacturing, assembling and disassembling the vehicle. Proficient in SolidWorks, Fusion, and ANSYS for design, manufacturing, and improvement. Deep understanding of drivetrain, steering, electronics, and suspension subsystems.</p>
-          </div>
-        </div>
+
+      <p>
+        Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams. Led membership growth, fundraising, and independence as a non-profit.
+      </p>
+    </div>
+
+    <!-- BAJA -->
+    <div class="extra-item baja">
+      <div class="extra-title">SAE Baja Racing — Member</div>
+
+      <p>
+        Spent countless hours designing, manufacturing, assembling and disassembling the vehicle. Proficient in SolidWorks, Fusion, and ANSYS for design, manufacturing, and improvement.
+      </p>
+
+      <!-- BAJA IMAGE GALLERY -->
+      <div class="baja-gallery">
+        <img src="images/baja1.jpg" alt="Baja Car 1">
+        <img src="images/baja2.jpg" alt="Baja Suspension">
+        <img src="images/baja3.jpg" alt="Baja Assembly">
+        <img src="images/baja4.jpg" alt="Baja Testing">
       </div>
     </div>
+
+  </div>
+</div>
 
     <!-- FEA / CFD Section -->
     <div style="margin-top: 56px;" class="reveal">
