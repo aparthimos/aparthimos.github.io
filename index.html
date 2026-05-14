@@ -3,130 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alexander Parthimos | Engineering Portfolio</title>
+<title>Alexander Parthimos | Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #13120f;
-    --bg2: #181610;
-    --bg3: #1e1c14;
-    --panel: #201e16;
-    --border: #2e2c20;
-    --accent: #c9a84c;
-    --accent2: #7eb8a0;
-    --text: #d4cfc0;
-    --text-dim: #8a8470;
-    --text-bright: #f0ebe0;
-    --mono: 'DM Mono', monospace;
-    --sans: 'DM Sans', sans-serif;
-    --serif: 'Playfair Display', serif;
+    --bg: #13120f; --bg2: #181610; --bg3: #1e1c14; --panel: #201e16;
+    --border: #2e2c20; --accent: #c9a84c; --text: #d4cfc0;
+    --text-dim: #8a8470; --text-bright: #f0ebe0;
+    --mono: 'DM Mono', monospace; --sans: 'DM Sans', sans-serif; --serif: 'Playfair Display', serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; min-height: 100vh; overflow-x: hidden; }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-weight: 300;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
-  /* --- NAVIGATION --- */
+  /* Navigation */
   nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    background: rgba(19,18,15,0.92);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    height: 60px;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(19,18,15,0.92); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border); display: flex;
+    align-items: center; justify-content: space-between; padding: 0 40px; height: 60px;
   }
-
-  .nav-logo {
-    font-family: var(--serif);
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text-bright);
-    letter-spacing: 0.5px;
-    cursor: pointer;
-  }
-  .nav-logo span { color: var(--accent); font-weight: 400; font-style: italic; }
-
-  .nav-links { display: flex; gap: 4px; list-style: none; }
+  .nav-logo { font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--text-bright); cursor: pointer; }
+  .nav-logo span { color: var(--accent); font-style: italic; font-weight: 400; }
+  .nav-links { display: flex; gap: 5px; list-style: none; }
   .nav-links button {
-    background: none; border: none; color: var(--text-dim);
-    font-family: var(--sans); font-size: 12px; font-weight: 400;
-    cursor: pointer; padding: 6px 16px; border-radius: 20px; transition: all 0.2s;
+    background: none; border: none; color: var(--text-dim); font-family: var(--sans);
+    font-size: 12px; cursor: pointer; padding: 8px 16px; border-radius: 20px; transition: 0.3s;
   }
-  .nav-links button:hover, .nav-links button.active {
-    color: var(--text-bright); background: rgba(201,168,76,0.1);
-  }
-  .nav-links button.active { color: var(--accent); }
+  .nav-links button.active { color: var(--accent); background: rgba(201,168,76,0.1); }
 
-  /* --- PAGE LOGIC --- */
-  .page { display: none; padding-top: 60px; min-height: 100vh; position: relative; z-index: 1; }
-  .page.active { display: block; animation: fadeIn 0.5s ease both; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  /* Page Logic */
+  .page { display: none; padding-top: 60px; min-height: 100vh; }
+  .page.active { display: block; }
 
-  /* --- HERO SECTION --- */
-  .hero { height: calc(100vh - 60px); display: flex; align-items: center; overflow: hidden; position: relative; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,0.05) 0%, transparent 70%); }
-  .hero-content { padding: 0 80px; max-width: 800px; z-index: 2; }
-  h1 { font-family: var(--serif); font-size: clamp(48px, 8vw, 84px); color: var(--text-bright); line-height: 1.1; margin-bottom: 20px; }
-  h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
-  .hero-desc { font-size: 16px; color: var(--text-dim); max-width: 500px; margin-bottom: 30px; line-height: 1.6; }
-
-  /* --- REUSABLE SECTIONS --- */
-  .section { padding: 80px 80px; max-width: 1200px; margin: 0 auto; }
-  .section-header { display: flex; align-items: baseline; gap: 15px; margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
-  .section-num { font-family: var(--mono); color: var(--accent); font-size: 12px; }
+  /* Sections */
+  .section { padding: 80px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-header { margin-bottom: 40px; border-bottom: 1px solid var(--border); padding-bottom: 20px; }
   h2 { font-family: var(--serif); font-size: 32px; color: var(--text-bright); }
 
-  /* --- GRID SYSTEMS --- */
-  .edu-grid, .artwork-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-  .projects-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
-
-  /* --- CARDS --- */
-  .card { background: var(--panel); border: 1px solid var(--border); padding: 30px; border-radius: 12px; transition: 0.3s; }
-  .card:hover { border-color: var(--accent); transform: translateY(-5px); }
-  
-  .project-card { display: grid; grid-template-columns: 1fr 1.2fr; min-height: 300px; overflow: hidden; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; }
-  .project-img { background: var(--bg3); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  .project-img img { width: 100%; height: 100%; object-fit: cover; }
-  .project-body { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
-
-  /* --- UTILS --- */
-  .tag { font-size: 10px; padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(201,168,76,0.3); color: var(--accent); margin-right: 8px; display: inline-block; margin-top: 10px; font-family: var(--mono); }
-  .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* --- SLIDESHOW --- */
-  .slideshow { width: 100%; aspect-ratio: 16/9; position: relative; overflow: hidden; border-radius: 12px; margin-top: 40px; background: #000; }
-  .slide { position: absolute; inset: 0; opacity: 0; transition: 1s; }
+  /* Slideshow */
+  .slideshow {
+    width: 100%; aspect-ratio: 16/9; position: relative; 
+    overflow: hidden; border-radius: 12px; margin: 30px 0; background: #000;
+  }
+  .slide { position: absolute; inset: 0; opacity: 0; transition: 1s ease-in-out; }
   .slide.active { opacity: 1; }
   .slide img { width: 100%; height: 100%; object-fit: cover; }
 
-  @media (max-width: 900px) {
-    .section { padding: 40px 20px; }
-    .project-card, .edu-grid { grid-template-columns: 1fr; }
-    .hero-content { padding: 0 20px; }
+  /* Project Cards */
+  .projects-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+  .project-card {
+    display: grid; grid-template-columns: 1fr 1.2fr; background: var(--panel);
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden; min-height: 320px;
   }
+  .project-img { background: var(--bg3); }
+  .project-img img { width: 100%; height: 100%; object-fit: cover; }
+  .project-body { padding: 40px; }
+  .tag { font-family: var(--mono); font-size: 10px; color: var(--accent); border: 1px solid rgba(201,168,76,0.3); padding: 4px 10px; border-radius: 15px; margin-right: 5px; }
+
+  @media (max-width: 800px) { .project-card { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -134,175 +69,96 @@
 <nav>
   <div class="nav-logo" onclick="showPage('home')">Alexander <span>Parthimos</span></div>
   <ul class="nav-links">
-    <li><button onclick="showPage('home')" class="active" id="nav-home">HOME</button></li>
-    <li><button onclick="showPage('education')" id="nav-education">EDUCATION</button></li>
-    <li><button onclick="showPage('projects')" id="nav-projects">PROJECTS</button></li>
-    <li><button onclick="showPage('experience')" id="nav-experience">EXPERIENCE</button></li>
-    <li><button onclick="showPage('artwork')" id="nav-artwork">ARTWORK</button></li>
+    <li><button id="nav-home" class="active" onclick="showPage('home')">HOME</button></li>
+    <li><button id="nav-education" onclick="showPage('education')">EDUCATION</button></li>
+    <li><button id="nav-projects" onclick="showPage('projects')">PROJECTS</button></li>
+    <li><button id="nav-experience" onclick="showPage('experience')">EXPERIENCE</button></li>
+    <li><button id="nav-artwork" onclick="showPage('artwork')">ARTWORK</button></li>
   </ul>
 </nav>
 
 <div id="page-home" class="page active">
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <div style="font-family: var(--mono); color: var(--accent); font-size: 12px; margin-bottom: 10px;">// MECHANICAL ENGINEER</div>
-      <h1>Alexander<br><em>Parthimos</em></h1>
-      <p class="hero-desc">Mechanical Engineering CO-OP student at Concordia University. Specialized in high-performance automotive design, structural FEA, and custom DAQ systems.</p>
-      <button class="tag" style="padding: 12px 25px; background: var(--accent); color: var(--bg); border: none; font-weight: 600; cursor: pointer;" onclick="showPage('projects')">VIEW PROJECTS</button>
-    </div>
-  </section>
+  <div class="section">
+    <h1 style="font-family: var(--serif); font-size: 70px; color: var(--text-bright);">Mechanical<br><em style="color: var(--accent);">Engineer</em></h1>
+    <p style="margin-top: 20px; max-width: 600px; color: var(--text-dim); line-height: 1.6;">Student at Concordia University focused on high-performance automotive systems and FEA simulations.</p>
+  </div>
 </div>
 
 <div id="page-education" class="page">
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2>Education</h2>
-    </div>
-    <div class="edu-grid">
-      <div class="card">
-        <div style="color: var(--accent); font-family: var(--mono); font-size: 11px;">2022 — PRESENT</div>
-        <h3 style="margin: 10px 0;">B.Eng Mechanical Engineering</h3>
-        <p>Concordia University (CO-OP Program)</p>
-      </div>
-      <div class="card">
-        <div style="color: var(--accent); font-family: var(--mono); font-size: 11px;">LEADERSHIP</div>
-        <h3 style="margin: 10px 0;">President, Concordia SAE</h3>
-        <p>Managing Formula, Baja, and AeroDesign teams. Overseeing technical milestones and fundraising.</p>
-      </div>
-    </div>
-
+    <div class="section-header"><h2>Education</h2></div>
+    <p>B.Eng Mechanical Engineering — Concordia University</p>
+    
     <div class="slideshow" id="baja-slideshow">
-      <div class="slide active"><img src="images/baja1.jpg" alt="Baja Team"></div>
-      <div class="slide"><img src="images/baja2.jpg" alt="Manufacturing"></div>
-      <div class="slide"><img src="images/baja3.jpg" alt="Testing"></div>
+      <div class="slide active"><img src="images/baja1.jpg" alt="Baja 1"></div>
+      <div class="slide"><img src="images/baja2.jpg" alt="Baja 2"></div>
+      <div class="slide"><img src="images/baja3.jpg" alt="Baja 3"></div>
     </div>
-  </div>
-</div>
+  </div> </div>
 
 <div id="page-projects" class="page">
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2>Engineering Projects</h2>
-    </div>
+    <div class="section-header"><h2>Projects</h2></div>
     <div class="projects-grid">
-      
-      <div class="project-card reveal">
-        <div class="project-img"><img src="images/DAQ2.png" alt="DAQ System"></div>
+      <div class="project-card">
+        <div class="project-img"><img src="images/DAQ2.png" alt="DAQ"></div>
         <div class="project-body">
-          <div style="font-family: var(--mono); color: var(--accent); font-size: 11px; margin-bottom: 5px;">DATA SYSTEMS</div>
-          <h3>Custom DAQ Logger</h3>
-          <p style="margin-top: 10px;">A custom high-speed data acquisition system built for the Baja SAE vehicle. Uses ESP32 to fusion CAN, SMBUS, and analog sensor data for suspension tuning.</p>
-          <div style="margin-top: 15px;">
-            <span class="tag">C++</span><span class="tag">PCB Design</span><span class="tag">ESP32</span>
-          </div>
+          <h3>Custom DAQ System</h3>
+          <p style="margin: 15px 0;">ESP32-based data acquisition for real-time sensor fusion on Baja SAE vehicles.</p>
+          <span class="tag">C++</span><span class="tag">PCB Design</span>
         </div>
       </div>
-
-      <div class="project-card reveal">
-        <div class="project-img" style="background: #111; display: flex; flex-direction: column;">
-          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        </div>
-        <div class="project-body">
-          <div style="font-family: var(--mono); color: var(--accent); font-size: 11px; margin-bottom: 5px;">FEA & DESIGN</div>
-          <h3>Steering Redesign</h3>
-          <p style="margin-top: 10px;">Redesigned steering geometry to eliminate weld-warping. Resulted in a 2lb weight reduction and optimized Ackerman geometry validated via ANSYS.</p>
-          <div style="margin-top: 15px;">
-            <span class="tag">SolidWorks</span><span class="tag">ANSYS</span><span class="tag">FEA</span>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
 
 <div id="page-experience" class="page">
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2>Experience</h2>
+    <div class="section-header"><h2>Work Experience</h2></div>
+    <div style="background: var(--panel); padding: 30px; border-radius: 12px; border: 1px solid var(--border);">
+      <h3>Manufacturing Support</h3>
+      <p style="color: var(--accent); margin: 5px 0;">2026 — Present</p>
+      <p>Precision CAD drafting and manufacturing process optimization.</p>
     </div>
-    <div class="card reveal">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3>Manufacturing Support CO-OP</h3>
-        <span style="font-family: var(--mono); font-size: 12px; color: var(--accent);">FEB 2026 — PRESENT</span>
-      </div>
-      <p style="margin-top: 15px;">Working on technical documentation, manufacturing process optimization, and CAD drafting for precision components.</p>
-    </div>
-    <div class="card reveal" style="margin-top: 20px;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-          <h3>President — Concordia SAE</h3>
-          <span style="font-family: var(--mono); font-size: 12px; color: var(--accent);">2024 — PRESENT</span>
-        </div>
-        <p style="margin-top: 15px;">Coordinating technical teams for international competitions. Managed a $50k budget and spearheaded recruitment initiatives.</p>
-      </div>
   </div>
 </div>
 
 <div id="page-artwork" class="page">
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2>Artwork & Photography</h2>
-    </div>
-    <div class="artwork-grid">
-      <div class="card reveal">
-        <div style="height: 200px; background: var(--bg3); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 10px; letter-spacing: 2px;">WOODWORKING</div>
-        <h4 style="margin-top: 15px;">Technical Sculpture</h4>
-      </div>
-      <div class="card reveal">
-        <div style="height: 200px; background: var(--bg3); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-dim); font-size: 10px; letter-spacing: 2px;">PHOTOGRAPHY</div>
-        <h4 style="margin-top: 15px;">BAJA SAE Testing Stills</h4>
-      </div>
-    </div>
+    <div class="section-header"><h2>Artwork</h2></div>
+    <p>Photography and technical illustrations.</p>
   </div>
 </div>
 
 <script>
-  // --- NAVIGATION LOGIC ---
+  // --- 1. Navigation Logic ---
   function showPage(pageId) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(p => p.classList.remove('active'));
+    // Hide all pages
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    // Deactivate all buttons
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
 
-    const buttons = document.querySelectorAll('.nav-links button');
-    buttons.forEach(b => b.classList.remove('active'));
+    // Show selected
+    const target = document.getElementById('page-' + pageId);
+    if(target) target.classList.add('active');
 
-    const targetPage = document.getElementById('page-' + pageId);
-    const targetBtn = document.getElementById('nav-' + pageId);
+    const btn = document.getElementById('nav-' + pageId);
+    if(btn) btn.classList.add('active');
 
-    if (targetPage) targetPage.classList.add('active');
-    if (targetBtn) targetBtn.classList.add('active');
-
-    window.scrollTo(0, 0);
+    window.scrollTo(0,0);
   }
 
-  // --- SLIDESHOW LOGIC ---
-  let slideIdx = 0;
-  function runSlides() {
-    const slides = document.querySelectorAll('.slide');
-    if (slides.length === 0) return;
-    slides.forEach(s => s.classList.remove('active'));
-    slideIdx = (slideIdx + 1) % slides.length;
-    slides[slideIdx].classList.add('active');
+  // --- 2. Slideshow Logic ---
+  let currentIdx = 0;
+  function rotateSlides() {
+    const slides = document.querySelectorAll('#baja-slideshow .slide');
+    if(slides.length === 0) return;
+    
+    slides[currentIdx].classList.remove('active');
+    currentIdx = (currentIdx + 1) % slides.length;
+    slides[currentIdx].classList.add('active');
   }
-  setInterval(runSlides, 3500);
-
-  // --- SCROLL REVEAL ---
-  function reveal() {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(r => {
-      const windowHeight = window.innerHeight;
-      const elementTop = r.getBoundingClientRect().top;
-      if (elementTop < windowHeight - 100) {
-        r.classList.add('visible');
-      }
-    });
-  }
-  window.addEventListener('scroll', reveal);
-  window.addEventListener('load', reveal);
+  setInterval(rotateSlides, 3000); // Change image every 3 seconds
 </script>
 
 </body>
