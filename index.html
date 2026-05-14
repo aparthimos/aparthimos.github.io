@@ -123,7 +123,6 @@
       radial-gradient(ellipse 60% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
   }
 
-  /* decorative orb */
   .hero-orb {
     position: absolute;
     right: 120px;
@@ -402,95 +401,80 @@
 
   p { font-size: 14px; line-height: 1.7; color: var(--text-dim); }
 
- /* ─── PROJECTS PAGE (FULL WIDTH LAYOUT) ─── */
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr; /* 🔥 single column */
-  gap: 32px; /* more breathing room */
-}
-
-/* project card becomes wider + more “section-like” */
-.project-card {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  overflow: hidden;
-  transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-
-  cursor: default;
-
-  display: grid;
-  grid-template-columns: 1fr 1.2fr; /* image left, content right */
-  min-height: 260px;
-}
-
-.project-card:hover {
-  border-color: rgba(201,168,76,0.3);
-  transform: translateY(-4px);
-  box-shadow: 0 14px 50px rgba(0,0,0,0.35);
-}
-
-/* FEATURED becomes FULL BANNER */
-.project-card.featured {
-  grid-column: 1;
-  grid-template-columns: 1.2fr 1fr;
-  min-height: 320px;
-}
-
-/* IMAGE SECTION */
-.project-img {
-  width: 100%;
-  height: 100%;
-  min-height: 260px;
-
-  background: var(--bg3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-  position: relative;
-}
-
-/* image inside */
-.project-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;   /* 🔥 looks more “portfolio premium” */
-  object-position: center;
-  display: block;
-}
-
-/* text section */
-.project-body {
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/* placeholder stays centered */
-.project-img-placeholder {
-  font-family: var(--mono);
-  font-size: 10px;
-  color: var(--text-dim);
-  letter-spacing: 1px;
-  opacity: 0.3;
-}
-
-/* mobile fix */
-@media (max-width: 900px) {
-  .project-card,
-  .project-card.featured {
+  /* ─── PROJECTS PAGE ─── */
+  .projects-grid {
+    display: grid;
     grid-template-columns: 1fr;
-    min-height: auto;
+    gap: 32px;
+  }
+
+  .project-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    min-height: 260px;
+  }
+
+  .project-card:hover {
+    border-color: rgba(201,168,76,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 50px rgba(0,0,0,0.35);
+  }
+
+  .project-card.featured {
+    grid-column: 1;
+    grid-template-columns: 1.2fr 1fr;
+    min-height: 320px;
   }
 
   .project-img {
-    height: 220px;
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    background: var(--bg3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
   }
-}
+
+  .project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+
+  .project-body {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .project-img-placeholder {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    opacity: 0.3;
+  }
+
+  @media (max-width: 900px) {
+    .project-card,
+    .project-card.featured {
+      grid-template-columns: 1fr;
+      min-height: auto;
+    }
+    .project-img { height: 220px; }
+  }
 
   /* ─── EXPERIENCE PAGE ─── */
   .timeline {
@@ -769,10 +753,58 @@
     opacity: 1;
     transform: none;
   }
-.slideshow-container img {
-  transition: opacity 0.5s ease;
-}
-  
+
+  /* ─── SLIDESHOW ─── */
+  .slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin: 12px auto;
+    border-radius: 6px;
+    overflow: hidden;
+    /* Fixed height so all images are the same size */
+    height: 420px;
+    background: var(--bg3);
+  }
+
+  .slideshow-container img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    /* slide transition */
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+    will-change: transform, opacity;
+  }
+
+  /* Current slide: in place */
+  .slideshow-container img.slide-current {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 2;
+  }
+  /* Incoming slide: starts from the right */
+  .slideshow-container img.slide-incoming {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 1;
+  }
+  /* Outgoing slide: exits to the left */
+  .slideshow-container img.slide-outgoing {
+    transform: translateX(-100%);
+    opacity: 0;
+    z-index: 2;
+  }
+  /* Incoming slide animating in */
+  .slideshow-container img.slide-entering {
+    transform: translateX(0);
+    opacity: 1;
+    z-index: 1;
+  }
+
 </style>
 </head>
 <body>
@@ -929,43 +961,36 @@
 
     <div class="extracurricular-list">
 
-  <!-- SAE -->
-  <div class="extra-item" style="text-align:center;">
-    <div class="extra-title">Concordia SAE</div>
+      <!-- SAE -->
+      <div class="extra-item" style="text-align:center;">
+        <div class="extra-title">Concordia SAE</div>
+        <img src="images/SAElogo.jpg"
+             style="width:100%; max-width:720px; margin:12px auto; display:block; border-radius:6px;"
+             alt="SAE">
+        <p>President of Concordia SAE. Led recruitment, fundraising, and team organization across Formula, Baja, and AeroDesign.</p>
+      </div>
 
-    <img src="images/SAElogo.jpg"
-         style="width:100%; max-width:720px; margin:12px auto; display:block; border-radius:6px;"
-         alt="SAE">
+      <!-- Baja -->
+      <div class="extra-item" style="text-align:center;">
+        <div class="extra-title">SAE Baja Racing</div>
+        <img src="images/Bajamain.jpg"
+             style="width:100%; max-width:1080px; margin:12px auto; display:block; border-radius:6px;"
+             alt="Baja">
+        <p>Mechanical design, manufacturing, assembly, and testing of off-road Baja vehicle subsystems.</p>
+      </div>
 
-    <p>
-      President of Concordia SAE. Led recruitment, fundraising, and team organization across Formula, Baja, and AeroDesign.
-    </p>
-  </div>
+      <!-- Slideshow -->
+      <div class="extra-item" style="text-align:center;">
+        <div class="extra-title">Baja Gallery</div>
 
-  <!-- Baja -->
-  <div class="extra-item" style="text-align:center;">
-    <div class="extra-title">SAE Baja Racing</div>
+        <!-- Slideshow: two stacked images for slide-in effect -->
+        <div class="slideshow-container" id="bajaSlideshowContainer">
+          <img id="bajaSlideA" src="images/baja1.jpg" class="slide-current" alt="Baja gallery">
+          <img id="bajaSlideB" src="images/baja2.jpg" class="slide-incoming" alt="Baja gallery">
+        </div>
+      </div>
 
-    <img src="images/Bajamain.jpg"
-         style="width:100%; max-width:1080px; margin:12px auto; display:block; border-radius:6px;"
-         alt="Baja">
-
-    <p>
-      Mechanical design, manufacturing, assembly, and testing of off-road Baja vehicle subsystems.
-    </p>
-  </div>
-
-  <!-- Slideshow -->
-  <div class="extra-item" style="text-align:center;">
-    <div class="extra-title">Baja Gallery</div>
-
-    <div class="slideshow-container" style="margin-top:12px;">
-      <img id="bajaSlide" src="images/baja1.jpg"
-           style="width:100%; max-width:720px; border-radius:6px;">
     </div>
-  </div>
-
-</div>
 
     <!-- FEA / CFD Section -->
     <div style="margin-top: 56px;" class="reveal">
@@ -999,7 +1024,6 @@
 </div>
 
 <!-- ══════════════════════════════════════════════ PROJECTS ══ -->
-  
 <div id="page-projects" class="page">
   <div class="section">
     <div class="section-header">
@@ -1046,41 +1070,32 @@
         </div>
       </div>
 
+      <!-- DAQ System -->
+      <div class="project-card reveal">
+        <div class="project-img">
+          <img src="images/DAQ2.png" alt="DAQ System">
+        </div>
+        <div class="project-body">
+          <div class="project-type">Electronics · Data Systems</div>
+          <h3>Custom DAQ System</h3>
+          <p style="font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:10px;">
+            Fully custom data acquisition logger for Baja SAE, reading CAN, SMBUS, and sensor data over WiFi.
+          </p>
+          <ul class="project-bullets">
+            <li>Custom logger: linear potentiometers, hall-effect sensors, temperature sensors, pressure sensors, IMUs, accelerometers</li>
+            <li>CAN / SMBUS protocol support</li>
+            <li>ESP32 WiFi data transmission</li>
+            <li>Data used to validate subsystem designs via FEA</li>
+          </ul>
+          <div class="project-tags">
+            <span class="ptag">ESP32</span>
+            <span class="ptag">CAN Bus</span>
+            <span class="ptag">PCB Design</span>
+            <span class="ptag">C++</span>
+          </div>
+        </div>
+      </div>
 
-<!-- DAQ System -->
-<div class="project-card reveal">
-
-  <div class="project-img">
-    <img src="images/DAQ2.png" alt="DAQ System">
-  </div>
-
-  <div class="project-body">
-    <div class="project-type">Electronics · Data Systems</div>
-
-    <h3>Custom DAQ System</h3>
-
-    <p style="font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:10px;">
-      Fully custom data acquisition logger for Baja SAE, reading CAN, SMBUS, and sensor data over WiFi.
-    </p>
-
-    <ul class="project-bullets">
-      <li>Custom logger: linear potentiometers, hall-effect sensors, temperature sensors, pressure sensors, IMUs, accelerometers</li>
-      <li>CAN / SMBUS protocol support</li>
-      <li>ESP32 WiFi data transmission</li>
-      <li>Data used to validate subsystem designs via FEA</li>
-    </ul>
-
-    <div class="project-tags">
-      <span class="ptag">ESP32</span>
-      <span class="ptag">CAN Bus</span>
-      <span class="ptag">PCB Design</span>
-      <span class="ptag">C++</span>
-    </div>
-
-  </div>
-
-</div>
-      
       <!-- Strain Gauges -->
       <div class="project-card reveal" style="animation-delay:0.1s">
         <div class="project-img" style="background: linear-gradient(135deg, #0d1520, #1a1a2a);">
@@ -1473,56 +1488,93 @@
 </div>
 
 <script>
+  // ─── PAGE NAVIGATION ───────────────────────────────────────────────────────
   function showPage(pageName) {
     // Hide all pages
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(page => page.classList.remove('active'));
-    
-    // Show the selected page
-    const selectedPage = document.getElementById(`page-${pageName}`);
-    if (selectedPage) {
-      selectedPage.classList.add('active');
-    }
-    
-    // Update active nav button
-    const navButtons = document.querySelectorAll('.nav-links button');
-    navButtons.forEach(btn => btn.classList.remove('active'));
-    const activeBtn = document.getElementById(`nav-${pageName}`);
-    if (activeBtn) {
-      activeBtn.classList.add('active');
-    }
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+
+    // Show selected page
+    const selectedPage = document.getElementById('page-' + pageName);
+    if (selectedPage) selectedPage.classList.add('active');
+
+    // Update nav
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    const activeBtn = document.getElementById('nav-' + pageName);
+    if (activeBtn) activeBtn.classList.add('active');
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+
+    // *** KEY FIX: trigger reveal after page switch ***
+    // Without this, .reveal elements on hidden pages never got .visible
+    // because getBoundingClientRect() returns 0 when display:none
+    setTimeout(revealOnScroll, 50);
   }
 
-  // Scroll reveal animation for elements
+  // ─── SCROLL REVEAL ─────────────────────────────────────────────────────────
   function revealOnScroll() {
     const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(element => {
+    reveals.forEach(el => {
+      const rect = el.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      const elementTop = element.getBoundingClientRect().top;
-      
-      if (elementTop < windowHeight - 100) {
-        element.classList.add('visible');
+      if (rect.top < windowHeight - 60) {
+        el.classList.add('visible');
       }
     });
   }
 
   window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll(); // Initial check
+  revealOnScroll(); // initial check on load
 
-  // Slideshow functionality for Baja gallery
-  let bajaSlideIndex = 0;
-  const bajaSlides = ['images/baja1.jpg', 'images/baja2.jpg', 'images/baja3.jpg'];
-  
-  function rotateSlide() {
-    const slideElement = document.getElementById('bajaSlide');
-    if (slideElement && bajaSlides.length > 0) {
-      slideElement.src = bajaSlides[bajaSlideIndex];
-      bajaSlideIndex = (bajaSlideIndex + 1) % bajaSlides.length;
-    }
+  // ─── SLIDESHOW ─────────────────────────────────────────────────────────────
+  // Two-image technique: imgA is current, imgB is next.
+  // We slide imgB in from the right while imgA slides out to the left.
+  const bajaSlides = [
+    'images/baja1.jpg',
+    'images/baja2.jpg',
+    'images/baja3.jpg'
+  ];
+  let bajaIndex = 0;       // index of image currently shown in imgA
+  let isAnimating = false; // prevent overlapping transitions
+
+  function nextBajaSlide() {
+    if (isAnimating) return;
+
+    const imgA = document.getElementById('bajaSlideA'); // current (visible)
+    const imgB = document.getElementById('bajaSlideB'); // incoming (hidden off right)
+
+    if (!imgA || !imgB) return;
+
+    isAnimating = true;
+
+    // Prepare next index
+    const nextIndex = (bajaIndex + 1) % bajaSlides.length;
+
+    // Pre-load next image into imgB, positioned off-screen to the right
+    imgB.src = bajaSlides[nextIndex];
+    imgB.className = 'slide-incoming'; // translateX(100%) — off right
+
+    // Force a reflow so the browser registers the starting position
+    // before we apply the transition class
+    void imgB.offsetWidth;
+
+    // Now animate: A exits left, B enters from right
+    imgA.className = 'slide-outgoing'; // translateX(-100%) + opacity 0
+    imgB.className = 'slide-entering'; // translateX(0) — slides in
+
+    // After transition completes, swap roles
+    setTimeout(() => {
+      // A is now off-screen left, B is the new current slide
+      imgA.src = bajaSlides[nextIndex];
+      imgA.className = 'slide-current'; // snap A to center, no transition
+      imgB.className = 'slide-incoming'; // snap B to right, no transition
+
+      bajaIndex = nextIndex;
+      isAnimating = false;
+    }, 650); // slightly longer than the CSS transition (0.6s)
   }
-  
-  // Change slide every 5 seconds
-  setInterval(rotateSlide, 5000);
+
+  setInterval(nextBajaSlide, 4000);
 </script>
 </body>
 </html>
