@@ -329,118 +329,79 @@
     margin-bottom: 10px;
   }
 
-/*-- ══════════════════════════════════════════════ EDUCATION ══ --*/
-<div id="page-education" class="page">
-  <div class="section">
+  /* ─── EDUCATION PAGE ─── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
 
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2>Education & Activities</h2>
-    </div>
+  .edu-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 32px;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .edu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0.6;
+  }
 
-    /*-- EDUCATION / DEGREE --> */
-    <div class="extra-item reveal">
-      <div class="extra-title">Concordia University</div>
-      <p>
-        Mechanical Engineering CO-OP student focused on mechanical design, simulation (FEA/CFD),
-        manufacturing, and embedded systems development.
-      </p>
-    </div>
+  .edu-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(46,44,32,0.8);
+  }
+  .edu-item:last-child { border-bottom: none; }
 
-    /*-- ═════════ SAE SECTION ═════════ --> */
-    <div class="extra-item reveal" style="margin-top: 28px;">
+  .edu-level {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    opacity: 0.7;
+  }
+  .edu-school {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-bright);
+  }
 
-      <div class="extra-title">Concordia SAE — President</div>
+  .extracurricular-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 8px;
+  }
 
-      /*-- FULL WIDTH SAE LOGO -- */
-      <div style="width:100%; margin: 20px 0;">
-        <img src="images/SAElogo.jpg"
-             alt="SAE Logo"
-             style="width:100%; max-height:180px; object-fit:contain; display:block; opacity:0.95;">
-      </div>
+  .extra-item {
+    padding: 18px 20px;
+    background: rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.1);
+    border-left: 2px solid rgba(201,168,76,0.4);
+    border-radius: 4px;
+  }
 
-      /*-- DESCRIPTION --*/
-      <p style="margin-bottom:24px; color: var(--text-dim); line-height:1.7;">
-        Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams.
-        Responsible for leadership, fundraising, technical direction, and organizational growth as a non-profit engineering club.
-      </p>
+  .extra-title {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.3px;
+    margin-bottom: 6px;
+    opacity: 0.9;
+  }
 
-      /*-- BAJA MAIN IMAGE (CENTER PIECE) --> */
-      <div style="width:100%; margin-bottom:12px;">
-        <img src="images/bajamain.jpg"
-             alt="Baja Main"
-             style="width:100%; height:420px; object-fit:cover; border-radius:10px; border:1px solid var(--border);">
-      </div>
+  p { font-size: 14px; line-height: 1.7; color: var(--text-dim); }
 
-      /*-- 4 IMAGE GRID UNDER MAIN -- */
-      <div style="
-        display:grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap:10px;
-      ">
-        <img src="images/baja1.jpg"
-             style="width:100%; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border);">
-
-        <img src="images/baja2.jpg"
-             style="width:100%; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border);">
-
-        <img src="images/baja3.jpg"
-             style="width:100%; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border);">
-
-        <img src="images/baja4.jpg"
-             style="width:100%; height:130px; object-fit:cover; border-radius:6px; border:1px solid var(--border);">
-      </div>
-
-    </div>
-
-    /*-- OTHER ACTIVITIES --*/
-    <div class="extra-item reveal" style="margin-top: 32px;">
-      <div class="extra-title">SAE Baja Racing — Technical Member</div>
-      <p>
-        Designed, manufactured, and assembled off-road race vehicles for SAE competitions.
-        Focus on drivetrain, suspension, steering, and structural validation using SolidWorks and ANSYS.
-      </p>
-    </div>
-
-    /*-- FEA / CFD -- */
-    <div style="margin-top: 56px;" class="reveal">
-
-      <div class="section-header">
-        <span class="section-num">01.1</span>
-        <h2>FEA / CFD Work</h2>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(3,1fr); gap:16px;">
-
-        <div class="extra-item">
-          <div class="extra-title">CVT Case — Fluent CFD</div>
-          <p>Thermal analysis of CVT housing and cooling airflow optimization.</p>
-        </div>
-
-        <div class="extra-item">
-          <div class="extra-title">Steering System — ANSYS</div>
-          <p>Structural validation ensuring safety factor under peak loads.</p>
-        </div>
-
-        <div class="extra-item">
-          <div class="extra-title">Front Differential — FEA</div>
-          <p>Maximum stress and deflection analysis under torque loading.</p>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-
-  /*-- FOOTER -- */
-  <footer>
-    <div class="footer-logo">Alexander Parthimos · Portfolio</div>
-    <ul class="footer-links">
-      <li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li>
-      <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-    </ul>
-  </footer>
-</div>
  /* ─── PROJECTS PAGE (FULL WIDTH LAYOUT) ─── */
 
 .projects-grid {
@@ -919,44 +880,48 @@
   </footer>
 </div>
 
-<div class="edu-card reveal" style="animation-delay:0.1s">
-  <h3 style="margin-bottom:20px;">Extra-Curriculars</h3>
-
-  <div class="extracurricular-list">
-
-    <!-- SAE PRESIDENT -->
-    <div class="extra-item">
-      <div class="extra-title">Concordia SAE — President</div>
-
-      <div class="edu-media">
-        <!-- SAE LOGO -->
-        <img src="images/SAElogo.jpg" alt="SAE Logo" class="edu-logo">
-      </div>
-
-      <p>
-        Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams. Led membership growth, fundraising, and independence as a non-profit.
-      </p>
+<!-- ══════════════════════════════════════════════ EDUCATION ══ -->
+<div id="page-education" class="page">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Education</h2>
     </div>
-
-    <!-- BAJA -->
-    <div class="extra-item baja">
-      <div class="extra-title">SAE Baja Racing — Member</div>
-
-      <p>
-        Spent countless hours designing, manufacturing, assembling and disassembling the vehicle. Proficient in SolidWorks, Fusion, and ANSYS for design, manufacturing, and improvement.
-      </p>
-
-      <!-- BAJA IMAGE GALLERY -->
-      <div class="baja-gallery">
-        <img src="images/weld1.jpg" alt="Baja Car 1">
-        <img src="images/bajamain.jpg" alt="Baja Suspension">
-        <img src="images/baja3.jpg" alt="Baja Assembly">
-        <img src="images/baja4.jpg" alt="Baja Testing">
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <h3 style="margin-bottom:20px;">Academic History</h3>
+        <div class="edu-item">
+          <span class="edu-level">University</span>
+          <span class="edu-school">Concordia University</span>
+          <span style="font-size:13px; color:var(--text-dim);">B.Eng Mechanical Engineering (CO-OP)</span>
+        </div>
+        <div class="edu-item">
+          <span class="edu-level">CEGEP</span>
+          <span class="edu-school">Marianopolis College</span>
+        </div>
+        <div class="edu-item">
+          <span class="edu-level">High School</span>
+          <span class="edu-school">Loyola High School</span>
+        </div>
+        <div class="edu-item">
+          <span class="edu-level">Elementary</span>
+          <span class="edu-school">Souvenir Elementary School</span>
+        </div>
+      </div>
+      <div class="edu-card reveal" style="animation-delay:0.1s">
+        <h3 style="margin-bottom:20px;">Extra-Curriculars</h3>
+        <div class="extracurricular-list">
+          <div class="extra-item">
+            <div class="extra-title">Concordia SAE — President</div>
+            <p>Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams. Led membership growth, fundraising, and independence as a non-profit.</p>
+          </div>
+          <div class="extra-item">
+            <div class="extra-title">SAE Baja Racing — Member</div>
+            <p>Spent countless hours designing, manufacturing, assembling and disassembling the vehicle. Proficient in SolidWorks, Fusion, and ANSYS for design, manufacturing, and improvement. Deep understanding of drivetrain, steering, electronics, and suspension subsystems.</p>
+          </div>
+        </div>
       </div>
     </div>
-
-  </div>
-</div>
 
     <!-- FEA / CFD Section -->
     <div style="margin-top: 56px;" class="reveal">
