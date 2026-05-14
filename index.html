@@ -798,6 +798,10 @@
     opacity: 1;
     transform: none;
   }
+.slideshow-container img {
+  transition: opacity 0.5s ease;
+}
+  
 </style>
 </head>
 <body>
@@ -951,6 +955,46 @@
         </div>
       </div>
     </div>
+
+    <div class="extracurricular-list">
+
+  <!-- SAE -->
+  <div class="extra-item" style="text-align:center;">
+    <div class="extra-title">Concordia SAE</div>
+
+    <img src="images/sae.jpg"
+         style="width:100%; max-width:260px; margin:12px auto; display:block; border-radius:6px;"
+         alt="SAE">
+
+    <p>
+      President of Concordia SAE. Led recruitment, fundraising, and team organization across Formula, Baja, and AeroDesign.
+    </p>
+  </div>
+
+  <!-- Baja -->
+  <div class="extra-item" style="text-align:center;">
+    <div class="extra-title">SAE Baja Racing</div>
+
+    <img src="images/baja.jpg"
+         style="width:100%; max-width:260px; margin:12px auto; display:block; border-radius:6px;"
+         alt="Baja">
+
+    <p>
+      Mechanical design, manufacturing, assembly, and testing of off-road Baja vehicle subsystems.
+    </p>
+  </div>
+
+  <!-- Slideshow -->
+  <div class="extra-item" style="text-align:center;">
+    <div class="extra-title">Baja Gallery</div>
+
+    <div class="slideshow-container" style="margin-top:12px;">
+      <img id="bajaSlide" src="images/baja1.jpg"
+           style="width:100%; max-width:320px; border-radius:6px;">
+    </div>
+  </div>
+
+</div>
 
     <!-- FEA / CFD Section -->
     <div style="margin-top: 56px;" class="reveal">
@@ -1458,6 +1502,24 @@
 </div>
 
 <script>
+  const bajaImages = [
+  "images/baja1.jpg",
+  "images/baja2.jpg",
+  "images/baja3.jpg",
+  "images/baja4.jpg",
+  "images/baja5.jpg"
+];
+
+let bajaIndex = 0;
+
+setInterval(() => {
+  const img = document.getElementById("bajaSlide");
+  if (!img) return;
+
+  bajaIndex = (bajaIndex + 1) % bajaImages.length;
+  img.src = bajaImages[bajaIndex];
+}, 2500);
+  
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
