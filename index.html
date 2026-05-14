@@ -1003,7 +1003,7 @@
   </div>
 
   <div class="slide">
-    <img src="images/grind.jpg">
+    <img src="images/grind1.jpg">
   </div>
 
   <div class="slide">
@@ -1523,8 +1523,21 @@
 
 <script>
 
+  let slideIndex = 0;
 
-let bajaIndex = 0;
+function showSlides() {
+  const slides = document.querySelectorAll("#baja-slideshow .slide");
+
+  slides.forEach(s => s.classList.remove("active"));
+
+  slideIndex = (slideIndex + 1) % slides.length;
+
+  slides[slideIndex].classList.add("active");
+}
+
+// change slide every 3 seconds
+setInterval(showSlides, 3000);
+
 
 setInterval(() => {
   const img = document.getElementById("bajaSlide");
