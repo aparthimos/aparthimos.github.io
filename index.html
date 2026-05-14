@@ -1522,46 +1522,60 @@
 </div>
 
 <script>
-  const bajaImages = [
-  "images/weld1.jpg",
-  "images/Braking.jpg",
-  "images/grind1.jpg",
-  "images/baja4.jpg",
-  "images/baja5.jpg"
-];
+  // --- PAGE NAVIGATION ---
+  function showPage(pageId) {
+    // 1. Hide all pages
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
 
-let bajaIndex = 0;
+    // 2. Show the selected page
+    const selectedPage = document.getElementById('page-' + pageId);
+    if (selectedPage) {
+      selectedPage.classList.add('active');
+    }
 
-setInterval(() => {
-  const img = document.getElementById("bajaSlide");
-  if (!img) return;
+    // 3. Update Nav Button Styles
+    const navButtons = document.querySelectorAll('.nav-links button');
+    navButtons.forEach(btn => btn.classList.remove('active'));
+    
+    const activeBtn = document.getElementById('nav-' + pageId);
+    if (activeBtn) {
+      activeBtn.classList.add('active');
+    }
 
-  bajaIndex = (bajaIndex + 1) % bajaImages.length;
-  img.src = bajaImages[bajaIndex];
-}, 2500);
-  
-  function showPage(id) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    document.getElementById('page-' + id).classList.add('active');
-    document.getElementById('nav-' + id).classList.add('active');
+    // Scroll to top when switching pages
     window.scrollTo(0, 0);
-    initReveal();
   }
 
-  function initReveal() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  // --- SLIDESHOW LOGIC ---
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('#baja-slideshow .slide');
+
+  function nextSlide() {
+    if (slides.length === 0) return; // Guard clause
+    
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
   }
 
-  // Init on load
-  initReveal();
+  // Start the slideshow automatically every 3 seconds
+  setInterval(nextSlide, 3000);
+
+  // --- REVEAL ON SCROLL ---
+  function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+      var windowHeight = window.innerHeight;
+      var elementTop = reveals[i].getBoundingClientRect().top;
+      var elementVisible = 150;
+      if (elementTop < windowHeight - elementVisible) {
+        reveals[i].classList.add("visible");
+      }
+    }
+  }
+
+  window.addEventListener("scroll", reveal);
 </script>
 </body>
 </html>
