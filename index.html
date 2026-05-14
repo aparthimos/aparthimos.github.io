@@ -69,7 +69,19 @@ nav{
 /* PAGES */
 .page{
   display:none;
-  padding-top:60px;
+  position:fixed;
+  top:60px;
+  left:0;
+  width:100%;
+  height:calc(100vh - 60px);
+  overflow-y:auto;
+  background:var(--bg);
+  z-index:1;
+}
+
+.page.active{
+  display:block;
+  z-index:2;
 }
 
 .page.active{
