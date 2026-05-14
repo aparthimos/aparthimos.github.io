@@ -329,50 +329,91 @@
     margin-bottom: 10px;
   }
 
-  /* ─── EDUCATION IMAGE BLOCKS ─── */
+ /*--- ══════════════════════════════════════════════ EDUCATION ══ --- */
+<div id="page-education" class="page">
 
-.edu-media {
-  margin-top: 20px;
-  display: grid;
-  gap: 12px;
-}
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Education & Extra-Curriculars</h2>
+    </div>
 
-/* SAE logo small image */
-.edu-logo {
-  width: 140px;
-  height: auto;
-  opacity: 0.9;
-  filter: brightness(1.1);
-}
+    <!-- EXTRA CURRICULARS -->
+    <div class="edu-card reveal">
 
-/* Baja image gallery */
-.baja-gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  margin-top: 12px;
-}
+      <h3 style="margin-bottom:20px;">Extra-Curriculars</h3>
 
-.baja-gallery img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 6px;
-  border: 1px solid var(--border);
-  transition: transform 0.25s, border-color 0.25s;
-}
+      <div class="extracurricular-list">
 
-.baja-gallery img:hover {
-  transform: scale(1.03);
-  border-color: rgba(201,168,76,0.3);
-}
+        <!-- SAE PRESIDENT -->
+        <div class="extra-item">
+          <div class="extra-title">Concordia SAE — President</div>
 
-/* make Baja section visually stronger */
-.extra-item.baja {
-  padding: 18px;
-  background: rgba(201,168,76,0.03);
-  border-left: 2px solid rgba(201,168,76,0.5);
-}
+          <div class="edu-media">
+            <img src="images/SAElogo.jpg" alt="SAE Logo" class="edu-logo">
+          </div>
+
+          <p>
+            Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams. Led membership growth, fundraising, and organization development as a non-profit.
+          </p>
+        </div>
+
+        <!-- BAJA -->
+        <div class="extra-item baja">
+          <div class="extra-title">SAE Baja Racing — Member</div>
+
+          <p>
+            Designed, manufactured, assembled, and tested the Baja SAE vehicle. Worked across drivetrain, suspension, and steering subsystems using SolidWorks, Fusion 360, and ANSYS.
+          </p>
+
+          <!-- BAJA IMAGE GALLERY -->
+          <div class="baja-gallery">
+            <img src="images/baja1.jpg" alt="Baja Vehicle 1">
+            <img src="images/baja2.jpg" alt="Baja Suspension">
+            <img src="images/baja3.jpg" alt="Baja Assembly">
+            <img src="images/baja4.jpg" alt="Baja Testing">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- FEA / CFD SECTION -->
+    <div class="reveal" style="margin-top: 56px;">
+      <div class="section-header">
+        <span class="section-num">01.1</span>
+        <h2>FEA / CFD Work</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3,1fr); gap:16px;">
+        <div class="extra-item">
+          <div class="extra-title">CVT Case — Fluent CFD</div>
+          <p>Thermal analysis of airflow and heat dissipation using CFD simulations.</p>
+        </div>
+
+        <div class="extra-item">
+          <div class="extra-title">Steering System — ANSYS</div>
+          <p>Structural validation under peak load conditions using static FEA.</p>
+        </div>
+
+        <div class="extra-item">
+          <div class="extra-title">Front Differential — FEA</div>
+          <p>Stress and deflection analysis under maximum torque conditions.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-logo">Alexander Parthimos · Portfolio</div>
+    <ul class="footer-links">
+      <li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li>
+      <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+    </ul>
+  </footer>
+
+</div>
  /* ─── PROJECTS PAGE (FULL WIDTH LAYOUT) ─── */
 
 .projects-grid {
