@@ -1,9 +1,6 @@
-body {
-  background: #111;
-  color: white;
-}
-
-.project-img {
+.project-img img {
   width: 100%;
-  aspect-ratio: 16/9;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(0.9);
 }
