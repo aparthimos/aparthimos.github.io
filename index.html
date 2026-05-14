@@ -428,17 +428,16 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-
-  .project-img {
-    width: 100%;
-    aspect-ratio: 16/9;
-    background: var(--bg3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-  }
+.project-img {
+  width: 100%;
+  height: 220px;              /* fixed visual height = consistent cards */
+  background: var(--bg3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
 
   .project-card.featured .project-img {
     aspect-ratio: auto;
@@ -1030,6 +1029,14 @@
   <div class="project-img">
     <img src="images/DAQ2.png" alt="DAQ System">
   </div>
+
+  .project-img DAQ2 {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
 
   <div class="project-body">
     <div class="project-type">Electronics · Data Systems</div>
