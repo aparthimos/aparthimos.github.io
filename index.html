@@ -837,18 +837,16 @@
       <div class="hero-label">Mechanical Engineer · Designer · Builder</div>
       <h1>Alexander<br><em>Parthimos</em></h1>
       <p class="hero-desc">
-        Mechanical Engineering CO-OP student at Concordia University. Passionate about engineering, vehicle design, machining, racing and 3D printing.
+        Mechanical Engineering CO-OP student at Concordia University. Passionate about engineering, design, machining, racing, woodworking, and building things that work.
       </p>
       <div class="hero-tags">
         <span class="tag">Solidworks</span>
         <span class="tag">ANSYS / FEA</span>
         <span class="tag">Fluent / CFD</span>
         <span class="tag">3D Printing</span>
-        <span class="tag">C+ / Python</span>
+        <span class="tag">Baja SAE</span>
         <span class="tag">CNC Machining</span>
-        <span class="tag">Vehicle Wiring</span>
-        <span class="tag">PCB design</span>
-        
+        <span class="tag">Arduino / ESP32</span>
       </div>
       <div class="hero-links">
         <button class="btn-primary" onclick="showPage('projects')">VIEW PROJECTS</button>
@@ -861,7 +859,7 @@
     </div>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">5 Years<span>+</span></div>
+        <div class="stat-num">5+ Years<span>+</span></div>
         <div class="stat-label">Design Experience</div>
       </div>
       <div class="stat">
@@ -901,10 +899,6 @@
         <div class="extra-item">
           <div class="extra-title">// Role</div>
           <p>President, Concordia SAE</p>
-          <p>Technical Director, Concordia Baja Racing</p>
-          <p>Data Aquisition lead, Concordia Baja Racing</p>
-          <p>Steering Lead, Concordia Baja Racing</p>
-          
         </div>
         <div class="extra-item">
           <div class="extra-title">// Interests</div>
@@ -1528,32 +1522,40 @@
 </div>
 
 <script>
-  
-function showPage(id) {
-  document.querySelectorAll('.page').forEach(p => {
-    p.classList.remove('active');
-  });
 
-  document.querySelectorAll('.nav-links button').forEach(b => {
-    b.classList.remove('active');
-  });
+  let slideIndex = 0;
 
-  const page = document.getElementById('page-' + id);
-  const nav = document.getElementById('nav-' + id);
+function showSlides() {
+  const slides = document.querySelectorAll("#baja-slideshow .slide");
 
-  if (!page) {
-    console.error("Page not found:", id);
-    return;
-  }
+  slides.forEach(s => s.classList.remove("active"));
 
-  page.classList.add('active');
-  if (nav) nav.classList.add('active');
+  slideIndex = (slideIndex + 1) % slides.length;
 
-  window.scrollTo({ top: 0, behavior: "auto" }); // ✅ FIXED
+  slides[slideIndex].classList.add("active");
 }
 
-window.showPage = showPage;
+// change slide every 3 seconds
+setInterval(showSlides, 300);
+
+
+setInterval(() => {
+  const img = document.getElementById("bajaSlide");
+  if (!img) return;
+
+  bajaIndex = (bajaIndex + 1) % bajaImages.length;
+  img.src = bajaImages[bajaIndex];
+}, 2500);
   
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.getElementById('nav-' + id).classList.add('active');
+    window.scrollTo(0, 0);
+    initReveal();
+  }
+
   function initReveal() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
@@ -1564,25 +1566,6 @@ window.showPage = showPage;
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   }
-
-  let slideIndex = 0;
-
-function showSlides() {
-  const slides = document.querySelectorAll("#baja-slideshow .slide");
-  if (!slides.length) return;
-
-  slides.forEach(s => s.classList.remove("active"));
-
-  slideIndex = (slideIndex + 1) % slides.length;
-  slides[slideIndex].classList.add("active");
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const slides = document.querySelectorAll("#baja-slideshow .slide");
-  if (slides.length) slides[0].classList.add("active");
-
-  setInterval(showSlides, 3000);
-});
 
   // Init on load
   initReveal();
