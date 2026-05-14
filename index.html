@@ -859,8 +859,8 @@
     </div>
     <div class="hero-stats">
       <div class="stat">
-        <div class="stat-num">5+ Years<span>+</span></div>
-        <div class="stat-label">Design Experience</div>
+        <div class="stat-num">3<span>+</span></div>
+        <div class="stat-label">Years Racing</div>
       </div>
       <div class="stat">
         <div class="stat-num">10<span>+</span></div>
@@ -995,23 +995,23 @@
 <div class="slideshow" id="baja-slideshow">
 
   <div class="slide active">
-    <img src="images/weld1.jpg">
+    <img src="images/baja1.jpg">
+  </div>
+
+  <div class="slide">
+    <img src="images/baja2.jpg">
+  </div>
+
+  <div class="slide">
+    <img src="images/baja3.jpg">
+  </div>
+
+  <div class="slide">
+    <img src="images/baja4.jpg">
   </div>
 
   <div class="slide">
     <img src="images/baja5.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="images/grind1.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="images/baja6.jpg">
-  </div>
-
-  <div class="slide">
-    <img src="images/baja7.jpg">
   </div>
 
 </div>
@@ -1522,22 +1522,15 @@
 </div>
 
 <script>
+  const bajaImages = [
+  "images/weld1.jpg",
+  "images/Braking.jpg",
+  "images/grind1.jpg",
+  "images/baja4.jpg",
+  "images/baja5.jpg"
+];
 
-  let slideIndex = 0;
-
-function showSlides() {
-  const slides = document.querySelectorAll("#baja-slideshow .slide");
-
-  slides.forEach(s => s.classList.remove("active"));
-
-  slideIndex = (slideIndex + 1) % slides.length;
-
-  slides[slideIndex].classList.add("active");
-}
-
-// change slide every 3 seconds
-setInterval(showSlides, 300);
-
+let bajaIndex = 0;
 
 setInterval(() => {
   const img = document.getElementById("bajaSlide");
