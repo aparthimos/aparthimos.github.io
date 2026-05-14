@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alexander Parthimos</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 
   :root {
@@ -39,7 +39,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 0;
     opacity: 0.4;
@@ -410,7 +410,7 @@
   gap: 32px; /* more breathing room */
 }
 
-/* project card becomes wider + more "section-like" */
+/* project card becomes wider + more “section-like” */
 .project-card {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -457,7 +457,7 @@
 .project-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* 🔥 looks more "portfolio premium" */
+  object-fit: cover;   /* 🔥 looks more “portfolio premium” */
   object-position: center;
   display: block;
 }
@@ -769,28 +769,9 @@
     opacity: 1;
     transform: none;
   }
-
-  /* ─── SLIDESHOW STYLES ─── */
-  .slideshow-container {
-    position: relative;
-    width: 100%;
-    max-width: 720px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .slideshow-container img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    border-radius: 6px;
-    transition: opacity 0.5s ease;
-  }
+.slideshow-container img {
+  transition: opacity 0.5s ease;
+}
   
 </style>
 </head>
@@ -864,10 +845,10 @@
     <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start;">
       <div>
         <p style="font-size:15px; color: var(--text); margin-bottom: 20px;">
-          I am a mechanical engineering CO-OP student at Concordia University. I love dedicating myself to new projects and learning new skills. I am deeply passionate about engineering and design, machining, and building mechanical systems.
+          I am a mechanical engineering CO-OP student at Concordia University. I love dedicating myself to new projects and learning new skills. I am deeply passionate about engineering and design, machining, racing, woodworking and much more.
         </p>
         <p style="font-size:15px; color: var(--text);">
-          Here you will find some of my engineering projects, my artwork and photography, and my work in Concordia SAE and Baja Racing. I am always looking for new opportunities to learn. If you have any questions or opportunities, feel free to reach out!
+          Here you will find some of my engineering projects, my artwork and photography, and my work in Concordia SAE and Baja Racing. I am always looking for new opportunities to learn. If you have any questions or would like to work together, do not hesitate to reach out.
         </p>
         <div style="margin-top: 32px;">
           <a href="mailto:alexander.parthimos@gmail.com" class="btn-primary" style="text-decoration:none; display:inline-block;">Email me</a>
@@ -940,7 +921,7 @@
           </div>
           <div class="extra-item">
             <div class="extra-title">SAE Baja Racing — Member</div>
-            <p>Spent countless hours designing, manufacturing, assembling and disassembling the vehicle. Proficient in SolidWorks, Fusion, and ANSYS for design, manufacturing, and improvement. Deep understanding of vehicle dynamics and control systems.</p>
+            <p>Spent countless hours designing, manufacturing, assembling and disassembling the vehicle. Proficient in SolidWorks, Fusion, and ANSYS for design, manufacturing, and improvement. Deep understanding of drivetrain, steering, electronics, and suspension subsystems.</p>
           </div>
         </div>
       </div>
@@ -979,7 +960,8 @@
     <div class="extra-title">Baja Gallery</div>
 
     <div class="slideshow-container" style="margin-top:12px;">
-      <img id="bajaSlide" src="images/baja1.jpg" alt="Baja Gallery">
+      <img id="bajaSlide" src="images/baja1.jpg"
+           style="width:100%; max-width:720px; border-radius:6px;">
     </div>
   </div>
 
@@ -1017,6 +999,7 @@
 </div>
 
 <!-- ══════════════════════════════════════════════ PROJECTS ══ -->
+  
 <div id="page-projects" class="page">
   <div class="section">
     <div class="section-header">
@@ -1024,27 +1007,239 @@
       <h2>Projects</h2>
     </div>
     <div class="projects-grid">
-      <!-- Featured Project -->
+
+      <!-- Featured: Baja Steering System -->
       <div class="project-card featured reveal">
-        <div class="project-img">
-          <div class="project-img-placeholder">PROJECT IMAGE</div>
+        <div class="project-img" style="background: linear-gradient(135deg, #0d1520, #1a2535);">
+          <div class="cad-icon">
+            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#4a9eff" stroke-width="0.8">
+              <circle cx="60" cy="60" r="50"/>
+              <circle cx="60" cy="60" r="35"/>
+              <circle cx="60" cy="60" r="8"/>
+              <line x1="60" y1="10" x2="60" y2="25"/>
+              <line x1="60" y1="95" x2="60" y2="110"/>
+              <line x1="10" y1="60" x2="25" y2="60"/>
+              <line x1="95" y1="60" x2="110" y2="60"/>
+              <line x1="25" y1="25" x2="35" y2="35"/>
+              <line x1="85" y1="85" x2="95" y2="95"/>
+              <rect x="50" y="50" width="20" height="20" rx="2"/>
+            </svg>
+          </div>
+          <span class="project-img-placeholder">steering system</span>
         </div>
         <div class="project-body">
-          <h3>Featured Project</h3>
-          <p>Description of your featured project goes here.</p>
+          <div class="project-type">Baja SAE · Mechanical Design</div>
+          <h3>Steering System Redesign</h3>
+          <p style="font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:12px;">Complete redesign of the Baja SAE steering system focused on eliminating weld-induced warping and reducing system complexity.</p>
+          <ul class="project-bullets">
+            <li>Complete redesign to remove welding and all resultant warping in the system</li>
+            <li>2-pound overall weight reduction</li>
+            <li>Reduced total number of parts and overall manufacturing complexity</li>
+            <li>FEA validated with ANSYS Static Structural</li>
+          </ul>
+          <div class="project-tags">
+            <span class="ptag">SolidWorks</span>
+            <span class="ptag">ANSYS</span>
+            <span class="ptag">Machining</span>
+            <span class="ptag">Baja SAE</span>
+          </div>
         </div>
       </div>
 
-      <!-- Regular Projects -->
-      <div class="project-card reveal">
-        <div class="project-img">
-          <div class="project-img-placeholder">PROJECT IMAGE</div>
+
+<!-- DAQ System -->
+<div class="project-card reveal">
+
+  <div class="project-img">
+    <img src="images/DAQ2.png" alt="DAQ System">
+  </div>
+
+  <div class="project-body">
+    <div class="project-type">Electronics · Data Systems</div>
+
+    <h3>Custom DAQ System</h3>
+
+    <p style="font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:10px;">
+      Fully custom data acquisition logger for Baja SAE, reading CAN, SMBUS, and sensor data over WiFi.
+    </p>
+
+    <ul class="project-bullets">
+      <li>Custom logger: linear potentiometers, hall-effect sensors, temperature sensors, pressure sensors, IMUs, accelerometers</li>
+      <li>CAN / SMBUS protocol support</li>
+      <li>ESP32 WiFi data transmission</li>
+      <li>Data used to validate subsystem designs via FEA</li>
+    </ul>
+
+    <div class="project-tags">
+      <span class="ptag">ESP32</span>
+      <span class="ptag">CAN Bus</span>
+      <span class="ptag">PCB Design</span>
+      <span class="ptag">C++</span>
+    </div>
+
+  </div>
+
+</div>
+      
+      <!-- Strain Gauges -->
+      <div class="project-card reveal" style="animation-delay:0.1s">
+        <div class="project-img" style="background: linear-gradient(135deg, #0d1520, #1a1a2a);">
+          <div class="cad-icon">
+            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="#ff6b35" stroke-width="0.8">
+              <rect x="20" y="35" width="50" height="20" rx="2"/>
+              <line x1="30" y1="30" x2="30" y2="35"/>
+              <line x1="45" y1="28" x2="45" y2="35"/>
+              <line x1="60" y1="30" x2="60" y2="35"/>
+              <line x1="30" y1="55" x2="30" y2="60"/>
+              <line x1="45" y1="55" x2="45" y2="62"/>
+              <line x1="60" y1="55" x2="60" y2="60"/>
+              <path d="M 25 45 Q 30 38 35 45 Q 40 52 45 45 Q 50 38 55 45 Q 60 52 65 45" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <span class="project-img-placeholder">strain gauges</span>
         </div>
         <div class="project-body">
-          <h3>Project Title</h3>
-          <p>Project description.</p>
+          <div class="project-type">Testing · Instrumentation</div>
+          <h3>Strain Gauge System</h3>
+          <p style="font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:10px;">Quarter-bridge strain gauges with completed Wheatstone bridge to collect driveshaft loading data.</p>
+          <ul class="project-bullets">
+            <li>Quarter bridge strain gauges, op-amp with completed bridge</li>
+            <li>ESP32 wireless data transmission</li>
+            <li>Determined nominal torque for gearbox design</li>
+            <li>Maximum from shock loading · Validated by destructive testing</li>
+          </ul>
+          <div class="project-tags">
+            <span class="ptag">Strain Gauges</span>
+            <span class="ptag">ESP32</span>
+            <span class="ptag">Data Analysis</span>
+          </div>
         </div>
       </div>
+
+      <!-- Wave Strain Drive -->
+      <div class="project-card reveal">
+        <div class="project-img" style="background: linear-gradient(135deg, #0f1520, #1a2030);">
+          <div class="cad-icon">
+            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="#4a9eff" stroke-width="0.8">
+              <circle cx="45" cy="45" r="30"/>
+              <circle cx="45" cy="45" r="22"/>
+              <circle cx="45" cy="45" r="10"/>
+              <circle cx="45" cy="45" r="3" fill="#4a9eff" opacity="0.4"/>
+              <line x1="45" y1="15" x2="45" y2="23"/>
+              <line x1="66" y1="24" x2="61" y2="29"/>
+              <line x1="75" y1="45" x2="67" y2="45"/>
+              <line x1="66" y1="66" x2="61" y2="61"/>
+              <line x1="45" y1="75" x2="45" y2="67"/>
+              <line x1="24" y1="66" x2="29" y2="61"/>
+              <line x1="15" y1="45" x2="23" y2="45"/>
+              <line x1="24" y1="24" x2="29" y2="29"/>
+            </svg>
+          </div>
+          <span class="project-img-placeholder">harmonic drive</span>
+        </div>
+        <div class="project-body">
+          <div class="project-type">3D Printing · Mechanical Design</div>
+          <h3>Wave Strain Drive</h3>
+          <ul class="project-bullets">
+            <li>Fully 3D printable 20:1 harmonic drive</li>
+            <li>Adapter allows connection to any motor within power limit</li>
+          </ul>
+          <div class="project-tags">
+            <span class="ptag">3D Printing</span>
+            <span class="ptag">SolidWorks</span>
+            <span class="ptag">Gear Design</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RC Car -->
+      <div class="project-card reveal" style="animation-delay:0.1s">
+        <div class="project-img" style="background: linear-gradient(135deg, #151008, #201a0a);">
+          <div class="cad-icon">
+            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="#ff6b35" stroke-width="0.8">
+              <rect x="18" y="38" width="54" height="18" rx="3"/>
+              <rect x="24" y="30" width="36" height="12" rx="2"/>
+              <circle cx="26" cy="60" r="8"/>
+              <circle cx="26" cy="60" r="4"/>
+              <circle cx="64" cy="60" r="8"/>
+              <circle cx="64" cy="60" r="4"/>
+              <line x1="34" y1="44" x2="56" y2="44"/>
+              <rect x="38" y="32" width="14" height="6" rx="1" opacity="0.5"/>
+            </svg>
+          </div>
+          <span class="project-img-placeholder">rc car</span>
+        </div>
+        <div class="project-body">
+          <div class="project-type">Custom Build · Electronics</div>
+          <h3>RC Car</h3>
+          <ul class="project-bullets">
+            <li>Fully custom suspension modelled for responsiveness and quick turning</li>
+            <li>12V 1600 RPM motor with 3200 RPM to the wheels</li>
+            <li>3S battery holder with removable 21700 cells and 12V to 12V, 5V and 3.3V buck/boost converter</li>
+          </ul>
+          <div class="project-tags">
+            <span class="ptag">SolidWorks</span>
+            <span class="ptag">3D Printing</span>
+            <span class="ptag">Electronics</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Helical Gearbox -->
+      <div class="project-card reveal">
+        <div class="project-img" style="background: linear-gradient(135deg, #0d1a14, #152a1a);">
+          <div class="cad-icon">
+            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="#4a9eff" stroke-width="0.8">
+              <circle cx="35" cy="45" r="18"/>
+              <circle cx="35" cy="45" r="5"/>
+              <circle cx="62" cy="45" r="12"/>
+              <circle cx="62" cy="45" r="4"/>
+              <path d="M35 27 L37 22 L35 27" stroke-width="1.5"/>
+              <path d="M35 63 L33 68 L35 63" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <span class="project-img-placeholder">gearbox</span>
+        </div>
+        <div class="project-body">
+          <div class="project-type">ML-Assisted Design</div>
+          <h3>2-Speed Helical Gearbox</h3>
+          <ul class="project-bullets">
+            <li>Designing, analysing, and prototyping a machine-learning based 2-speed helical gearbox</li>
+            <li>ML model to predict pinion performance and optimise gear geometry</li>
+          </ul>
+          <div class="project-tags">
+            <span class="ptag">SolidWorks</span>
+            <span class="ptag">Machine Learning</span>
+            <span class="ptag">Python</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Printing Art -->
+      <div class="project-card reveal" style="animation-delay:0.1s">
+        <div class="project-img" style="background: linear-gradient(135deg, #140d1a, #201525);">
+          <div class="cad-icon">
+            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="#ff6b35" stroke-width="0.8">
+              <polygon points="45,15 75,65 15,65"/>
+              <polygon points="45,28 65,58 25,58"/>
+              <circle cx="45" cy="50" r="6"/>
+            </svg>
+          </div>
+          <span class="project-img-placeholder">3d printing art</span>
+        </div>
+        <div class="project-body">
+          <div class="project-type">3D Printing · Art &amp; Design</div>
+          <h3>3D Printing Art &amp; Designs</h3>
+          <p style="font-size:13px; color:var(--text-dim); margin-bottom:10px;">A collection of 3D designed and printed art pieces and functional objects.</p>
+          <div class="project-tags">
+            <span class="ptag">Pandora's Box</span>
+            <span class="ptag">Infinity Blade</span>
+            <span class="ptag">Painter's Palette</span>
+            <span class="ptag">FDM</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
   <footer>
@@ -1061,51 +1256,76 @@
   <div class="section">
     <div class="section-header">
       <span class="section-num">03</span>
-      <h2>Experience</h2>
+      <h2>Work Experience</h2>
     </div>
     <div class="timeline">
       <div class="timeline-item reveal">
         <div class="timeline-meta">
           <div>
-            <div class="timeline-role">Role Title</div>
-            <div class="timeline-company">COMPANY</div>
+            <div class="timeline-role">President — Concordia SAE</div>
+            <div class="timeline-company">Concordia University</div>
           </div>
-          <span class="timeline-date">2024 - Present</span>
+          <div class="timeline-date">2024 — Present</div>
         </div>
-        <p class="timeline-desc">Description of your work and responsibilities.</p>
+        <p class="timeline-desc">Leading a student-run chapter of SAE International comprising Formula, Baja, and Aerodesign teams. Focus on improving the organization as a non-profit: increasing funds, doubling membership, and improving community outreach.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-meta">
+          <div>
+            <div class="timeline-role">Baja SAE — Technical Member</div>
+            <div class="timeline-company">Concordia SAE</div>
+          </div>
+          <div class="timeline-date">2022 — Present</div>
+        </div>
+        <p class="timeline-desc">Designing, manufacturing, assembling, and disassembling off-road race vehicles for SAE International competitions. Proficient in SolidWorks, Fusion, and ANSYS for design and validation. Subsystems: drivetrain, steering, electronics, suspension.</p>
+      </div>
+      <div class="timeline-item reveal">
+        <div class="timeline-meta">
+          <div>
+            <div class="timeline-role">Engineering CO-OP</div>
+            <div class="timeline-company">Add Your Employer</div>
+          </div>
+          <div class="timeline-date">Update with your details</div>
+        </div>
+        <p class="timeline-desc">Add your CO-OP work experience details here — company name, role, responsibilities, and key achievements.</p>
       </div>
     </div>
 
-    <div style="margin-top: 56px;" class="reveal">
-      <div class="section-header">
-        <span class="section-num">03.1</span>
-        <h2>Skills</h2>
+    <!-- Skills -->
+    <div class="section-header" style="margin-top: 64px;">
+      <span class="section-num">03.1</span>
+      <h2>Technical Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group reveal">
+        <div class="skill-group-title">CAD / Simulation</div>
+        <ul class="skill-list">
+          <li>SolidWorks</li>
+          <li>Fusion 360</li>
+          <li>ANSYS (Static Structural, Fluent)</li>
+          <li>FEA / CFD</li>
+          <li>GD&T</li>
+        </ul>
       </div>
-      <div class="skills-grid">
-        <div class="skill-group">
-          <div class="skill-group-title">TECHNICAL</div>
-          <ul class="skill-list">
-            <li>SolidWorks</li>
-            <li>ANSYS FEA</li>
-            <li>Fusion 360</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">ENGINEERING</div>
-          <ul class="skill-list">
-            <li>Mechanical Design</li>
-            <li>Manufacturing</li>
-            <li>Testing</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <div class="skill-group-title">OTHER</div>
-          <ul class="skill-list">
-            <li>Leadership</li>
-            <li>Project Management</li>
-            <li>Communication</li>
-          </ul>
-        </div>
+      <div class="skill-group reveal" style="animation-delay:0.1s">
+        <div class="skill-group-title">Electronics / Programming</div>
+        <ul class="skill-list">
+          <li>Arduino / ESP32</li>
+          <li>CAN Bus / SMBUS</li>
+          <li>PCB Design</li>
+          <li>Python</li>
+          <li>C / C++</li>
+        </ul>
+      </div>
+      <div class="skill-group reveal" style="animation-delay:0.2s">
+        <div class="skill-group-title">Manufacturing</div>
+        <ul class="skill-list">
+          <li>3D Printing (FDM)</li>
+          <li>CNC Machining</li>
+          <li>MIG / TIG Welding</li>
+          <li>Woodworking</li>
+          <li>Hand Tools &amp; Fabrication</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1123,34 +1343,123 @@
   <div class="section">
     <div class="section-header">
       <span class="section-num">04</span>
-      <h2>Artwork & Photography</h2>
+      <h2>Artwork &amp; Photography</h2>
     </div>
     <p class="artwork-intro">
-      A collection of my artwork and photography projects.
+      Beyond engineering, I create. From hand-drawn illustrations and woodworking to photography, these pieces reflect a different dimension of the same curiosity that drives my technical work.
     </p>
 
+    <!-- Artwork -->
+    <div style="margin-bottom: 16px;">
+      <span class="section-num" style="font-size:12px;">04.1 — Artwork</span>
+    </div>
     <div class="artwork-grid">
       <div class="artwork-card reveal">
         <div class="artwork-thumb">
-          <div class="art-deco">ART</div>
+          <div class="art-deco">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#4a9eff" stroke-width="0.6" opacity="0.3">
+              <rect x="10" y="10" width="60" height="60" rx="2"/>
+              <rect x="20" y="20" width="40" height="40" rx="1"/>
+              <line x1="10" y1="40" x2="70" y2="40"/>
+              <line x1="40" y1="10" x2="40" y2="70"/>
+            </svg>
+          </div>
+          Add Image
         </div>
         <div class="artwork-info">
-          <div class="artwork-name">Artwork Title</div>
-          <div class="artwork-medium">Medium</div>
+          <div class="artwork-name">Illustration 01</div>
+          <div class="artwork-medium">Drawing · Mixed Media</div>
+        </div>
+      </div>
+      <div class="artwork-card reveal" style="animation-delay:0.05s">
+        <div class="artwork-thumb">
+          <div class="art-deco">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#ff6b35" stroke-width="0.6" opacity="0.3">
+              <circle cx="40" cy="40" r="28"/>
+              <circle cx="40" cy="40" r="18"/>
+              <circle cx="40" cy="40" r="8"/>
+            </svg>
+          </div>
+          Add Image
+        </div>
+        <div class="artwork-info">
+          <div class="artwork-name">Illustration 02</div>
+          <div class="artwork-medium">Sketch · Pen &amp; Ink</div>
+        </div>
+      </div>
+      <div class="artwork-card reveal" style="animation-delay:0.1s">
+        <div class="artwork-thumb">
+          <div class="art-deco">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#4a9eff" stroke-width="0.6" opacity="0.3">
+              <polygon points="40,12 68,28 68,52 40,68 12,52 12,28"/>
+              <polygon points="40,24 58,33 58,47 40,56 22,47 22,33"/>
+            </svg>
+          </div>
+          Add Image
+        </div>
+        <div class="artwork-info">
+          <div class="artwork-name">Woodworking Piece</div>
+          <div class="artwork-medium">Wood · Handcrafted</div>
+        </div>
+      </div>
+      <div class="artwork-card reveal" style="animation-delay:0.15s">
+        <div class="artwork-thumb">Add Image</div>
+        <div class="artwork-info">
+          <div class="artwork-name">Artwork 04</div>
+          <div class="artwork-medium">Add Medium</div>
+        </div>
+      </div>
+      <div class="artwork-card reveal" style="animation-delay:0.2s">
+        <div class="artwork-thumb">Add Image</div>
+        <div class="artwork-info">
+          <div class="artwork-name">Artwork 05</div>
+          <div class="artwork-medium">Add Medium</div>
+        </div>
+      </div>
+      <div class="artwork-card reveal" style="animation-delay:0.25s">
+        <div class="artwork-thumb">Add Image</div>
+        <div class="artwork-info">
+          <div class="artwork-name">Artwork 06</div>
+          <div class="artwork-medium">Add Medium</div>
         </div>
       </div>
     </div>
 
-    <div style="margin-top: 56px;" class="reveal">
-      <div class="section-header">
-        <span class="section-num">04.1</span>
-        <h2>Photography</h2>
+    <!-- Photography -->
+    <div style="margin-bottom: 16px; margin-top: 56px;">
+      <span class="section-num" style="font-size:12px;">04.2 — Photography</span>
+    </div>
+    <div class="photo-grid">
+      <div class="photo-card reveal">
+        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
       </div>
-      <div class="photo-grid">
-        <div class="photo-card">
-          <div class="photo-thumb"></div>
-        </div>
+      <div class="photo-card reveal" style="animation-delay:0.05s">
+        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
       </div>
+      <div class="photo-card reveal" style="animation-delay:0.1s">
+        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
+      </div>
+      <div class="photo-card reveal" style="animation-delay:0.15s">
+        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
+      </div>
+      <div class="photo-card reveal" style="animation-delay:0.2s">
+        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
+      </div>
+      <div class="photo-card reveal" style="animation-delay:0.25s">
+        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
+      </div>
+      <div class="photo-card reveal" style="animation-delay:0.3s">
+        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
+      </div>
+      <div class="photo-card reveal" style="animation-delay:0.35s">
+        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
+      </div>
+    </div>
+
+    <div style="margin-top:48px; padding: 24px; border: 1px solid var(--border); border-radius: 4px; background: var(--panel); text-align:center;">
+      <p style="color:var(--text-dim); font-family:var(--mono); font-size:11px; letter-spacing:2px;">
+        TO ADD IMAGES: Replace the placeholder divs with &lt;img src="your-image.jpg"&gt; tags. Place images in the same folder as this HTML file.
+      </p>
     </div>
   </div>
   <footer>
@@ -1158,6 +1467,7 @@
     <ul class="footer-links">
       <li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li>
       <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
+      <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
     </ul>
   </footer>
 </div>
@@ -1181,9 +1491,6 @@
     if (activeBtn) {
       activeBtn.classList.add('active');
     }
-    
-    // Scroll to top
-    window.scrollTo(0, 0);
   }
 
   // Scroll reveal animation for elements
@@ -1217,6 +1524,5 @@
   // Change slide every 5 seconds
   setInterval(rotateSlide, 5000);
 </script>
-
 </body>
 </html>
