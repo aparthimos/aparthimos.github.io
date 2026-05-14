@@ -428,9 +428,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+/* ─── PROJECT IMAGE SYSTEM (GLOBAL FIX) ─── */
+
 .project-img {
   width: 100%;
-  height: 220px;              /* fixed visual height = consistent cards */
+  height: 220px;              /* consistent card height */
   background: var(--bg3);
   display: flex;
   align-items: center;
@@ -438,20 +440,37 @@
   overflow: hidden;
   position: relative;
 }
-  
-  .project-img DAQ2 {
+
+/* ALL images inside ANY project card */
+.project-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+
+  /* KEY FIX: prevents zoom/cropping */
+  object-fit: contain;
+
+  /* keeps image centered */
   object-position: center;
+
   display: block;
 }
 
+/* Featured large project image */
+.project-card.featured .project-img {
+  height: 100%;
+  min-height: 260px;
+}
 
-  .project-card.featured .project-img {
-    aspect-ratio: auto;
-    min-height: 260px;
-  }
+/* Optional: if you ever want FULL-bleed cropped look */
+.project-img.cover img {
+  object-fit: cover;
+}
+
+/* removes weird inline SVG spacing issues */
+.project-img svg {
+  max-width: 100%;
+  max-height: 100%;
+}
 
   .project-img-placeholder {
     font-family: var(--mono);
