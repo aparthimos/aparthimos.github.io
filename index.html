@@ -1528,30 +1528,28 @@
 </div>
 
 <script>
-
-  window.addEventListener("error", (e) => {
-  console.log("JS error caught:", e.message);
-});
-
-
   
 function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => {
+    p.classList.remove('active');
+  });
+
+  document.querySelectorAll('.nav-links button').forEach(b => {
+    b.classList.remove('active');
+  });
+
   const page = document.getElementById('page-' + id);
+  const nav = document.getElementById('nav-' + id);
 
   if (!page) {
-    console.error("Missing page:", id);
+    console.error("Page not found:", id);
     return;
   }
 
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-
   page.classList.add('active');
-
-  const nav = document.getElementById('nav-' + id);
   if (nav) nav.classList.add('active');
 
-  window.scrollTo(0, 0);
+  window.scrollTo({ top: 0, behavior: "instant" });
 }
   
   function initReveal() {
