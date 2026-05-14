@@ -1551,6 +1551,7 @@ function showPage(id) {
 
   window.scrollTo({ top: 0, behavior: "instant" });
 }
+  window.showPage = showPage;
   
   function initReveal() {
     const observer = new IntersectionObserver((entries) => {
