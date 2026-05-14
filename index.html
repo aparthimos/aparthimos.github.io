@@ -6,7 +6,6 @@
 <title>Alexander Parthimos</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-
   :root {
     --bg: #13120f;
     --bg2: #181610;
@@ -22,9 +21,7 @@
     --sans: 'DM Sans', sans-serif;
     --serif: 'Playfair Display', serif;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   body {
     background: var(--bg);
     color: var(--text);
@@ -33,8 +30,6 @@
     min-height: 100vh;
     overflow-x: hidden;
   }
-
-  /* Subtle noise texture */
   body::before {
     content: '';
     position: fixed;
@@ -44,7 +39,6 @@
     z-index: 0;
     opacity: 0.4;
   }
-
   /* ─── NAV ─── */
   nav {
     position: fixed;
@@ -59,7 +53,6 @@
     padding: 0 40px;
     height: 60px;
   }
-
   .nav-logo {
     font-family: var(--serif);
     font-size: 15px;
@@ -69,13 +62,7 @@
     cursor: pointer;
   }
   .nav-logo span { color: var(--accent); font-weight: 400; font-style: italic; }
-
-  .nav-links {
-    display: flex;
-    gap: 4px;
-    list-style: none;
-  }
-
+  .nav-links { display: flex; gap: 4px; list-style: none; }
   .nav-links button {
     background: none;
     border: none;
@@ -88,24 +75,14 @@
     padding: 6px 16px;
     border-radius: 20px;
     transition: all 0.2s;
-    position: relative;
   }
-
   .nav-links button:hover,
-  .nav-links button.active {
-    color: var(--text-bright);
-    background: rgba(201,168,76,0.1);
-  }
-
-  .nav-links button.active {
-    color: var(--accent);
-  }
-
+  .nav-links button.active { color: var(--text-bright); background: rgba(201,168,76,0.1); }
+  .nav-links button.active { color: var(--accent); }
   /* ─── PAGES ─── */
   .page { display: none; padding-top: 60px; min-height: 100vh; position: relative; z-index: 1; }
   .page.active { display: block; }
-
-  /* ─── HOME ─── */
+  /* ─── HERO ─── */
   .hero {
     position: relative;
     height: calc(100vh - 60px);
@@ -113,7 +90,6 @@
     align-items: center;
     overflow: hidden;
   }
-
   .hero-bg {
     position: absolute;
     inset: 0;
@@ -122,7 +98,6 @@
       radial-gradient(ellipse 40% 50% at 80% 30%, rgba(126,184,160,0.05) 0%, transparent 60%),
       radial-gradient(ellipse 60% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%);
   }
-
   .hero-orb {
     position: absolute;
     right: 120px;
@@ -141,18 +116,15 @@
     border-radius: 50%;
     border: 1px solid rgba(201,168,76,0.05);
   }
-
   .hero-content {
     padding: 0 80px;
     max-width: 700px;
     animation: fadeUp 0.8s ease both;
   }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   .hero-label {
     font-family: var(--mono);
     font-size: 11px;
@@ -173,7 +145,6 @@
     background: var(--accent);
     opacity: 0.6;
   }
-
   h1 {
     font-family: var(--serif);
     font-size: clamp(52px, 7vw, 84px);
@@ -183,13 +154,7 @@
     color: var(--text-bright);
     margin-bottom: 24px;
   }
-
-  h1 em {
-    font-style: italic;
-    color: var(--accent);
-    font-weight: 400;
-  }
-
+  h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
   .hero-desc {
     font-size: 15px;
     line-height: 1.75;
@@ -197,14 +162,7 @@
     max-width: 480px;
     margin-bottom: 36px;
   }
-
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 36px;
-  }
-
+  .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
   .tag {
     font-family: var(--sans);
     font-size: 11px;
@@ -215,13 +173,7 @@
     border-radius: 20px;
     background: rgba(201,168,76,0.04);
   }
-
-  .hero-links {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-  }
-
+  .hero-links { display: flex; gap: 16px; align-items: center; }
   .btn-primary {
     background: var(--accent);
     color: #13120f;
@@ -236,7 +188,6 @@
     transition: all 0.2s;
   }
   .btn-primary:hover { background: #d9b85c; transform: translateY(-1px); }
-
   .btn-ghost {
     background: none;
     border: 1px solid rgba(201,168,76,0.25);
@@ -250,7 +201,6 @@
     transition: all 0.2s;
   }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
   .social-link {
     display: inline-flex;
     align-items: center;
@@ -262,15 +212,7 @@
     transition: color 0.2s;
   }
   .social-link:hover { color: var(--accent); }
-
-  .hero-stats {
-    position: absolute;
-    bottom: 40px;
-    left: 80px;
-    display: flex;
-    gap: 48px;
-  }
-
+  .hero-stats { position: absolute; bottom: 40px; left: 80px; display: flex; gap: 48px; }
   .stat { text-align: left; }
   .stat-num {
     font-family: var(--serif);
@@ -287,14 +229,8 @@
     color: var(--text-dim);
     margin-top: 4px;
   }
-
-  /* ─── SECTION LAYOUT ─── */
-  .section {
-    padding: 80px 80px;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
+  /* ─── SECTIONS ─── */
+  .section { padding: 80px 80px; max-width: 1200px; margin: 0 auto; }
   .section-header {
     display: flex;
     align-items: baseline;
@@ -303,38 +239,11 @@
     padding-bottom: 20px;
     border-bottom: 1px solid var(--border);
   }
-
-  .section-num {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--accent);
-    letter-spacing: 1px;
-    opacity: 0.7;
-  }
-
-  h2 {
-    font-family: var(--serif);
-    font-size: 34px;
-    font-weight: 600;
-    letter-spacing: 0;
-    color: var(--text-bright);
-  }
-
-  h3 {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-bright);
-    margin-bottom: 10px;
-  }
-
-  /* ─── EDUCATION PAGE ─── */
-  .edu-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
-  }
-
+  .section-num { font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 1px; opacity: 0.7; }
+  h2 { font-family: var(--serif); font-size: 34px; font-weight: 600; color: var(--text-bright); }
+  h3 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--text-bright); margin-bottom: 10px; }
+  /* ─── EDUCATION ─── */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
   .edu-card {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -351,36 +260,11 @@
     background: linear-gradient(90deg, var(--accent), transparent);
     opacity: 0.6;
   }
-
-  .edu-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(46,44,32,0.8);
-  }
+  .edu-item { display: flex; flex-direction: column; gap: 4px; padding: 14px 0; border-bottom: 1px solid rgba(46,44,32,0.8); }
   .edu-item:last-child { border-bottom: none; }
-
-  .edu-level {
-    font-family: var(--mono);
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    color: var(--accent);
-    opacity: 0.7;
-  }
-  .edu-school {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--text-bright);
-  }
-
-  .extracurricular-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 8px;
-  }
-
+  .edu-level { font-family: var(--mono); font-size: 9px; letter-spacing: 1.5px; color: var(--accent); opacity: 0.7; }
+  .edu-school { font-size: 15px; font-weight: 500; color: var(--text-bright); }
+  .extracurricular-list { display: flex; flex-direction: column; gap: 16px; margin-top: 8px; }
   .extra-item {
     padding: 18px 20px;
     background: rgba(201,168,76,0.04);
@@ -388,7 +272,6 @@
     border-left: 2px solid rgba(201,168,76,0.4);
     border-radius: 4px;
   }
-
   .extra-title {
     font-family: var(--sans);
     font-size: 12px;
@@ -398,89 +281,254 @@
     margin-bottom: 6px;
     opacity: 0.9;
   }
-
   p { font-size: 14px; line-height: 1.7; color: var(--text-dim); }
 
-  /* ─── PROJECTS PAGE ─── */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
+  /* ─── PROJECT CARDS ─── */
+  .projects-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
 
   .project-card {
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 10px;
     overflow: hidden;
-    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-    cursor: default;
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    min-height: 260px;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    cursor: pointer;
   }
-
   .project-card:hover {
     border-color: rgba(201,168,76,0.3);
-    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+  }
+  .project-card.expanded {
+    border-color: rgba(201,168,76,0.4);
     box-shadow: 0 14px 50px rgba(0,0,0,0.35);
   }
 
-  .project-card.featured {
-    grid-column: 1;
-    grid-template-columns: 1.2fr 1fr;
-    min-height: 320px;
+  /* ── collapsed summary row ── */
+  .project-summary {
+    display: grid;
+    grid-template-columns: 220px 1fr auto;
+    align-items: center;
+    gap: 0;
+    min-height: 160px;
   }
-
-  .project-img {
-    width: 100%;
-    height: 100%;
-    min-height: 260px;
+  .project-summary-img {
+    width: 220px;
+    height: 160px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    flex-shrink: 0;
+  }
+  .project-summary-img-placeholder {
+    width: 220px;
+    height: 160px;
     background: var(--bg3);
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    opacity: 0.3;
+    flex-shrink: 0;
+  }
+  .project-summary-body {
+    padding: 20px 28px;
+    flex: 1;
+  }
+  .project-expand-icon {
+    padding: 20px 24px 20px 0;
+    display: flex;
+    align-items: center;
+    color: var(--text-dim);
+    transition: color 0.2s;
+  }
+  .project-card:hover .project-expand-icon { color: var(--accent); }
+  .project-expand-icon svg {
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+    flex-shrink: 0;
+  }
+  .project-card.expanded .project-expand-icon svg { transform: rotate(180deg); }
+
+  /* ── expanded detail panel ── */
+  .project-detail {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s cubic-bezier(0.4,0,0.2,1);
+    border-top: 0px solid transparent;
+  }
+  .project-card.expanded .project-detail {
+    grid-template-rows: 1fr;
+    border-top: 1px solid var(--border);
+  }
+  .project-detail-inner {
     overflow: hidden;
-    position: relative;
+  }
+  .project-detail-content {
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 40px;
+    align-items: start;
   }
 
-  .project-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-  }
-
-  .project-body {
-    padding: 28px;
+  /* detail images */
+  .detail-images {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 12px;
   }
-
-  .project-img-placeholder {
+  .detail-img-main {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    display: block;
+    background: var(--bg3);
+  }
+  .detail-img-placeholder {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--bg3);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    opacity: 0.35;
+  }
+  .detail-img-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .detail-img-small {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    display: block;
+    background: var(--bg3);
+  }
+  .detail-img-small-placeholder {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: var(--bg3);
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 9px;
     color: var(--text-dim);
     letter-spacing: 1px;
     opacity: 0.3;
   }
 
-  @media (max-width: 900px) {
-    .project-card,
-    .project-card.featured {
-      grid-template-columns: 1fr;
-      min-height: auto;
-    }
-    .project-img { height: 220px; }
+  /* detail text */
+  .detail-text h4 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-bright);
+    margin-bottom: 8px;
+  }
+  .detail-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+  .detail-text p {
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--text-dim);
+    margin-bottom: 16px;
+  }
+  .detail-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .detail-bullets li {
+    font-size: 13px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+  .detail-bullets li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 6px;
+    opacity: 0.7;
   }
 
-  /* ─── EXPERIENCE PAGE ─── */
-  .timeline {
-    position: relative;
-    padding-left: 32px;
+  /* shared tag styles */
+  .project-type {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    opacity: 0.7;
+    margin-bottom: 6px;
   }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .ptag {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 400;
+    padding: 3px 10px;
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--text-dim);
+    border-radius: 20px;
+    background: rgba(201,168,76,0.04);
+  }
+  .project-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .project-bullets li {
+    font-size: 12px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+  .project-bullets li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+    opacity: 0.6;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .timeline { position: relative; padding-left: 32px; }
   .timeline::before {
     content: '';
     position: absolute;
@@ -488,7 +536,6 @@
     width: 1px;
     background: linear-gradient(to bottom, rgba(201,168,76,0.4), transparent);
   }
-
   .timeline-item {
     position: relative;
     margin-bottom: 40px;
@@ -500,320 +547,100 @@
   .timeline-item::before {
     content: '';
     position: absolute;
-    left: -38px;
-    top: 32px;
-    width: 10px;
-    height: 10px;
+    left: -38px; top: 32px;
+    width: 10px; height: 10px;
     border-radius: 50%;
     background: var(--accent);
     border: 2px solid var(--bg);
     box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
     opacity: 0.8;
   }
-
-  .timeline-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .timeline-role {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text-bright);
-  }
-  .timeline-company {
-    font-size: 12px;
-    color: var(--accent);
-    font-family: var(--mono);
-    letter-spacing: 0.5px;
-    opacity: 0.8;
-    margin-top: 3px;
-  }
+  .timeline-meta { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+  .timeline-role { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--text-bright); }
+  .timeline-company { font-size: 12px; color: var(--accent); font-family: var(--mono); letter-spacing: 0.5px; opacity: 0.8; margin-top: 3px; }
   .timeline-date {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-    background: var(--bg3);
-    padding: 4px 10px;
-    border-radius: 12px;
-    border: 1px solid var(--border);
+    font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 1px;
+    background: var(--bg3); padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border);
   }
-
-  .timeline-desc {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.7;
-    margin-top: 8px;
-  }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 48px;
-  }
-
-  .skill-group {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 20px 24px;
-    border-radius: 8px;
-  }
-
+  .timeline-desc { font-size: 13px; color: var(--text-dim); line-height: 1.7; margin-top: 8px; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  .skill-group { background: var(--panel); border: 1px solid var(--border); padding: 20px 24px; border-radius: 8px; }
   .skill-group-title {
-    font-family: var(--sans);
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-    opacity: 0.85;
+    font-family: var(--sans); font-size: 11px; font-weight: 600; color: var(--accent);
+    margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid var(--border); opacity: 0.85;
   }
+  .skill-list { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+  .skill-list li { font-size: 13px; color: var(--text-dim); display: flex; align-items: center; gap: 8px; }
+  .skill-list li::before { content: ''; width: 3px; height: 3px; background: var(--accent); border-radius: 50%; flex-shrink: 0; opacity: 0.6; }
 
-  .skill-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-  }
-  .skill-list li {
-    font-size: 13px;
-    color: var(--text-dim);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .skill-list li::before {
-    content: '';
-    width: 3px;
-    height: 3px;
-    background: var(--accent);
-    border-radius: 50%;
-    flex-shrink: 0;
-    opacity: 0.6;
-  }
-
-  /* ─── ARTWORK PAGE ─── */
-  .artwork-intro {
-    font-size: 15px;
-    color: var(--text-dim);
-    max-width: 600px;
-    line-height: 1.75;
-    margin-bottom: 40px;
-    font-style: italic;
-  }
-
-  .artwork-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-bottom: 56px;
-  }
-
-  .artwork-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: all 0.25s;
-    cursor: default;
-  }
-  .artwork-card:hover {
-    border-color: rgba(201,168,76,0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 32px rgba(0,0,0,0.25);
-  }
-
+  /* ─── ARTWORK ─── */
+  .artwork-intro { font-size: 15px; color: var(--text-dim); max-width: 600px; line-height: 1.75; margin-bottom: 40px; font-style: italic; }
+  .artwork-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 56px; }
+  .artwork-card { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; transition: all 0.25s; cursor: default; }
+  .artwork-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,0.25); }
   .artwork-thumb {
-    width: 100%;
-    aspect-ratio: 1;
-    background: var(--bg3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-    opacity: 0.4;
-    position: relative;
-    overflow: hidden;
+    width: 100%; aspect-ratio: 1; background: var(--bg3);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono); font-size: 10px; color: var(--text-dim); letter-spacing: 1px; opacity: 0.4;
+    position: relative; overflow: hidden;
   }
-
-  .art-deco {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .artwork-info {
-    padding: 14px 16px;
-  }
-  .artwork-name {
-    font-family: var(--serif);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-bright);
-  }
-  .artwork-medium {
-    font-family: var(--mono);
-    font-size: 9px;
-    color: var(--text-dim);
-    letter-spacing: 1px;
-    margin-top: 3px;
-    opacity: 0.7;
-  }
-
-  .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-  }
-
-  .photo-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    transition: all 0.25s;
-    cursor: default;
-  }
+  .art-deco { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .artwork-info { padding: 14px 16px; }
+  .artwork-name { font-family: var(--serif); font-size: 14px; font-weight: 600; color: var(--text-bright); }
+  .artwork-medium { font-family: var(--mono); font-size: 9px; color: var(--text-dim); letter-spacing: 1px; margin-top: 3px; opacity: 0.7; }
+  .photo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .photo-card { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: all 0.25s; }
   .photo-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-2px); }
-
-  .photo-thumb {
-    width: 100%;
-    aspect-ratio: 3/4;
-    background: var(--bg3);
-  }
+  .photo-thumb { width: 100%; aspect-ratio: 3/4; background: var(--bg3); }
 
   /* ─── FOOTER ─── */
-  footer {
-    padding: 36px 80px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 80px;
-  }
-
-  .footer-logo {
-    font-family: var(--serif);
-    font-size: 13px;
-    color: var(--text-dim);
-    font-style: italic;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 24px;
-    list-style: none;
-  }
-  .footer-links a {
-    font-family: var(--sans);
-    font-size: 12px;
-    color: var(--text-dim);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
+  footer { padding: 36px 80px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; margin-top: 80px; }
+  .footer-logo { font-family: var(--serif); font-size: 13px; color: var(--text-dim); font-style: italic; }
+  .footer-links { display: flex; gap: 24px; list-style: none; }
+  .footer-links a { font-family: var(--sans); font-size: 12px; color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
   .footer-links a:hover { color: var(--accent); }
 
   /* ─── RESPONSIVE ─── */
   @media (max-width: 900px) {
     nav { padding: 0 20px; }
-    .nav-links button { font-size: 10px; padding: 6px 8px; letter-spacing: 1px; }
+    .nav-links button { font-size: 10px; padding: 6px 8px; }
     .hero-content { padding: 0 24px; }
     .hero-stats { left: 24px; gap: 24px; }
     .section { padding: 56px 24px; }
     .edu-grid { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
-    .project-card.featured { grid-column: 1; display: block; }
     .skills-grid { grid-template-columns: 1fr; }
     .artwork-grid { grid-template-columns: repeat(2, 1fr); }
     .photo-grid { grid-template-columns: repeat(2, 1fr); }
     footer { flex-direction: column; gap: 16px; padding: 32px 24px; text-align: center; }
-    .hero-bracket { display: none; }
+    .project-summary { grid-template-columns: 140px 1fr auto; }
+    .project-summary-img, .project-summary-img-placeholder { width: 140px; height: 120px; }
+    .project-detail-content { grid-template-columns: 1fr; }
   }
-
-  /* ─── SCROLL FADE IN ─── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: none;
-  }
-
+  /* ─── SCROLL REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
   /* ─── SLIDESHOW ─── */
   .slideshow-container {
-    position: relative;
-    width: 100%;
-    max-width: 720px;
-    margin: 12px auto;
-    border-radius: 6px;
-    overflow: hidden;
-    /* Fixed height so all images are the same size */
-    height: 420px;
-    background: var(--bg3);
+    position: relative; width: 100%; max-width: 720px; margin: 12px auto;
+    border-radius: 6px; overflow: hidden; height: 420px; background: var(--bg3);
   }
-
   .slideshow-container img {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-    /* slide transition */
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center; display: block;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
     will-change: transform, opacity;
   }
-
-  /* Current slide: in place */
-  .slideshow-container img.slide-current {
-    transform: translateX(0);
-    opacity: 1;
-    z-index: 2;
-  }
-  /* Incoming slide: starts from the right */
-  .slideshow-container img.slide-incoming {
-    transform: translateX(100%);
-    opacity: 1;
-    z-index: 1;
-  }
-  /* Outgoing slide: exits to the left */
-  .slideshow-container img.slide-outgoing {
-    transform: translateX(-100%);
-    opacity: 0;
-    z-index: 2;
-  }
-  /* Incoming slide animating in */
-  .slideshow-container img.slide-entering {
-    transform: translateX(0);
-    opacity: 1;
-    z-index: 1;
-  }
-
+  .slideshow-container img.slide-current { transform: translateX(0); opacity: 1; z-index: 2; }
+  .slideshow-container img.slide-incoming { transform: translateX(100%); opacity: 1; z-index: 1; }
+  .slideshow-container img.slide-outgoing { transform: translateX(-100%); opacity: 0; z-index: 2; }
+  .slideshow-container img.slide-entering { transform: translateX(0); opacity: 1; z-index: 1; }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo" onclick="showPage('home')">
-    Alexander <span>Parthimos</span>
-  </div>
+  <div class="nav-logo" onclick="showPage('home')">Alexander <span>Parthimos</span></div>
   <ul class="nav-links">
     <li><button onclick="showPage('home')" class="active" id="nav-home">HOME</button></li>
     <li><button onclick="showPage('education')" id="nav-education">EDUCATION</button></li>
@@ -831,16 +658,10 @@
     <div class="hero-content">
       <div class="hero-label">Mechanical Engineer · Designer · Builder</div>
       <h1>Alexander<br><em>Parthimos</em></h1>
-      <p class="hero-desc">
-        Mechanical Engineering CO-OP student at Concordia University. Passionate about engineering, design, machining, racing, woodworking, and building things that work.
-      </p>
+      <p class="hero-desc">Mechanical Engineering CO-OP student at Concordia University. Passionate about engineering, design, machining, racing, woodworking, and building things that work.</p>
       <div class="hero-tags">
-        <span class="tag">Solidworks</span>
-        <span class="tag">ANSYS / FEA</span>
-        <span class="tag">Fluent / CFD</span>
-        <span class="tag">3D Printing</span>
-        <span class="tag">Baja SAE</span>
-        <span class="tag">CNC Machining</span>
+        <span class="tag">Solidworks</span><span class="tag">ANSYS / FEA</span><span class="tag">Fluent / CFD</span>
+        <span class="tag">3D Printing</span><span class="tag">Baja SAE</span><span class="tag">CNC Machining</span>
         <span class="tag">Arduino / ESP32</span>
       </div>
       <div class="hero-links">
@@ -863,42 +684,19 @@
       </div>
     </div>
   </div>
-
-  <!-- About Section -->
   <div class="section" id="home-contact">
-    <div class="section-header">
-      <span class="section-num">00</span>
-      <h2>About Me</h2>
-    </div>
+    <div class="section-header"><span class="section-num">00</span><h2>About Me</h2></div>
     <div style="display:grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start;">
       <div>
-        <p style="font-size:15px; color: var(--text); margin-bottom: 20px;">
-          I am a mechanical engineering CO-OP student at Concordia University. I love dedicating myself to new projects and learning new skills. I am deeply passionate about engineering and design, machining, racing, woodworking and much more.
-        </p>
-        <p style="font-size:15px; color: var(--text);">
-          Here you will find some of my engineering projects, my artwork and photography, and my work in Concordia SAE and Baja Racing. I am always looking for new opportunities to learn. If you have any questions or would like to work together, do not hesitate to reach out.
-        </p>
-        <div style="margin-top: 32px;">
-          <a href="mailto:alexander.parthimos@gmail.com" class="btn-primary" style="text-decoration:none; display:inline-block;">Email me</a>
-        </div>
+        <p style="font-size:15px; color: var(--text); margin-bottom: 20px;">I am a mechanical engineering CO-OP student at Concordia University. I love dedicating myself to new projects and learning new skills. I am deeply passionate about engineering and design, machining, racing, woodworking and much more.</p>
+        <p style="font-size:15px; color: var(--text);">Here you will find some of my engineering projects, my artwork and photography, and my work in Concordia SAE and Baja Racing. I am always looking for new opportunities to learn. If you have any questions or would like to work together, do not hesitate to reach out.</p>
+        <div style="margin-top: 32px;"><a href="mailto:alexander.parthimos@gmail.com" class="btn-primary" style="text-decoration:none; display:inline-block;">Email me</a></div>
       </div>
       <div style="display:flex; flex-direction:column; gap:12px;">
-        <div class="extra-item">
-          <div class="extra-title">// Current Status</div>
-          <p>Mechanical Engineering CO-OP · Concordia University</p>
-        </div>
-        <div class="extra-item">
-          <div class="extra-title">// Role</div>
-          <p>President, Concordia SAE</p>
-        </div>
-        <div class="extra-item">
-          <div class="extra-title">// Interests</div>
-          <p>Mechanical Design · Racing · 3D Printing · Woodworking · Photography · Artwork</p>
-        </div>
-        <div class="extra-item">
-          <div class="extra-title">// Based In</div>
-          <p>Montréal, Québec, Canada</p>
-        </div>
+        <div class="extra-item"><div class="extra-title">// Current Status</div><p>Mechanical Engineering CO-OP · Concordia University</p></div>
+        <div class="extra-item"><div class="extra-title">// Role</div><p>President, Concordia SAE</p></div>
+        <div class="extra-item"><div class="extra-title">// Interests</div><p>Mechanical Design · Racing · 3D Printing · Woodworking · Photography · Artwork</p></div>
+        <div class="extra-item"><div class="extra-title">// Based In</div><p>Montréal, Québec, Canada</p></div>
       </div>
     </div>
   </div>
@@ -915,601 +713,520 @@
 <!-- ══════════════════════════════════════════════ EDUCATION ══ -->
 <div id="page-education" class="page">
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">01</span>
-      <h2>Education</h2>
-    </div>
+    <div class="section-header"><span class="section-num">01</span><h2>Education</h2></div>
     <div class="edu-grid">
       <div class="edu-card reveal">
         <h3 style="margin-bottom:20px;">Academic History</h3>
-        <div class="edu-item">
-          <span class="edu-level">University</span>
-          <span class="edu-school">Concordia University</span>
-          <span style="font-size:13px; color:var(--text-dim);">B.Eng Mechanical Engineering (CO-OP)</span>
-        </div>
-        <div class="edu-item">
-          <span class="edu-level">CEGEP</span>
-          <span class="edu-school">Marianopolis College</span>
-        </div>
-        <div class="edu-item">
-          <span class="edu-level">High School</span>
-          <span class="edu-school">Loyola High School</span>
-        </div>
-        <div class="edu-item">
-          <span class="edu-level">Elementary</span>
-          <span class="edu-school">Souvenir Elementary School</span>
-        </div>
+        <div class="edu-item"><span class="edu-level">University</span><span class="edu-school">Concordia University</span><span style="font-size:13px; color:var(--text-dim);">B.Eng Mechanical Engineering (CO-OP)</span></div>
+        <div class="edu-item"><span class="edu-level">CEGEP</span><span class="edu-school">Marianopolis College</span></div>
+        <div class="edu-item"><span class="edu-level">High School</span><span class="edu-school">Loyola High School</span></div>
+        <div class="edu-item"><span class="edu-level">Elementary</span><span class="edu-school">Souvenir Elementary School</span></div>
       </div>
       <div class="edu-card reveal" style="animation-delay:0.1s">
         <h3 style="margin-bottom:20px;">Extra-Curriculars</h3>
         <div class="extracurricular-list">
-          <div class="extra-item">
-            <div class="extra-title">Concordia SAE — President</div>
-            <p>Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams. Led membership growth, fundraising, and independence as a non-profit.</p>
-          </div>
-          <div class="extra-item">
-            <div class="extra-title">SAE Baja Racing — Technical Director</div>
-            <p>Countless hours designing subsystems, creating engineering drawings, integrating systems and managing Baja toward building our next vehicle.</p>
-          </div>
+          <div class="extra-item"><div class="extra-title">Concordia SAE — President</div><p>Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams. Led membership growth, fundraising, and independence as a non-profit.</p></div>
+          <div class="extra-item"><div class="extra-title">SAE Baja Racing — Technical Director</div><p>Countless hours designing subsystems, creating engineering drawings, integrating systems and managing Baja toward building our next vehicle.</p></div>
         </div>
       </div>
     </div>
-
     <div class="extracurricular-list">
-
-      <!-- SAE -->
       <div class="extra-item" style="text-align:center;">
         <div class="extra-title">Concordia SAE</div>
-        <img src="images/SAElogo.jpg"
-             style="width:100%; max-width:720px; margin:12px auto; display:block; border-radius:6px;"
-             alt="SAE">
+        <img src="images/SAElogo.jpg" style="width:100%; max-width:720px; margin:12px auto; display:block; border-radius:6px;" alt="SAE">
         <p>President of Concordia SAE. Led recruitment, fundraising, and team organization across Formula, Baja, and AeroDesign.</p>
       </div>
-
-      <!-- Baja -->
       <div class="extra-item" style="text-align:center;">
         <div class="extra-title">SAE Baja Racing</div>
-        <img src="images/Bajamain.jpg"
-             style="width:100%; max-width:1080px; margin:12px auto; display:block; border-radius:6px;"
-             alt="Baja">
+        <img src="images/Bajamain.jpg" style="width:100%; max-width:1080px; margin:12px auto; display:block; border-radius:6px;" alt="Baja">
         <p>Mechanical design, manufacturing, assembly, and testing of off-road Baja vehicle subsystems.</p>
       </div>
-
-<!-- Slideshow -->
-<div class="extra-item" style="text-align:center;">
-  <div class="extra-title"> </div>
-  <div class="slideshow-container" id="bajaSlideshow">
-    <!-- Add as many images as you want here -->
-    <img src="images/weld1.jpg" class="slide-current" alt="Baja gallery">
-    <img src="images/baja7.jpg" alt="Baja gallery">
-    <img src="images/baja6.JPG" alt="Baja gallery">
-    <img src="images/baja5.jpg" alt="Baja gallery">
-  </div>
-</div>
-
-    </div>
-
-    <!-- FEA / CFD Section -->
-    <div style="margin-top: 56px;" class="reveal">
-      <div class="section-header">
-        <span class="section-num">01.1</span>
-        <h2>Baja Projects</h2>
+      <div class="extra-item" style="text-align:center;">
+        <div class="extra-title"> </div>
+        <div class="slideshow-container" id="bajaSlideshow">
+          <img src="images/weld1.jpg" class="slide-current" alt="Baja gallery">
+          <img src="images/baja7.jpg" alt="Baja gallery">
+          <img src="images/baja6.JPG" alt="Baja gallery">
+          <img src="images/baja5.jpg" alt="Baja gallery">
+        </div>
       </div>
+    </div>
+    <div style="margin-top: 56px;" class="reveal">
+      <div class="section-header"><span class="section-num">01.1</span><h2>Baja Projects</h2></div>
       <div style="display: grid; grid-template-columns: repeat(3,1fr); gap:16px;">
-        <div class="extra-item">
-          <div class="extra-title">CVT Case — Fluent CFD</div>
-          <p>Thermal analysis of primary and secondary sheaves with a 120CFM puller fan.</p>
-        </div>
-        <div class="extra-item">
-          <div class="extra-title">Steering System — System Design</div>
-          <p>Design for lightweight and effective steering geometry while also removing previous issues with warping during welding.</p>
-        </div>
-        <div class="extra-item">
-          <div class="extra-title">Front Differential — Static Structural</div>
-          <p>Determine maximum deflection in the case at peak operating torque.</p>
-        </div>
-        <div class="extra-item">
-          <div class="extra-title">CVT Case</div>
-          <p>Design to reduce weight and provide cooling to Primary and secondary Sheaves.</p>
-        </div>
-        <div class="extra-item">
-          <div class="extra-title">Logger</div>
-          <p>Board design to log signals from up to 16 sensors at once including CAN channels to connect the rear and forward board</p>
-        </div>
+        <div class="extra-item"><div class="extra-title">CVT Case — Fluent CFD</div><p>Thermal analysis of primary and secondary sheaves with a 120CFM puller fan.</p></div>
+        <div class="extra-item"><div class="extra-title">Steering System — System Design</div><p>Design for lightweight and effective steering geometry while also removing previous issues with warping during welding.</p></div>
+        <div class="extra-item"><div class="extra-title">Front Differential — Static Structural</div><p>Determine maximum deflection in the case at peak operating torque.</p></div>
+        <div class="extra-item"><div class="extra-title">CVT Case</div><p>Design to reduce weight and provide cooling to Primary and secondary Sheaves.</p></div>
+        <div class="extra-item"><div class="extra-title">Logger</div><p>Board design to log signals from up to 16 sensors at once including CAN channels to connect the rear and forward board.</p></div>
       </div>
     </div>
   </div>
   <footer>
     <div class="footer-logo">Alexander Parthimos · Portfolio</div>
-    <ul class="footer-links">
-      <li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li>
-      <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-    </ul>
+    <ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li></ul>
   </footer>
 </div>
 
 <!-- ══════════════════════════════════════════════ PROJECTS ══ -->
 <div id="page-projects" class="page">
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">02</span>
-      <h2>Projects</h2>
-    </div>
+    <div class="section-header"><span class="section-num">02</span><h2>Projects</h2></div>
+    <p style="font-size:13px; color:var(--text-dim); margin-bottom:32px; font-family:var(--mono); letter-spacing:0.5px; opacity:0.7;">Click any project to expand details</p>
+
     <div class="projects-grid">
 
-      <!-- Featured: Baja Steering System -->
-      <div class="project-card featured reveal">
-        <div class="project-img">
-          <img src="images/Steering1.png" alt="Steering System">
-        </div>
-      <!-- <div class="project-img" style="background: linear-gradient(135deg, #0d1520, #1a2535);">
-          <div class="cad-icon">
-            <svg width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="#4a9eff" stroke-width="0.8">
-              <circle cx="60" cy="60" r="50"/>
-              <circle cx="60" cy="60" r="35"/>
-              <circle cx="60" cy="60" r="8"/>
-              <line x1="60" y1="10" x2="60" y2="25"/>
-              <line x1="60" y1="95" x2="60" y2="110"/>
-              <line x1="10" y1="60" x2="25" y2="60"/>
-              <line x1="95" y1="60" x2="110" y2="60"/>
-              <line x1="25" y1="25" x2="35" y2="35"/>
-              <line x1="85" y1="85" x2="95" y2="95"/>
-              <rect x="50" y="50" width="20" height="20" rx="2"/>
-            </svg>
-          </div> 
-          <span class="project-img-placeholder">steering system</span>
-        </div>--->
-        <div class="project-body">
-          <div class="project-type">Baja SAE · Mechanical Design</div>
-          <h3>Steering System Redesign</h3>
-          <p style="font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:12px;">Complete redesign of the Baja SAE steering system focused on eliminating weld-induced warping and reducing system complexity.</p>
-          <ul class="project-bullets">
-            <li>Complete redesign to remove welding and all resultant warping in the system</li>
-            <li>2-pound overall weight reduction</li>
-            <li>Reduced total number of parts and overall manufacturing complexity</li>
-            <li>FEA validated with ANSYS Static Structural</li>
-          </ul>
-          <div class="project-tags">
-            <span class="ptag">SolidWorks</span>
-            <span class="ptag">ANSYS</span>
-            <span class="ptag">Machining</span>
-            <span class="ptag">Baja SAE</span>
+      <!-- ── Steering System ── -->
+      <div class="project-card reveal" onclick="toggleProject(this)">
+        <div class="project-summary">
+          <img src="images/Steering1.png" alt="Steering System" class="project-summary-img">
+          <div class="project-summary-body">
+            <div class="project-type">Baja SAE · Mechanical Design</div>
+            <h3 style="margin-bottom:6px;">Steering System Redesign</h3>
+            <p style="font-size:13px; margin-bottom:8px;">Complete redesign eliminating weld-induced warping and reducing system complexity.</p>
+            <div class="project-tags">
+              <span class="ptag">SolidWorks</span><span class="ptag">ANSYS</span><span class="ptag">Machining</span><span class="ptag">Baja SAE</span>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <!-- DAQ System -->
-      <div class="project-card reveal">
-        <div class="project-img">
-          <img src="images/DAQ2.png" alt="DAQ System">
-        </div>
-        <div class="project-body">
-          <div class="project-type">Electronics · Data Systems</div>
-          <h3>Custom DAQ System</h3>
-          <p style="font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:10px;">
-            Fully custom data acquisition logger for Baja SAE, reading CAN, SMBUS, and sensor data over WiFi.
-          </p>
-          <ul class="project-bullets">
-            <li>Custom logger: linear potentiometers, hall-effect sensors, temperature sensors, pressure sensors, IMUs, accelerometers</li>
-            <li>CAN / SMBUS protocol support</li>
-            <li>ESP32 WiFi data transmission</li>
-            <li>Data used to validate subsystem designs via FEA</li>
-          </ul>
-          <div class="project-tags">
-            <span class="ptag">ESP32</span>
-            <span class="ptag">CAN Bus</span>
-            <span class="ptag">PCB Design</span>
-            <span class="ptag">C++</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Strain Gauges -->
-      <div class="project-card reveal" style="animation-delay:0.1s">
-        <div class="project-img">
-          <img src="images/SG1.jpg" alt="Strain gauge">
-        </div>
-        
-      <!--  <div class="project-img" style="background: linear-gradient(135deg, #0d1520, #1a1a2a);">
-          <div class="cad-icon">
-            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="#ff6b35" stroke-width="0.8">
-              <rect x="20" y="35" width="50" height="20" rx="2"/>
-              <line x1="30" y1="30" x2="30" y2="35"/>
-              <line x1="45" y1="28" x2="45" y2="35"/>
-              <line x1="60" y1="30" x2="60" y2="35"/>
-              <line x1="30" y1="55" x2="30" y2="60"/>
-              <line x1="45" y1="55" x2="45" y2="62"/>
-              <line x1="60" y1="55" x2="60" y2="60"/>
-              <path d="M 25 45 Q 30 38 35 45 Q 40 52 45 45 Q 50 38 55 45 Q 60 52 65 45" stroke-width="1.2"/>
+          <div class="project-expand-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="5 8 10 13 15 8"/>
             </svg>
           </div>
-          <span class="project-img-placeholder">strain gauges</span>
-        </div> -->
-        <div class="project-body">
-          <div class="project-type">Testing · Instrumentation</div>
-          <h3>Strain Gauge System</h3>
-          <p style="font-size:13px; color:var(--text-dim); line-height:1.6; margin-bottom:10px;">Quarter-bridge strain gauges with completed Wheatstone bridge to collect driveshaft loading data.</p>
-          <ul class="project-bullets">
-            <li>Quarter bridge strain gauges, op-amp with completed bridge</li>
-            <li>ESP32 wireless data transmission</li>
-            <li>Determined nominal torque for gearbox design</li>
-            <li>Maximum from shock loading · Validated by destructive testing</li>
-          </ul>
-          <div class="project-tags">
-            <span class="ptag">Strain Gauges</span>
-            <span class="ptag">ESP32</span>
-            <span class="ptag">Data Analysis</span>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="project-detail-content">
+              <div class="detail-images">
+                <img src="images/Steering1.png" alt="Steering System CAD" class="detail-img-main">
+                <div class="detail-img-row">
+                  <!-- Replace src below with your actual extra images -->
+                  <div class="detail-img-small-placeholder">image 2</div>
+                  <div class="detail-img-small-placeholder">image 3</div>
+                </div>
+              </div>
+              <div class="detail-text">
+                <div class="detail-label">Baja SAE · Mechanical Design · FEA</div>
+                <h4>Steering System Redesign</h4>
+                <p>A full ground-up redesign of the Baja SAE steering system. The previous design relied on welded assemblies which introduced warping and alignment issues during manufacture. This redesign eliminates all welded joints, replacing them with machined interfaces for precise geometry control.</p>
+                <ul class="detail-bullets">
+                  <li>Complete elimination of welding from the steering assembly — removes all warp-related alignment errors</li>
+                  <li>2-pound overall weight reduction through topology-optimised geometry</li>
+                  <li>Reduced total part count and manufacturing complexity, lowering assembly time</li>
+                  <li>ANSYS Static Structural FEA validation at peak cornering loads</li>
+                  <li>Improved steering feel and reduced bump-steer through refined geometry</li>
+                </ul>
+                <div class="project-tags">
+                  <span class="ptag">SolidWorks</span><span class="ptag">ANSYS</span><span class="ptag">Machining</span><span class="ptag">Baja SAE</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Wave Strain Drive -->
-      <div class="project-card reveal">
-        <div class="project-img">
-          <img src="images/WVD1.gif" alt="Wave Strain Drive">
-        </div>
-        
-        
-        <!--<div class="project-img" style="background: linear-gradient(135deg, #0f1520, #1a2030);">
-          <div class="cad-icon">
-            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="#4a9eff" stroke-width="0.8">
-              <circle cx="45" cy="45" r="30"/>
-              <circle cx="45" cy="45" r="22"/>
-              <circle cx="45" cy="45" r="10"/>
-              <circle cx="45" cy="45" r="3" fill="#4a9eff" opacity="0.4"/>
-              <line x1="45" y1="15" x2="45" y2="23"/>
-              <line x1="66" y1="24" x2="61" y2="29"/>
-              <line x1="75" y1="45" x2="67" y2="45"/>
-              <line x1="66" y1="66" x2="61" y2="61"/>
-              <line x1="45" y1="75" x2="45" y2="67"/>
-              <line x1="24" y1="66" x2="29" y2="61"/>
-              <line x1="15" y1="45" x2="23" y2="45"/>
-              <line x1="24" y1="24" x2="29" y2="29"/>
+      <!-- ── DAQ System ── -->
+      <div class="project-card reveal" onclick="toggleProject(this)">
+        <div class="project-summary">
+          <img src="images/DAQ2.png" alt="DAQ System" class="project-summary-img">
+          <div class="project-summary-body">
+            <div class="project-type">Electronics · Data Systems</div>
+            <h3 style="margin-bottom:6px;">Custom DAQ System</h3>
+            <p style="font-size:13px; margin-bottom:8px;">Fully custom data acquisition logger reading CAN, SMBUS, and sensor data over WiFi.</p>
+            <div class="project-tags">
+              <span class="ptag">ESP32</span><span class="ptag">CAN Bus</span><span class="ptag">PCB Design</span><span class="ptag">C++</span>
+            </div>
+          </div>
+          <div class="project-expand-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="5 8 10 13 15 8"/>
             </svg>
           </div>
-          <span class="project-img-placeholder">harmonic drive</span>
-        </div> -->
-        <div class="project-body">
-          <div class="project-type">3D Printing · Mechanical Design</div>
-          <h3>Wave Strain Drive</h3>
-          <ul class="project-bullets">
-            <li>Fully 3D printable 20:1 harmonic drive</li>
-            <li>Adapter allows connection to any motor within power limit</li>
-          </ul>
-          <div class="project-tags">
-            <span class="ptag">3D Printing</span>
-            <span class="ptag">SolidWorks</span>
-            <span class="ptag">Gear Design</span>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="project-detail-content">
+              <div class="detail-images">
+                <img src="images/DAQ2.png" alt="DAQ board" class="detail-img-main">
+                <div class="detail-img-row">
+                  <div class="detail-img-small-placeholder">image 2</div>
+                  <div class="detail-img-small-placeholder">image 3</div>
+                </div>
+              </div>
+              <div class="detail-text">
+                <div class="detail-label">Electronics · Embedded Systems · Data Acquisition</div>
+                <h4>Custom DAQ System</h4>
+                <p>A bespoke data acquisition system designed and built for the Baja SAE vehicle. The system captures real-world loading data that feeds directly into FEA model validation, closing the loop between simulation and physical testing.</p>
+                <ul class="detail-bullets">
+                  <li>Supports linear potentiometers, hall-effect sensors, thermocouples, pressure transducers, IMUs, and accelerometers</li>
+                  <li>CAN Bus and SMBUS protocol support for integration with existing vehicle electronics</li>
+                  <li>ESP32-based wireless data streaming over WiFi to a remote logging laptop</li>
+                  <li>Data used to validate FEA boundary conditions and loading assumptions</li>
+                  <li>Custom PCB layout designed for packaging within the vehicle frame</li>
+                </ul>
+                <div class="project-tags">
+                  <span class="ptag">ESP32</span><span class="ptag">CAN Bus</span><span class="ptag">PCB Design</span><span class="ptag">C++</span><span class="ptag">FreeRTOS</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- RC Car -->
-      <div class="project-card reveal" style="animation-delay:0.1s">
-        <div class="project-img">
-          <img src="images/RCCAR1.jpg" alt="RC">
-        </div>
-        
-        <!--
-        <div class="project-img" style="background: linear-gradient(135deg, #151008, #201a0a);">
-          <div class="cad-icon">
-            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="#ff6b35" stroke-width="0.8">
-              <rect x="18" y="38" width="54" height="18" rx="3"/>
-              <rect x="24" y="30" width="36" height="12" rx="2"/>
-              <circle cx="26" cy="60" r="8"/>
-              <circle cx="26" cy="60" r="4"/>
-              <circle cx="64" cy="60" r="8"/>
-              <circle cx="64" cy="60" r="4"/>
-              <line x1="34" y1="44" x2="56" y2="44"/>
-              <rect x="38" y="32" width="14" height="6" rx="1" opacity="0.5"/>
+      <!-- ── Strain Gauges ── -->
+      <div class="project-card reveal" onclick="toggleProject(this)">
+        <div class="project-summary">
+          <img src="images/SG1.jpg" alt="Strain gauge" class="project-summary-img">
+          <div class="project-summary-body">
+            <div class="project-type">Testing · Instrumentation</div>
+            <h3 style="margin-bottom:6px;">Strain Gauge System</h3>
+            <p style="font-size:13px; margin-bottom:8px;">Quarter-bridge strain gauges with Wheatstone bridge to measure driveshaft loading.</p>
+            <div class="project-tags">
+              <span class="ptag">Strain Gauges</span><span class="ptag">ESP32</span><span class="ptag">Data Analysis</span>
+            </div>
+          </div>
+          <div class="project-expand-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="5 8 10 13 15 8"/>
             </svg>
           </div>
-          <span class="project-img-placeholder">rc car</span>
-        </div> -->
-        
-        <div class="project-body">
-          <div class="project-type">Custom Build · Electronics</div>
-          <h3>RC Car</h3>
-          <ul class="project-bullets">
-            <li>Fully custom suspension modelled for responsiveness and quick turning</li>
-            <li>12V 1600 RPM motor with 3200 RPM to the wheels</li>
-            <li>3S battery holder with removable 21700 cells and 12V to 12V, 5V and 3.3V buck/boost converter</li>
-          </ul>
-          <div class="project-tags">
-            <span class="ptag">SolidWorks</span>
-            <span class="ptag">3D Printing</span>
-            <span class="ptag">Electronics</span>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="project-detail-content">
+              <div class="detail-images">
+                <img src="images/SG1.jpg" alt="Strain gauge installation" class="detail-img-main">
+                <div class="detail-img-row">
+                  <div class="detail-img-small-placeholder">image 2</div>
+                  <div class="detail-img-small-placeholder">image 3</div>
+                </div>
+              </div>
+              <div class="detail-text">
+                <div class="detail-label">Instrumentation · Electronics · Structural Testing</div>
+                <h4>Strain Gauge System</h4>
+                <p>Designed and built a wireless strain measurement system to characterise driveshaft loading during actual Baja competition conditions. The results informed gearbox design and were later cross-validated against destructive test data.</p>
+                <ul class="detail-bullets">
+                  <li>Quarter-bridge configuration with a precision op-amp completing the Wheatstone bridge for high sensitivity</li>
+                  <li>ESP32 wireless data transmission eliminates slip-ring complexity on rotating shafts</li>
+                  <li>Measured nominal operating torque to anchor gearbox design inputs</li>
+                  <li>Peak shock loading captured during obstacle events and validated against destructive testing</li>
+                  <li>Data used to directly verify FEA model accuracy</li>
+                </ul>
+                <div class="project-tags">
+                  <span class="ptag">Strain Gauges</span><span class="ptag">Wheatstone Bridge</span><span class="ptag">ESP32</span><span class="ptag">Data Analysis</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Helical Gearbox -->
-      <div class="project-card reveal">
-        <div class="project-img" style="background: linear-gradient(135deg, #0d1a14, #152a1a);">
-          <div class="cad-icon">
-            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="#4a9eff" stroke-width="0.8">
-              <circle cx="35" cy="45" r="18"/>
-              <circle cx="35" cy="45" r="5"/>
-              <circle cx="62" cy="45" r="12"/>
-              <circle cx="62" cy="45" r="4"/>
-              <path d="M35 27 L37 22 L35 27" stroke-width="1.5"/>
-              <path d="M35 63 L33 68 L35 63" stroke-width="1.5"/>
+      <!-- ── Wave Strain Drive ── -->
+      <div class="project-card reveal" onclick="toggleProject(this)">
+        <div class="project-summary">
+          <img src="images/WVD1.gif" alt="Wave Strain Drive" class="project-summary-img">
+          <div class="project-summary-body">
+            <div class="project-type">3D Printing · Mechanical Design</div>
+            <h3 style="margin-bottom:6px;">Wave Strain Drive</h3>
+            <p style="font-size:13px; margin-bottom:8px;">Fully 3D-printable 20:1 harmonic drive with universal motor adapter.</p>
+            <div class="project-tags">
+              <span class="ptag">3D Printing</span><span class="ptag">SolidWorks</span><span class="ptag">Gear Design</span>
+            </div>
+          </div>
+          <div class="project-expand-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="5 8 10 13 15 8"/>
             </svg>
           </div>
-          <span class="project-img-placeholder">gearbox</span>
         </div>
-        <div class="project-body">
-          <div class="project-type">ML-Assisted Design</div>
-          <h3>2-Speed Helical Gearbox</h3>
-          <ul class="project-bullets">
-            <li>Designing, analysing, and prototyping a machine-learning based 2-speed helical gearbox</li>
-            <li>ML model to predict pinion performance and optimise gear geometry</li>
-          </ul>
-          <div class="project-tags">
-            <span class="ptag">SolidWorks</span>
-            <span class="ptag">Machine Learning</span>
-            <span class="ptag">Python</span>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="project-detail-content">
+              <div class="detail-images">
+                <img src="images/WVD1.gif" alt="Wave strain drive animation" class="detail-img-main">
+                <div class="detail-img-row">
+                  <div class="detail-img-small-placeholder">image 2</div>
+                  <div class="detail-img-small-placeholder">image 3</div>
+                </div>
+              </div>
+              <div class="detail-text">
+                <div class="detail-label">3D Printing · Gear Design · Robotics</div>
+                <h4>Wave Strain Drive</h4>
+                <p>A fully 3D-printable harmonic drive achieving a 20:1 reduction ratio. Harmonic drives are typically precision-machined components — this design explores how far FDM printing tolerances can be pushed to replicate their high-reduction, zero-backlash characteristics.</p>
+                <ul class="detail-bullets">
+                  <li>20:1 reduction ratio achieved through wave generator, flex spline, and circular spline interaction</li>
+                  <li>All components printable on a standard FDM printer with no support structures</li>
+                  <li>Universal motor adapter plate accommodates any motor within the torque envelope</li>
+                  <li>Designed in SolidWorks with tooth profile optimised for printed tolerance stack-up</li>
+                </ul>
+                <div class="project-tags">
+                  <span class="ptag">3D Printing</span><span class="ptag">SolidWorks</span><span class="ptag">Gear Design</span><span class="ptag">FDM</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- 3D Printing Art -->
-      <div class="project-card reveal" style="animation-delay:0.1s">
-        <div class="project-img" style="background: linear-gradient(135deg, #140d1a, #201525);">
-          <div class="cad-icon">
-            <svg width="90" height="90" viewBox="0 0 90 90" fill="none" stroke="#ff6b35" stroke-width="0.8">
-              <polygon points="45,15 75,65 15,65"/>
-              <polygon points="45,28 65,58 25,58"/>
-              <circle cx="45" cy="50" r="6"/>
+      <!-- ── RC Car ── -->
+      <div class="project-card reveal" onclick="toggleProject(this)">
+        <div class="project-summary">
+          <img src="images/RCCAR1.jpg" alt="RC Car" class="project-summary-img">
+          <div class="project-summary-body">
+            <div class="project-type">Custom Build · Electronics</div>
+            <h3 style="margin-bottom:6px;">RC Car</h3>
+            <p style="font-size:13px; margin-bottom:8px;">Fully custom suspension, drivetrain, and electronics in a 3D-printed chassis.</p>
+            <div class="project-tags">
+              <span class="ptag">SolidWorks</span><span class="ptag">3D Printing</span><span class="ptag">Electronics</span>
+            </div>
+          </div>
+          <div class="project-expand-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="5 8 10 13 15 8"/>
             </svg>
           </div>
-          <span class="project-img-placeholder">3d printing art</span>
         </div>
-        <div class="project-body">
-          <div class="project-type">3D Printing · Art &amp; Design</div>
-          <h3>3D Printing Art &amp; Designs</h3>
-          <p style="font-size:13px; color:var(--text-dim); margin-bottom:10px;">A collection of 3D designed and printed art pieces and functional objects.</p>
-          <div class="project-tags">
-            <span class="ptag">Pandora's Box</span>
-            <span class="ptag">Infinity Blade</span>
-            <span class="ptag">Painter's Palette</span>
-            <span class="ptag">FDM</span>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="project-detail-content">
+              <div class="detail-images">
+                <img src="images/RCCAR1.jpg" alt="RC Car" class="detail-img-main">
+                <div class="detail-img-row">
+                  <div class="detail-img-small-placeholder">image 2</div>
+                  <div class="detail-img-small-placeholder">image 3</div>
+                </div>
+              </div>
+              <div class="detail-text">
+                <div class="detail-label">Custom Build · Mechanical Design · Electronics</div>
+                <h4>RC Car</h4>
+                <p>A fully custom RC car designed and built from scratch. Every component — suspension geometry, drivetrain, and power electronics — was modelled in SolidWorks and printed in-house, with the design goals of sharp handling and a simple, serviceable layout.</p>
+                <ul class="detail-bullets">
+                  <li>Custom double-wishbone suspension tuned for low body-roll and responsive steering</li>
+                  <li>12V 1600 RPM motor with 2:1 gear reduction delivering 3200 RPM to the wheels</li>
+                  <li>3S battery pack with removable 21700 cells for easy swaps in the field</li>
+                  <li>On-board 12V / 5V / 3.3V buck-boost converter powering all electronics from a single cell pack</li>
+                  <li>Entire chassis and drivetrain 3D printed in PLA and PETG</li>
+                </ul>
+                <div class="project-tags">
+                  <span class="ptag">SolidWorks</span><span class="ptag">3D Printing</span><span class="ptag">Electronics</span><span class="ptag">Suspension Design</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-    </div>
+      <!-- ── Helical Gearbox ── -->
+      <div class="project-card reveal" onclick="toggleProject(this)">
+        <div class="project-summary">
+          <div class="project-summary-img-placeholder">
+            <div style="text-align:center;">
+              <svg width="48" height="48" viewBox="0 0 90 90" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="0.8">
+                <circle cx="35" cy="45" r="18"/><circle cx="35" cy="45" r="5"/>
+                <circle cx="62" cy="45" r="12"/><circle cx="62" cy="45" r="4"/>
+              </svg>
+              <div style="margin-top:8px; font-size:9px; letter-spacing:1px;">gearbox</div>
+            </div>
+          </div>
+          <div class="project-summary-body">
+            <div class="project-type">ML-Assisted Design</div>
+            <h3 style="margin-bottom:6px;">2-Speed Helical Gearbox</h3>
+            <p style="font-size:13px; margin-bottom:8px;">ML model to predict pinion performance and optimise gear geometry.</p>
+            <div class="project-tags">
+              <span class="ptag">SolidWorks</span><span class="ptag">Machine Learning</span><span class="ptag">Python</span>
+            </div>
+          </div>
+          <div class="project-expand-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="5 8 10 13 15 8"/>
+            </svg>
+          </div>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="project-detail-content">
+              <div class="detail-images">
+                <div class="detail-img-placeholder">main image</div>
+                <div class="detail-img-row">
+                  <div class="detail-img-small-placeholder">image 2</div>
+                  <div class="detail-img-small-placeholder">image 3</div>
+                </div>
+              </div>
+              <div class="detail-text">
+                <div class="detail-label">Mechanical Design · Machine Learning · Prototyping</div>
+                <h4>2-Speed Helical Gearbox</h4>
+                <p>A 2-speed helical gearbox where gear geometry is optimised by a machine learning model trained on pinion performance data. The project combines classical gear design theory with a data-driven approach to find geometry that balances strength, efficiency, and noise.</p>
+                <ul class="detail-bullets">
+                  <li>Helical gear geometry selected for reduced noise and higher load capacity over spur gears</li>
+                  <li>Python ML model trained to predict tooth root bending stress and contact fatigue life</li>
+                  <li>Automated optimisation loop iterates pressure angle, helix angle, and module for minimum mass</li>
+                  <li>Full assembly modelled in SolidWorks with housing designed for FDM prototyping</li>
+                  <li>Physical prototype used to validate gear mesh quality and bearing preload</li>
+                </ul>
+                <div class="project-tags">
+                  <span class="ptag">SolidWorks</span><span class="ptag">Machine Learning</span><span class="ptag">Python</span><span class="ptag">Gear Design</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 3D Printing Art ── -->
+      <div class="project-card reveal" onclick="toggleProject(this)">
+        <div class="project-summary">
+          <div class="project-summary-img-placeholder">
+            <div style="text-align:center;">
+              <svg width="48" height="48" viewBox="0 0 80 80" fill="none" stroke="rgba(201,168,76,0.4)" stroke-width="0.8">
+                <polygon points="40,10 70,60 10,60"/><polygon points="40,22 62,55 18,55"/>
+                <circle cx="40" cy="47" r="5"/>
+              </svg>
+              <div style="margin-top:8px; font-size:9px; letter-spacing:1px;">3d printing art</div>
+            </div>
+          </div>
+          <div class="project-summary-body">
+            <div class="project-type">3D Printing · Art &amp; Design</div>
+            <h3 style="margin-bottom:6px;">3D Printing Art &amp; Designs</h3>
+            <p style="font-size:13px; margin-bottom:8px;">A collection of 3D-designed and printed art pieces and functional objects.</p>
+            <div class="project-tags">
+              <span class="ptag">Pandora's Box</span><span class="ptag">Infinity Blade</span><span class="ptag">Painter's Palette</span><span class="ptag">FDM</span>
+            </div>
+          </div>
+          <div class="project-expand-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="5 8 10 13 15 8"/>
+            </svg>
+          </div>
+        </div>
+        <div class="project-detail">
+          <div class="project-detail-inner">
+            <div class="project-detail-content">
+              <div class="detail-images">
+                <div class="detail-img-placeholder">main image</div>
+                <div class="detail-img-row">
+                  <div class="detail-img-small-placeholder">image 2</div>
+                  <div class="detail-img-small-placeholder">image 3</div>
+                </div>
+              </div>
+              <div class="detail-text">
+                <div class="detail-label">3D Printing · Art · Functional Design</div>
+                <h4>3D Printing Art &amp; Designs</h4>
+                <p>A growing collection of art pieces and functional objects designed from scratch and printed on FDM printers. Each piece explores what's achievable with desktop 3D printing when treated as a creative medium rather than just a prototyping tool.</p>
+                <ul class="detail-bullets">
+                  <li>Pandora's Box — mechanical puzzle box with hidden latch mechanism and engraved detail</li>
+                  <li>Infinity Blade — multi-part prop with internal wire routing for LED illumination</li>
+                  <li>Painter's Palette — functional palette with integrated brush holder, printed in PETG for solvent resistance</li>
+                  <li>All pieces designed in SolidWorks or Fusion 360 with print orientation optimised to minimise supports</li>
+                </ul>
+                <div class="project-tags">
+                  <span class="ptag">SolidWorks</span><span class="ptag">Fusion 360</span><span class="ptag">FDM</span><span class="ptag">PETG</span><span class="ptag">PLA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /projects-grid -->
   </div>
   <footer>
     <div class="footer-logo">Alexander Parthimos · Portfolio</div>
-    <ul class="footer-links">
-      <li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li>
-      <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-    </ul>
+    <ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li></ul>
   </footer>
 </div>
 
 <!-- ══════════════════════════════════════════════ EXPERIENCE ══ -->
 <div id="page-experience" class="page">
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">03</span>
-      <h2>Work Experience</h2>
-    </div>
+    <div class="section-header"><span class="section-num">03</span><h2>Work Experience</h2></div>
     <div class="timeline">
       <div class="timeline-item reveal">
         <div class="timeline-meta">
-          <div>
-            <div class="timeline-role">NPI Buyer</div>
-            <div class="timeline-company">Pratt & Whitney Canada</div>
-          </div>
+          <div><div class="timeline-role">NPI Buyer</div><div class="timeline-company">Pratt &amp; Whitney Canada</div></div>
           <div class="timeline-date">September 2024 — December 2024</div>
         </div>
-        <p class="timeline-desc">Working as an NPI buyer helping my team to sign new parts from engineering to vendors. I used and developed skills in teamwork, organization, time management and others such as developing engineering drawings to assign parts to different machine shops and to work out contracts for each with my team.
-</p>
+        <p class="timeline-desc">Working as an NPI buyer helping my team to sign new parts from engineering to vendors. I used and developed skills in teamwork, organization, time management and others such as developing engineering drawings to assign parts to different machine shops and to work out contracts for each with my team.</p>
       </div>
       <div class="timeline-item reveal">
         <div class="timeline-meta">
-          <div>
-            <div class="timeline-role">Design Engineer</div>
-            <div class="timeline-company">Finition MPC</div>
-          </div>
-          <div class="timeline-date">February 2026 - Present</div>
+          <div><div class="timeline-role">Design Engineer</div><div class="timeline-company">Finition MPC</div></div>
+          <div class="timeline-date">February 2026 — Present</div>
         </div>
-        <p class="timeline-desc">Designing Jigs to aide in larger scale manufacturing for thousands of parts. Designing modifications for cnc saws and mills to allow for machining parts outside of typical machine capabilities.</p>
+        <p class="timeline-desc">Designing jigs to aide in larger scale manufacturing for thousands of parts. Designing modifications for CNC saws and mills to allow for machining parts outside of typical machine capabilities.</p>
       </div>
       <div class="timeline-item reveal">
         <div class="timeline-meta">
-          <div>
-            <div class="timeline-role">SAE President</div>
-            <div class="timeline-company">Concordia Universityr</div>
-          </div>
-          <div class="timeline-date">May 2024 - May 2026</div>
+          <div><div class="timeline-role">SAE President</div><div class="timeline-company">Concordia University</div></div>
+          <div class="timeline-date">May 2024 — May 2026</div>
         </div>
         <p class="timeline-desc">Managing members, finances and council, as well as working with staff to improve Concordia SAE and allow for our teams to compete at the highest level in SAE International competitions.</p>
       </div>
       <div class="timeline-item reveal">
         <div class="timeline-meta">
-          <div>
-            <div class="timeline-role">Baja Technical Director</div>
-            <div class="timeline-company">Concordia University</div>
-          </div>
-          <div class="timeline-date">January 2026 - Present</div>
+          <div><div class="timeline-role">Baja Technical Director</div><div class="timeline-company">Concordia University</div></div>
+          <div class="timeline-date">January 2026 — Present</div>
         </div>
-        <p class="timeline-desc">Designing & Reviewing subsystem designs, engineering drawings and vehicle proposals. System interation and managing Baja toward building our next vehicle.</p>
+        <p class="timeline-desc">Designing &amp; reviewing subsystem designs, engineering drawings and vehicle proposals. System integration and managing Baja toward building our next vehicle.</p>
       </div>
-    </div>  
-    
-    <!-- Skills -->
-    <div class="section-header" style="margin-top: 64px;">
-      <span class="section-num">03.1</span>
-      <h2>Technical Skills</h2>
     </div>
+    <div class="section-header" style="margin-top: 64px;"><span class="section-num">03.1</span><h2>Technical Skills</h2></div>
     <div class="skills-grid">
       <div class="skill-group reveal">
         <div class="skill-group-title">CAD / Simulation</div>
-        <ul class="skill-list">
-          <li>SolidWorks</li>
-          <li>Fusion 360</li>
-          <li>ANSYS (Structural, Thermal, LS Dyna, Fluent)</li>
-          <li>Engineering Drawings</li>
-          <li>GD&T</li>
-        </ul>
+        <ul class="skill-list"><li>SolidWorks</li><li>Fusion 360</li><li>ANSYS (Structural, Thermal, LS Dyna, Fluent)</li><li>Engineering Drawings</li><li>GD&amp;T</li></ul>
       </div>
       <div class="skill-group reveal" style="animation-delay:0.1s">
         <div class="skill-group-title">Electronics / Programming</div>
-        <ul class="skill-list">
-          <li>C^2</li>
-          <li>Vehicle Wiring</li>
-          <li>PCB Design</li>
-          <li>Python</li>
-          <li>C / C++</li>
-          <li>FreeRTOS</li> 
-        </ul>
+        <ul class="skill-list"><li>Vehicle Wiring</li><li>PCB Design</li><li>Python</li><li>C / C++</li><li>FreeRTOS</li></ul>
       </div>
       <div class="skill-group reveal" style="animation-delay:0.2s">
         <div class="skill-group-title">Manufacturing</div>
-        <ul class="skill-list">
-          <li>3D Printing (FDM)</li>
-          <li>CNC Machining</li>
-          <li>MIG / TIG Welding</li>
-          <li>Woodworking</li>
-          <li>Hand Tools &amp; Fabrication</li>
-        </ul>
+        <ul class="skill-list"><li>3D Printing (FDM)</li><li>CNC Machining</li><li>MIG / TIG Welding</li><li>Woodworking</li><li>Hand Tools &amp; Fabrication</li></ul>
       </div>
     </div>
   </div>
   <footer>
     <div class="footer-logo">Alexander Parthimos · Portfolio</div>
-    <ul class="footer-links">
-      <li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li>
-      <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-    </ul>
+    <ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li></ul>
   </footer>
 </div>
 
 <!-- ══════════════════════════════════════════════ ARTWORK ══ -->
 <div id="page-artwork" class="page">
   <div class="section">
-    <div class="section-header">
-      <span class="section-num">04</span>
-      <h2>Artwork &amp; Photography</h2>
-    </div>
-    <p class="artwork-intro">
-      Beyond engineering, I create. From hand-drawn illustrations and woodworking to photography, these pieces reflect a different dimension of the same curiosity that drives my technical work.
-    </p>
-
-    <!-- Artwork -->
-    <div style="margin-bottom: 16px;">
-      <span class="section-num" style="font-size:12px;">04.1 — Artwork</span>
-    </div>
+    <div class="section-header"><span class="section-num">04</span><h2>Artwork &amp; Photography</h2></div>
+    <p class="artwork-intro">Beyond engineering, I create. From hand-drawn illustrations and woodworking to photography, these pieces reflect a different dimension of the same curiosity that drives my technical work.</p>
+    <div style="margin-bottom: 16px;"><span class="section-num" style="font-size:12px;">04.1 — Artwork</span></div>
     <div class="artwork-grid">
       <div class="artwork-card reveal">
-        <div class="artwork-thumb">
-          <div class="art-deco">
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#4a9eff" stroke-width="0.6" opacity="0.3">
-              <rect x="10" y="10" width="60" height="60" rx="2"/>
-              <rect x="20" y="20" width="40" height="40" rx="1"/>
-              <line x1="10" y1="40" x2="70" y2="40"/>
-              <line x1="40" y1="10" x2="40" y2="70"/>
-            </svg>
-          </div>
-          Add Image
-        </div>
-        <div class="artwork-info">
-          <div class="artwork-name">Illustration 01</div>
-          <div class="artwork-medium">Drawing · Mixed Media</div>
-        </div>
+        <div class="artwork-thumb"><div class="art-deco"><svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#4a9eff" stroke-width="0.6" opacity="0.3"><rect x="10" y="10" width="60" height="60" rx="2"/><rect x="20" y="20" width="40" height="40" rx="1"/><line x1="10" y1="40" x2="70" y2="40"/><line x1="40" y1="10" x2="40" y2="70"/></svg></div>Add Image</div>
+        <div class="artwork-info"><div class="artwork-name">Illustration 01</div><div class="artwork-medium">Drawing · Mixed Media</div></div>
       </div>
       <div class="artwork-card reveal" style="animation-delay:0.05s">
-        <div class="artwork-thumb">
-          <div class="art-deco">
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#ff6b35" stroke-width="0.6" opacity="0.3">
-              <circle cx="40" cy="40" r="28"/>
-              <circle cx="40" cy="40" r="18"/>
-              <circle cx="40" cy="40" r="8"/>
-            </svg>
-          </div>
-          Add Image
-        </div>
-        <div class="artwork-info">
-          <div class="artwork-name">Illustration 02</div>
-          <div class="artwork-medium">Sketch · Pen &amp; Ink</div>
-        </div>
+        <div class="artwork-thumb"><div class="art-deco"><svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#ff6b35" stroke-width="0.6" opacity="0.3"><circle cx="40" cy="40" r="28"/><circle cx="40" cy="40" r="18"/><circle cx="40" cy="40" r="8"/></svg></div>Add Image</div>
+        <div class="artwork-info"><div class="artwork-name">Illustration 02</div><div class="artwork-medium">Sketch · Pen &amp; Ink</div></div>
       </div>
       <div class="artwork-card reveal" style="animation-delay:0.1s">
-        <div class="artwork-thumb">
-          <div class="art-deco">
-            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#4a9eff" stroke-width="0.6" opacity="0.3">
-              <polygon points="40,12 68,28 68,52 40,68 12,52 12,28"/>
-              <polygon points="40,24 58,33 58,47 40,56 22,47 22,33"/>
-            </svg>
-          </div>
-          Add Image
-        </div>
-        <div class="artwork-info">
-          <div class="artwork-name">Woodworking Piece</div>
-          <div class="artwork-medium">Wood · Handcrafted</div>
-        </div>
+        <div class="artwork-thumb"><div class="art-deco"><svg width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#4a9eff" stroke-width="0.6" opacity="0.3"><polygon points="40,12 68,28 68,52 40,68 12,52 12,28"/><polygon points="40,24 58,33 58,47 40,56 22,47 22,33"/></svg></div>Add Image</div>
+        <div class="artwork-info"><div class="artwork-name">Woodworking Piece</div><div class="artwork-medium">Wood · Handcrafted</div></div>
       </div>
-      <div class="artwork-card reveal" style="animation-delay:0.15s">
-        <div class="artwork-thumb">Add Image</div>
-        <div class="artwork-info">
-          <div class="artwork-name">Artwork 04</div>
-          <div class="artwork-medium">Add Medium</div>
-        </div>
-      </div>
-      <div class="artwork-card reveal" style="animation-delay:0.2s">
-        <div class="artwork-thumb">Add Image</div>
-        <div class="artwork-info">
-          <div class="artwork-name">Artwork 05</div>
-          <div class="artwork-medium">Add Medium</div>
-        </div>
-      </div>
-      <div class="artwork-card reveal" style="animation-delay:0.25s">
-        <div class="artwork-thumb">Add Image</div>
-        <div class="artwork-info">
-          <div class="artwork-name">Artwork 06</div>
-          <div class="artwork-medium">Add Medium</div>
-        </div>
-      </div>
+      <div class="artwork-card reveal" style="animation-delay:0.15s"><div class="artwork-thumb">Add Image</div><div class="artwork-info"><div class="artwork-name">Artwork 04</div><div class="artwork-medium">Add Medium</div></div></div>
+      <div class="artwork-card reveal" style="animation-delay:0.2s"><div class="artwork-thumb">Add Image</div><div class="artwork-info"><div class="artwork-name">Artwork 05</div><div class="artwork-medium">Add Medium</div></div></div>
+      <div class="artwork-card reveal" style="animation-delay:0.25s"><div class="artwork-thumb">Add Image</div><div class="artwork-info"><div class="artwork-name">Artwork 06</div><div class="artwork-medium">Add Medium</div></div></div>
     </div>
-
-    <!-- Photography -->
-    <div style="margin-bottom: 16px; margin-top: 56px;">
-      <span class="section-num" style="font-size:12px;">04.2 — Photography</span>
-    </div>
+    <div style="margin-bottom: 16px; margin-top: 56px;"><span class="section-num" style="font-size:12px;">04.2 — Photography</span></div>
     <div class="photo-grid">
-      <div class="photo-card reveal">
-        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
-      </div>
-      <div class="photo-card reveal" style="animation-delay:0.05s">
-        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
-      </div>
-      <div class="photo-card reveal" style="animation-delay:0.1s">
-        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
-      </div>
-      <div class="photo-card reveal" style="animation-delay:0.15s">
-        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
-      </div>
-      <div class="photo-card reveal" style="animation-delay:0.2s">
-        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
-      </div>
-      <div class="photo-card reveal" style="animation-delay:0.25s">
-        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
-      </div>
-      <div class="photo-card reveal" style="animation-delay:0.3s">
-        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
-      </div>
-      <div class="photo-card reveal" style="animation-delay:0.35s">
-        <div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div>
-      </div>
+      <div class="photo-card reveal"><div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div></div>
+      <div class="photo-card reveal" style="animation-delay:0.05s"><div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div></div>
+      <div class="photo-card reveal" style="animation-delay:0.1s"><div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div></div>
+      <div class="photo-card reveal" style="animation-delay:0.15s"><div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div></div>
+      <div class="photo-card reveal" style="animation-delay:0.2s"><div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div></div>
+      <div class="photo-card reveal" style="animation-delay:0.25s"><div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div></div>
+      <div class="photo-card reveal" style="animation-delay:0.3s"><div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div></div>
+      <div class="photo-card reveal" style="animation-delay:0.35s"><div class="photo-thumb" style="display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9px;color:var(--text-dim);letter-spacing:2px;opacity:0.4;">ADD PHOTO</div></div>
     </div>
-
     <div style="margin-top:48px; padding: 24px; border: 1px solid var(--border); border-radius: 4px; background: var(--panel); text-align:center;">
-      <p style="color:var(--text-dim); font-family:var(--mono); font-size:11px; letter-spacing:2px;">
-        TO ADD IMAGES: Replace the placeholder divs with &lt;img src="your-image.jpg"&gt; tags. Place images in the same folder as this HTML file.
-      </p>
+      <p style="color:var(--text-dim); font-family:var(--mono); font-size:11px; letter-spacing:2px;">TO ADD IMAGES: Replace placeholder divs with &lt;img src="your-image.jpg"&gt; tags. Place images in the same folder as this HTML file.</p>
     </div>
   </div>
   <footer>
@@ -1523,85 +1240,72 @@
 </div>
 
 <script>
-  // ─── PAGE NAVIGATION ───────────────────────────────────────────────────────
+  // ─── PAGE NAVIGATION ───────────────────────────────────────
   function showPage(pageName) {
-    // Hide all pages
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-
-    // Show selected page
-    const selectedPage = document.getElementById('page-' + pageName);
-    if (selectedPage) selectedPage.classList.add('active');
-
-    // Update nav
+    const sel = document.getElementById('page-' + pageName);
+    if (sel) sel.classList.add('active');
     document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
-    const activeBtn = document.getElementById('nav-' + pageName);
-    if (activeBtn) activeBtn.classList.add('active');
-
-    // Scroll to top
+    const btn = document.getElementById('nav-' + pageName);
+    if (btn) btn.classList.add('active');
     window.scrollTo(0, 0);
-
-    // *** KEY FIX: trigger reveal after page switch ***
-    // Without this, .reveal elements on hidden pages never got .visible
-    // because getBoundingClientRect() returns 0 when display:none
     setTimeout(revealOnScroll, 50);
   }
 
-  // ─── SCROLL REVEAL ─────────────────────────────────────────────────────────
+  // ─── PROJECT EXPAND / COLLAPSE ─────────────────────────────
+  function toggleProject(card) {
+    const isExpanded = card.classList.contains('expanded');
+
+    // Collapse any other open card first
+    document.querySelectorAll('.project-card.expanded').forEach(c => {
+      if (c !== card) c.classList.remove('expanded');
+    });
+
+    // Toggle this card
+    card.classList.toggle('expanded', !isExpanded);
+
+    // Smooth scroll so expanded content is visible
+    if (!isExpanded) {
+      setTimeout(() => {
+        const rect = card.getBoundingClientRect();
+        const scrollTop = window.pageYOffset + rect.top - 80;
+        window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+      }, 100);
+    }
+  }
+
+  // ─── SCROLL REVEAL ─────────────────────────────────────────
   function revealOnScroll() {
-    const reveals = document.querySelectorAll('.reveal');
-    reveals.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      if (rect.top < windowHeight - 60) {
+    document.querySelectorAll('.reveal').forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight - 60) {
         el.classList.add('visible');
       }
     });
   }
-
   window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll(); // initial check on load
+  revealOnScroll();
 
+  // ─── SLIDESHOW ─────────────────────────────────────────────
   function initSlideshow() {
     const container = document.getElementById('bajaSlideshow');
+    if (!container) return;
     const slides = container.querySelectorAll('img');
     let currentIndex = 0;
-
-    // Ensure only the first image has the 'slide-current' class initially
-    slides.forEach((slide, index) => {
-      slide.className = (index === 0) ? 'slide-current' : '';
-    });
-
+    slides.forEach((s, i) => { s.className = i === 0 ? 'slide-current' : ''; });
     setInterval(() => {
-      const outgoingSlide = slides[currentIndex];
-      
-      // Calculate next index
+      const outgoing = slides[currentIndex];
       currentIndex = (currentIndex + 1) % slides.length;
-      const incomingSlide = slides[currentIndex];
-
-      // 1. Prepare incoming slide (put it to the right)
-      incomingSlide.className = 'slide-incoming';
-      
-      // Force a reflow so the browser recognizes the starting position
-      incomingSlide.offsetWidth; 
-
-      // 2. Animate outgoing to the left
-      outgoingSlide.className = 'slide-outgoing';
-
-      // 3. Animate incoming to the center
-      incomingSlide.className = 'slide-entering';
-
-      // 4. Cleanup: After transition, set the new current slide
+      const incoming = slides[currentIndex];
+      incoming.className = 'slide-incoming';
+      incoming.offsetWidth;
+      outgoing.className = 'slide-outgoing';
+      incoming.className = 'slide-entering';
       setTimeout(() => {
-        incomingSlide.className = 'slide-current';
-        // Reset outgoing so it's ready to be 'incoming' later
-        if (outgoingSlide !== incomingSlide) {
-          outgoingSlide.className = '';
-        }
-      }, 600); // Matches the 0.6s CSS transition
-    }, 4000); // Change image every 4 seconds
+        incoming.className = 'slide-current';
+        if (outgoing !== incoming) outgoing.className = '';
+      }, 600);
+    }, 4000);
   }
-
-  // Run the slideshow on load
   window.addEventListener('DOMContentLoaded', initSlideshow);
 </script>
 </body>
