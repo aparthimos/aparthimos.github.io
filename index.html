@@ -1533,7 +1533,11 @@
 
 <script>
 
-  let slideIndex = 0;
+  window.addEventListener("error", (e) => {
+  console.log("JS error caught:", e.message);
+});
+
+let slideIndex = 0;
 
 function showSlides() {
   const slides = document.querySelectorAll("#baja-slideshow .slide");
@@ -1545,7 +1549,6 @@ function showSlides() {
   slides[slideIndex].classList.add("active");
 }
 
-// change slide every 3 seconds
 setInterval(showSlides, 3000);
 
 
