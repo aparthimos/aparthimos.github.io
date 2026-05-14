@@ -1557,15 +1557,6 @@ setInterval(() => {
 
   let slideIndex = 0;
 
-function showNextSlide() {
-  const slides = document.querySelectorAll("#baja-slideshow .slide");
-
-  slides.forEach(s => s.classList.remove("active"));
-
-  slideIndex = (slideIndex + 1) % slides.length;
-
-  slides[slideIndex].classList.add("active");
-}
 
 // start loop
 setInterval(showNextSlide, 2500);
