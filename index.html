@@ -979,16 +979,17 @@
         <p>Mechanical design, manufacturing, assembly, and testing of off-road Baja vehicle subsystems.</p>
       </div>
 
-      <!-- Slideshow -->
-      <div class="extra-item" style="text-align:center;">
-        <div class="extra-title">Baja Gallery</div>
-
-        <!-- Slideshow: two stacked images for slide-in effect -->
-        <div class="slideshow-container" id="bajaSlideshowContainer">
-          <img id="bajaSlideA" src="images/weld1.jpg" class="slide-current" alt="Baja gallery">
-          <img id="bajaSlideB" src="images/baja5.jpg" class="slide-incoming" alt="Baja gallery">
-        </div>
-      </div>
+<!-- Slideshow -->
+<div class="extra-item" style="text-align:center;">
+  <div class="extra-title">Baja Gallery</div>
+  <div class="slideshow-container" id="bajaSlideshow">
+    <!-- Add as many images as you want here -->
+    <img src="images/weld1.jpg" class="slide-current" alt="Baja gallery">
+    <img src="images/baja5.jpg" alt="Baja gallery">
+    <img src="images/your-third-image.jpg" alt="Baja gallery">
+    <img src="images/your-fourth-image.jpg" alt="Baja gallery">
+  </div>
+</div>
 
     </div>
 
@@ -1526,55 +1527,48 @@
   window.addEventListener('scroll', revealOnScroll);
   revealOnScroll(); // initial check on load
 
-  // ─── SLIDESHOW ─────────────────────────────────────────────────────────────
-  // Two-image technique: imgA is current, imgB is next.
-  // We slide imgB in from the right while imgA slides out to the left.
-  const bajaSlides = [
-    'images/weld1.jpg',
-    'images/baja5.jpg',
-    'images/baja6.jpg'
-  ];
-  let bajaIndex = 0;       // index of image currently shown in imgA
-  let isAnimating = false; // prevent overlapping transitions
+  function initSlideshow() {
+    const container = document.getElementById('bajaSlideshow');
+    const slides = container.querySelectorAll('img');
+    let currentIndex = 0;
 
-  function nextBajaSlide() {
-    if (isAnimating) return;
+    // Ensure only the first image has the 'slide-current' class initially
+    slides.forEach((slide, index) => {
+      slide.className = (index === 0) ? 'slide-current' : '';
+    });
 
-    const imgA = document.getElementById('bajaSlideA'); // current (visible)
-    const imgB = document.getElementById('bajaSlideB'); // incoming (hidden off right)
+    setInterval(() => {
+      const outgoingSlide = slides[currentIndex];
+      
+      // Calculate next index
+      currentIndex = (currentIndex + 1) % slides.length;
+      const incomingSlide = slides[currentIndex];
 
-    if (!imgA || !imgB) return;
+      // 1. Prepare incoming slide (put it to the right)
+      incomingSlide.className = 'slide-incoming';
+      
+      // Force a reflow so the browser recognizes the starting position
+      incomingSlide.offsetWidth; 
 
-    isAnimating = false;
+      // 2. Animate outgoing to the left
+      outgoingSlide.className = 'slide-outgoing';
 
-    // Prepare next index
-    const nextIndex = (bajaIndex + 1) % bajaSlides.length;
+      // 3. Animate incoming to the center
+      incomingSlide.className = 'slide-entering';
 
-    // Pre-load next image into imgB, positioned off-screen to the right
-    imgB.src = bajaSlides[nextIndex];
-    imgB.className = 'slide-incoming'; // translateX(100%) — off right
-
-    // Force a reflow so the browser registers the starting position
-    // before we apply the transition class
-    void imgB.offsetWidth;
-
-    // Now animate: A exits left, B enters from right
-    imgA.className = 'slide-outgoing'; // translateX(-100%) + opacity 0
-    imgB.className = 'slide-entering'; // translateX(0) — slides in
-
-    // After transition completes, swap roles
-    setTimeout(() => {
-      // A is now off-screen left, B is the new current slide
-      imgA.src = bajaSlides[nextIndex];
-      imgA.className = 'slide-current'; // snap A to center, no transition
-      imgB.className = 'slide-incoming'; // snap B to right, no transition
-
-      bajaIndex = nextIndex;
-      isAnimating = false;
-    }, 650); // slightly longer than the CSS transition (0.6s)
+      // 4. Cleanup: After transition, set the new current slide
+      setTimeout(() => {
+        incomingSlide.className = 'slide-current';
+        // Reset outgoing so it's ready to be 'incoming' later
+        if (outgoingSlide !== incomingSlide) {
+          outgoingSlide.className = '';
+        }
+      }, 600); // Matches the 0.6s CSS transition
+    }, 4000); // Change image every 4 seconds
   }
 
-  setInterval(nextBajaSlide, 4000);
+  // Run the slideshow on load
+  window.addEventListener('DOMContentLoaded', initSlideshow);
 </script>
 </body>
 </html>
