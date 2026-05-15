@@ -56,14 +56,69 @@
   /* HERO */
   .hero { position: relative; height: calc(100vh - 60px); display: flex; align-items: center; overflow: hidden; }
   .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 55% 50%, rgba(201,168,76,0.06) 0%, transparent 70%), radial-gradient(ellipse 40% 50% at 80% 30%, rgba(126,184,160,0.05) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 20% 80%, rgba(201,168,76,0.04) 0%, transparent 60%); }
-  .hero-orb { position: absolute; right: 120px; top: 50%; transform: translateY(-50%); width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, rgba(126,184,160,0.03) 50%, transparent 70%); border: 1px solid rgba(201,168,76,0.08); }
-  .hero-orb::after { content: ''; position: absolute; inset: 30px; border-radius: 50%; border: 1px solid rgba(201,168,76,0.05); }
-  .hero-content { padding: 0 80px; max-width: 700px; animation: pageIn 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+
+  /* Primary orb — right side */
+  .hero-orb {
+    position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
+    width: 320px; height: 320px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, rgba(126,184,160,0.03) 50%, transparent 70%);
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+  .hero-orb::before {
+    content: ''; position: absolute; inset: 22px; border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.06);
+  }
+  .hero-orb::after {
+    content: ''; position: absolute; inset: 55px; border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.04);
+  }
+  /* tick marks around the main orb */
+  .hero-orb-inner {
+    position: absolute; inset: 0; border-radius: 50%;
+    animation: orbSpin 24s linear infinite;
+  }
+  @keyframes orbSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .hero-orb-inner::before {
+    content: ''; position: absolute;
+    top: -3px; left: 50%; transform: translateX(-50%);
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(201,168,76,0.45);
+  }
+  .hero-orb-inner::after {
+    content: ''; position: absolute;
+    bottom: -3px; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(201,168,76,0.2);
+  }
+
+  /* Secondary orb — bottom-left accent */
+  .hero-orb2 {
+    position: absolute; left: 3%; bottom: 8%;
+    width: 180px; height: 180px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(126,184,160,0.05) 0%, transparent 70%);
+    border: 1px solid rgba(126,184,160,0.08);
+    pointer-events: none;
+  }
+  .hero-orb2::after {
+    content: ''; position: absolute; inset: 28px; border-radius: 50%;
+    border: 1px solid rgba(126,184,160,0.05);
+  }
+
+  /* Tertiary small orb — upper area */
+  .hero-orb3 {
+    position: absolute; right: 30%; top: 12%;
+    width: 90px; height: 90px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
+    border: 1px solid rgba(201,168,76,0.07);
+    pointer-events: none;
+  }
+
+  .hero-content { padding: 0 80px; max-width: 680px; animation: pageIn 0.8s cubic-bezier(0.22,1,0.36,1) both; }
   .hero-label { font-family: var(--mono); font-size: 11px; font-style: italic; color: var(--accent); letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; opacity: 0.85; }
   .hero-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); opacity: 0.6; }
   h1 { font-family: var(--serif); font-size: clamp(52px, 7vw, 84px); font-weight: 700; line-height: 1.0; letter-spacing: -0.5px; color: var(--text-bright); margin-bottom: 24px; }
   h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
-  .hero-desc { font-size: 15px; line-height: 1.75; color: var(--text-dim); max-width: 480px; margin-bottom: 36px; }
+  .hero-desc { font-size: 15px; line-height: 1.75; color: var(--text-dim); max-width: 460px; margin-bottom: 36px; }
   .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
   .tag { font-family: var(--sans); font-size: 11px; font-weight: 400; padding: 5px 14px; border: 1px solid rgba(201,168,76,0.2); color: var(--text-dim); border-radius: 20px; background: rgba(201,168,76,0.04); }
   .hero-links { display: flex; gap: 16px; align-items: center; }
@@ -102,20 +157,13 @@
      PROJECTS — CIRCUIT HEADER
   ══════════════════════════════════════ */
   .projects-hero {
-    position: relative;
-    width: 100%;
-    height: 220px;
-    overflow: hidden;
-    background: #181610;
+    position: relative; width: 100%; height: 220px;
+    overflow: hidden; background: #181610;
     border-bottom: 1px solid var(--border);
   }
-  /* The canvas sits behind everything and fills the hero */
   #circuit-canvas {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    display: block;
-    /* no CSS background — the canvas draws its own dark bg each frame */
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; display: block;
   }
   .projects-hero-content {
     position: absolute; inset: 0; z-index: 2;
@@ -126,35 +174,22 @@
   .projects-hero-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 56px); font-weight: 700; color: var(--text-bright); letter-spacing: -0.5px; }
   .projects-hero-title em { color: var(--accent); font-style: italic; font-weight: 400; }
   .projects-hero-sub { font-family: var(--mono); font-size: 11px; color: var(--text-dim); letter-spacing: 1px; opacity: 0.6; }
-
-  /* scan-line sweep overlay */
   .projects-hero::after {
     content: ''; position: absolute; z-index: 3;
     top: 0; left: -60%; bottom: 0; width: 60%;
-    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.05), transparent);
-    animation: scanSweep 4s ease-in-out infinite;
-    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.04), transparent);
+    animation: scanSweep 5s ease-in-out infinite; pointer-events: none;
   }
   @keyframes scanSweep { 0% { left: -60%; } 100% { left: 120%; } }
 
   /* PROJECT CARDS */
   .projects-grid { display: grid; grid-template-columns: 1fr; gap: 28px; position: relative; }
-
   .projects-bg-tags { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
   .bg-tag { position: absolute; font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 1px; opacity: 0; white-space: nowrap; animation: floatUp var(--dur) ease-in var(--delay) infinite; }
-  @keyframes floatUp {
-    0%   { opacity: 0;    transform: translateY(0) scale(1); }
-    15%  { opacity: 0.18; }
-    85%  { opacity: 0.08; }
-    100% { opacity: 0;    transform: translateY(-180px) scale(0.85); }
-  }
+  @keyframes floatUp { 0% { opacity: 0; transform: translateY(0) scale(1); } 15% { opacity: 0.18; } 85% { opacity: 0.08; } 100% { opacity: 0; transform: translateY(-180px) scale(0.85); } }
 
   @keyframes cardSlideIn { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
-  .project-card {
-    background: var(--panel); border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
-    transition: border-color 0.25s, box-shadow 0.25s; cursor: pointer;
-    position: relative; z-index: 1; opacity: 0;
-  }
+  .project-card { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.25s, box-shadow 0.25s; cursor: pointer; position: relative; z-index: 1; opacity: 0; }
   .project-card.card-visible { animation: cardSlideIn 0.5s cubic-bezier(0.22,1,0.36,1) both; opacity: 1; }
   .project-card:hover { border-color: rgba(201,168,76,0.35); box-shadow: 0 8px 40px rgba(0,0,0,0.32); }
   .project-card.expanded { border-color: rgba(201,168,76,0.45); box-shadow: 0 16px 56px rgba(0,0,0,0.38); }
@@ -164,9 +199,8 @@
   .project-summary-body  { order: 1; }
   .project-expand-icon   { order: 2; }
   .project-card:nth-child(even) .project-summary { grid-template-columns: 1fr auto 380px; }
-  .project-card:nth-child(even) .project-summary-img,
-  .project-card:nth-child(even) .project-summary-img-placeholder { order: 2; }
-  .project-card:nth-child(even) .project-summary-body             { order: 0; }
+  .project-card:nth-child(even) .project-summary-img, .project-card:nth-child(even) .project-summary-img-placeholder { order: 2; }
+  .project-card:nth-child(even) .project-summary-body { order: 0; }
   .project-card:nth-child(even) .project-summary .project-expand-icon { order: 1; }
   .project-summary-img { width: 100%; height: 100%; min-height: 260px; object-fit: cover; object-position: center; display: block; }
   .project-summary-img-placeholder { width: 100%; min-height: 260px; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 9px; color: var(--text-dim); letter-spacing: 1px; opacity: 0.3; }
@@ -241,15 +275,15 @@
   .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .photo-placeholder { width: 100%; height: 100%; min-height: 120px; background: var(--bg3); display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 9px; color: var(--text-dim); letter-spacing: 2px; opacity: 0.35; }
   .photo-grid-imsa { display: grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: 300px 180px 200px; gap: 8px; }
-  .imsa-1 { grid-column: 1 / 4; grid-row: 1; height: 100%; } .imsa-2 { grid-column: 4 / 6; grid-row: 1; height: 100%; }
-  .imsa-3 { grid-column: 6 / 7; grid-row: 1 / 3; height: 100%; } .imsa-4 { grid-column: 1 / 2; grid-row: 2; height: 100%; }
-  .imsa-5 { grid-column: 2 / 4; grid-row: 2; height: 100%; } .imsa-6 { grid-column: 4 / 6; grid-row: 2; height: 100%; }
-  .imsa-7 { grid-column: 1 / 7; grid-row: 3; height: 100%; }
+  .imsa-1 { grid-column: 1/4; grid-row: 1; height: 100%; } .imsa-2 { grid-column: 4/6; grid-row: 1; height: 100%; }
+  .imsa-3 { grid-column: 6/7; grid-row: 1/3; height: 100%; } .imsa-4 { grid-column: 1/2; grid-row: 2; height: 100%; }
+  .imsa-5 { grid-column: 2/4; grid-row: 2; height: 100%; } .imsa-6 { grid-column: 4/6; grid-row: 2; height: 100%; }
+  .imsa-7 { grid-column: 1/7; grid-row: 3; height: 100%; }
   .photo-grid-kingston { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 200px; gap: 8px; }
-  .king-1 { grid-column: 1; grid-row: 1 / 3; height: 100%; } .king-2 { grid-column: 2; grid-row: 1; height: 100%; }
-  .king-3 { grid-column: 3; grid-row: 1; height: 100%; } .king-4 { grid-column: 2 / 4; grid-row: 2; height: 100%; }
+  .king-1 { grid-column: 1; grid-row: 1/3; height: 100%; } .king-2 { grid-column: 2; grid-row: 1; height: 100%; }
+  .king-3 { grid-column: 3; grid-row: 1; height: 100%; } .king-4 { grid-column: 2/4; grid-row: 2; height: 100%; }
   .photo-grid-qc { display: grid; grid-template-columns: 1.8fr 1fr; grid-template-rows: 200px 200px; gap: 8px; }
-  .qc-1 { grid-column: 1; grid-row: 1 / 3; height: 100%; } .qc-2 { grid-column: 2; grid-row: 1; height: 100%; } .qc-3 { grid-column: 2; grid-row: 2; height: 100%; }
+  .qc-1 { grid-column: 1; grid-row: 1/3; height: 100%; } .qc-2 { grid-column: 2; grid-row: 1; height: 100%; } .qc-3 { grid-column: 2; grid-row: 2; height: 100%; }
 
   /* FOOTER */
   footer { padding: 36px 80px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; margin-top: 80px; }
@@ -273,7 +307,7 @@
   /* RESPONSIVE */
   @media (max-width: 1040px) {
     .project-summary, .project-card:nth-child(even) .project-summary { grid-template-columns: 1fr auto !important; grid-template-rows: 260px auto; }
-    .project-summary-img, .project-summary-img-placeholder, .project-card:nth-child(even) .project-summary-img, .project-card:nth-child(even) .project-summary-img-placeholder { order: 0 !important; grid-column: 1 / -1; width: 100%; min-height: 260px; }
+    .project-summary-img, .project-summary-img-placeholder, .project-card:nth-child(even) .project-summary-img, .project-card:nth-child(even) .project-summary-img-placeholder { order: 0 !important; grid-column: 1/-1; width: 100%; min-height: 260px; }
     .project-summary-body, .project-card:nth-child(even) .project-summary-body { order: 1 !important; }
     .project-expand-icon, .project-card:nth-child(even) .project-expand-icon { order: 2 !important; padding: 20px 20px 20px 0 !important; align-self: center; }
     .project-detail-content { grid-template-columns: 1fr; }
@@ -281,16 +315,17 @@
   @media (max-width: 900px) {
     nav { padding: 0 12px 0 16px; gap: 8px; } .nav-logo { font-size: 13px; }
     .hero-content { padding: 0 24px; } .hero-stats { left: 24px; gap: 24px; }
+    .hero-orb2, .hero-orb3 { display: none; }
     .section { padding: 56px 24px; } .edu-grid { grid-template-columns: 1fr; }
     .skills-grid { grid-template-columns: 1fr; } .baja-projects-grid { grid-template-columns: 1fr !important; }
     .artwork-grid { grid-template-columns: 1fr 1fr; } .artwork-hero-thumb { aspect-ratio: 4/3; }
     .projects-hero { height: 160px; }
     footer { flex-direction: column; gap: 16px; padding: 32px 24px; text-align: center; }
-    .photo-grid-imsa { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, 160px); }
+    .photo-grid-imsa { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4,160px); }
     .imsa-1,.imsa-2,.imsa-3,.imsa-4,.imsa-5,.imsa-6,.imsa-7 { grid-column: auto; grid-row: auto; height: 160px; }
-    .photo-grid-kingston { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2, 180px); }
+    .photo-grid-kingston { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(2,180px); }
     .king-1,.king-2,.king-3,.king-4 { grid-column: auto; grid-row: auto; height: 180px; }
-    .photo-grid-qc { grid-template-columns: 1fr; grid-template-rows: repeat(3, 220px); }
+    .photo-grid-qc { grid-template-columns: 1fr; grid-template-rows: repeat(3,220px); }
     .qc-1,.qc-2,.qc-3 { grid-column: auto; grid-row: auto; height: 220px; }
   }
 </style>
@@ -311,16 +346,35 @@
 <!-- HOME -->
 <div id="page-home" class="page active">
   <div class="hero">
-    <div class="hero-bg"></div><div class="hero-orb"></div>
+    <div class="hero-bg"></div>
+
+    <!-- Primary orb -->
+    <div class="hero-orb">
+      <div class="hero-orb-inner"></div>
+    </div>
+
+    <!-- Secondary bottom-left orb -->
+    <div class="hero-orb2"></div>
+
+    <!-- Small upper-right orb -->
+    <div class="hero-orb3"></div>
+
     <div class="hero-content">
       <div class="hero-label">Mechanical Engineer · Designer · Builder</div>
       <h1>Alexander<br><em>Parthimos</em></h1>
       <p class="hero-desc">Mechanical Engineering CO-OP student at Concordia University. Passionate about engineering, design, machining, racing, woodworking, and building things that work.</p>
-      <div class="hero-tags"><span class="tag">Solidworks</span><span class="tag">ANSYS / FEA</span><span class="tag">Fluent / CFD</span><span class="tag">3D Printing</span><span class="tag">Baja SAE</span><span class="tag">CNC Machining</span><span class="tag">Arduino / ESP32</span></div>
+      <div class="hero-tags">
+        <span class="tag">Solidworks</span><span class="tag">ANSYS / FEA</span><span class="tag">Fluent / CFD</span>
+        <span class="tag">3D Printing</span><span class="tag">Baja SAE</span><span class="tag">CNC Machining</span>
+        <span class="tag">Arduino / ESP32</span>
+      </div>
       <div class="hero-links">
         <button class="btn-primary" onclick="showPage('projects')">VIEW PROJECTS</button>
         <button class="btn-ghost" onclick="document.getElementById('home-contact').scrollIntoView({behavior:'smooth'})">CONTACT</button>
-        <a href="https://linkedin.com" class="social-link" target="_blank"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+        <a href="https://linkedin.com" class="social-link" target="_blank">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
       </div>
     </div>
     <div class="hero-stats">
@@ -362,7 +416,7 @@
       <div class="edu-card reveal" style="animation-delay:0.1s">
         <h3 style="margin-bottom:20px;">Extra-Curriculars</h3>
         <div class="extracurricular-list">
-          <div class="extra-item"><div class="extra-title">Concordia SAE — President</div><p>Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams.</p></div>
+          <div class="extra-item"><div class="extra-title">Concordia SAE — President</div><p>Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams. Led membership growth, fundraising, and independence as a non-profit.</p></div>
           <div class="extra-item"><div class="extra-title">SAE Baja Racing — Technical Director</div><p>Designing subsystems, creating engineering drawings, integrating systems and managing Baja toward building our next vehicle.</p></div>
         </div>
       </div>
@@ -544,107 +598,157 @@
 </div>
 
 <script>
-/* ══════════════════════════════
-   CIRCUIT — one persistent RAF loop, re-sized on each call to startCircuit()
-══════════════════════════════ */
+/* ══════════════════════════════════════════
+   CIRCUIT BOARD — proper PCB routing style
+   Pulses travel along the actual wire segments
+══════════════════════════════════════════ */
 let circuitRAF = null;
 
 function startCircuit() {
   const canvas = document.getElementById('circuit-canvas');
   if (!canvas) return;
-
-  // Cancel any previous loop so we never double-up
   if (circuitRAF) { cancelAnimationFrame(circuitRAF); circuitRAF = null; }
 
   const ctx = canvas.getContext('2d');
   const BG  = '#181610';
   const ACC = 'rgba(201,168,76,';
 
-  // Size the canvas to the hero's actual rendered pixels
   const hero = canvas.parentElement;
-  canvas.width  = hero.offsetWidth  || 800;
+  canvas.width  = hero.offsetWidth  || 900;
   canvas.height = hero.offsetHeight || 220;
-
   const W = canvas.width, H = canvas.height;
-  const COLS = 24, ROWS = 7;
 
-  // ── nodes ──
-  const nodes = [];
-  const padX = W * 0.03, padY = H * 0.1;
+  /* ── Build a sparse orthogonal grid of nodes ── */
+  const COLS = 16, ROWS = 5;
+  const padX = W * 0.04, padY = H * 0.14;
+  const cellW = (W - padX * 2) / (COLS - 1);
+  const cellH = (H - padY * 2) / (ROWS - 1);
+
+  // Only keep ~45% of grid positions as active nodes
+  const nodeGrid = []; // nodeGrid[r][c] = {x,y} or null
   for (let r = 0; r < ROWS; r++) {
+    nodeGrid[r] = [];
     for (let c = 0; c < COLS; c++) {
-      nodes.push({
-        x: padX + (c / (COLS - 1)) * (W - padX * 2) + (Math.random() - 0.5) * (W / COLS) * 0.5,
-        y: padY + (r / (ROWS - 1)) * (H - padY * 2) + (Math.random() - 0.5) * (H / ROWS) * 0.5,
-        phase: Math.random() * Math.PI * 2,
-        on: Math.random() > 0.7
-      });
-    }
-  }
-
-  // ── edges: only connect nearby nodes ──
-  const edges = [];
-  const threshold = (W / COLS) * 2.4;
-  for (let i = 0; i < nodes.length; i++) {
-    for (let j = i + 1; j < nodes.length; j++) {
-      const dx = nodes[j].x - nodes[i].x, dy = nodes[j].y - nodes[i].y;
-      if (Math.sqrt(dx*dx + dy*dy) < threshold && Math.random() > 0.5) {
-        edges.push({
-          a: i, b: j,
-          t: Math.random(),
-          speed: 0.008 + Math.random() * 0.002,
-          on: Math.random() > 0.25,
-          op: 0.07 + Math.random() * 0.12
-        });
+      if (Math.random() < 0.45) {
+        nodeGrid[r][c] = {
+          x: padX + c * cellW + (Math.random() - 0.5) * cellW * 0.25,
+          y: padY + r * cellH + (Math.random() - 0.5) * cellH * 0.25,
+          phase: Math.random() * Math.PI * 2
+        };
+      } else {
+        nodeGrid[r][c] = null;
       }
     }
   }
 
+  /* ── Build edges: only horizontal or vertical neighbours ──
+     Each edge is an array of {x,y} waypoints forming an L or straight line */
+  const edges = [];
+
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      const a = nodeGrid[r][c];
+      if (!a) continue;
+
+      // try connect right
+      if (c + 1 < COLS && nodeGrid[r][c + 1] && Math.random() < 0.55) {
+        const b = nodeGrid[r][c + 1];
+        // straight horizontal
+        edges.push({ pts: [{ x: a.x, y: a.y }, { x: b.x, y: b.y }], t: Math.random(), speed: 0.0008 + Math.random() * 0.0018, op: 0.08 + Math.random() * 0.1 });
+      }
+      // try connect down
+      if (r + 1 < ROWS && nodeGrid[r + 1][c] && Math.random() < 0.55) {
+        const b = nodeGrid[r + 1][c];
+        // straight vertical
+        edges.push({ pts: [{ x: a.x, y: a.y }, { x: b.x, y: b.y }], t: Math.random(), speed: 0.0008 + Math.random() * 0.0018, op: 0.08 + Math.random() * 0.1 });
+      }
+      // occasional diagonal L-route (skip one row or column)
+      if (c + 2 < COLS && r + 1 < ROWS && nodeGrid[r + 1][c + 2] && Math.random() < 0.22) {
+        const b = nodeGrid[r + 1][c + 2];
+        // L-shape: go right then down
+        const corner = { x: b.x, y: a.y };
+        edges.push({ pts: [{ x: a.x, y: a.y }, corner, { x: b.x, y: b.y }], t: Math.random(), speed: 0.0006 + Math.random() * 0.0012, op: 0.06 + Math.random() * 0.08 });
+      }
+    }
+  }
+
+  /* ── Precompute segment lengths for each edge ── */
+  edges.forEach(e => {
+    e.segs = [];
+    let total = 0;
+    for (let i = 0; i < e.pts.length - 1; i++) {
+      const dx = e.pts[i + 1].x - e.pts[i].x;
+      const dy = e.pts[i + 1].y - e.pts[i].y;
+      const len = Math.sqrt(dx * dx + dy * dy);
+      e.segs.push({ len, cumStart: total });
+      total += len;
+    }
+    e.totalLen = total;
+  });
+
+  /* ── Helper: point at fraction t along a multi-segment path ── */
+  function ptOnPath(e, t) {
+    const target = t * e.totalLen;
+    for (let i = 0; i < e.segs.length; i++) {
+      const seg = e.segs[i];
+      const segEnd = seg.cumStart + seg.len;
+      if (target <= segEnd || i === e.segs.length - 1) {
+        const frac = seg.len > 0 ? (target - seg.cumStart) / seg.len : 0;
+        const p0 = e.pts[i], p1 = e.pts[i + 1];
+        return {
+          x: p0.x + (p1.x - p0.x) * Math.max(0, Math.min(1, frac)),
+          y: p0.y + (p1.y - p0.y) * Math.max(0, Math.min(1, frac))
+        };
+      }
+    }
+    return e.pts[e.pts.length - 1];
+  }
+
   let tick = 0;
+
   function frame() {
-    // dark background fill each frame
     ctx.fillStyle = BG;
     ctx.fillRect(0, 0, W, H);
 
-    // edges + travelling pulses
+    /* draw edges */
     edges.forEach(e => {
-      if (!e.on) return;
-      const a = nodes[e.a], b = nodes[e.b];
-      const mx = b.x, my = a.y; // L-shape corner
       ctx.beginPath();
-      ctx.moveTo(a.x, a.y);
-      ctx.lineTo(mx, my);
-      ctx.lineTo(b.x, b.y);
+      ctx.moveTo(e.pts[0].x, e.pts[0].y);
+      for (let i = 1; i < e.pts.length; i++) ctx.lineTo(e.pts[i].x, e.pts[i].y);
       ctx.strokeStyle = ACC + e.op + ')';
       ctx.lineWidth = 1;
       ctx.stroke();
 
-      // pulse dot travelling along the edge
+      /* pulse travels along path */
       e.t += e.speed;
       if (e.t > 1) e.t = 0;
-      const px = a.x + (b.x - a.x) * e.t;
-      const py = a.y + (b.y - a.y) * e.t;
+      const pt = ptOnPath(e, e.t);
+      // small bright dot
       ctx.beginPath();
-      ctx.arc(px, py, 2, 0, Math.PI * 2);
-      ctx.fillStyle = ACC + (0.45 + 0.45 * Math.sin(tick * 0.07)) + ')';
+      ctx.arc(pt.x, pt.y, 1.5, 0, Math.PI * 2);
+      ctx.fillStyle = ACC + (0.18 + 0.12 * Math.sin(tick * 0.06)) + ')';
       ctx.fill();
     });
 
-    // nodes — pulsing dots + glow rings
-    nodes.forEach(n => {
-      if (!n.on) return;
-      const pulse = 0.35 + 0.65 * Math.abs(Math.sin(tick * 0.035 + n.phase));
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, 3, 0, Math.PI * 2);
-      ctx.strokeStyle = ACC + (pulse * 0.14) + ')';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
-      ctx.fillStyle = ACC + (pulse * 0.35) + ')';
-      ctx.fill();
-    });
+    /* draw nodes — tiny pads like PCB vias */
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const n = nodeGrid[r][c];
+        if (!n) continue;
+        const pulse = 0.3 + 0.4 * Math.abs(Math.sin(tick * 0.025 + n.phase));
+        // outer ring
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 3.5, 0, Math.PI * 2);
+        ctx.strokeStyle = ACC + (pulse * 0.18) + ')';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        // filled pad
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, 1.4, 0, Math.PI * 2);
+        ctx.fillStyle = ACC + (pulse * 0.38) + ')';
+        ctx.fill();
+      }
+    }
 
     tick++;
     circuitRAF = requestAnimationFrame(frame);
@@ -664,7 +768,7 @@ function initFloatingTags() {
     el.className = 'bg-tag';
     el.textContent = tags[i % tags.length];
     const dur = 9 + Math.random() * 10;
-    el.style.cssText = `left:${4 + Math.random()*90}%;top:${8 + Math.random()*84}%;--dur:${dur}s;--delay:${-(Math.random()*dur)}s;`;
+    el.style.cssText = `left:${4 + Math.random() * 90}%;top:${8 + Math.random() * 84}%;--dur:${dur}s;--delay:${-(Math.random() * dur)}s;`;
     container.appendChild(el);
   }
 }
@@ -687,26 +791,19 @@ function showPage(pageName) {
   const current = document.querySelector('.page.active');
   const next = document.getElementById('page-' + pageName);
   if (!next || next === current) return;
-
   document.querySelectorAll('.nav-links button').forEach(b => b.classList.remove('active'));
   const btn = document.getElementById('nav-' + pageName);
   if (btn) btn.classList.add('active');
-
   if (current) {
     current.classList.add('leaving');
-    current.addEventListener('animationend', () => current.classList.remove('active','leaving'), { once: true });
+    current.addEventListener('animationend', () => current.classList.remove('active', 'leaving'), { once: true });
   }
-
   window.scrollTo(0, 0);
   next.classList.add('active', 'entering');
   next.addEventListener('animationend', () => {
     next.classList.remove('entering');
     revealOnScroll();
-    if (pageName === 'projects') {
-      animateCards();
-      // Now the page is visible and the canvas has real dimensions
-      startCircuit();
-    }
+    if (pageName === 'projects') { animateCards(); startCircuit(); }
   }, { once: true });
 }
 
@@ -718,9 +815,7 @@ function toggleProject(card) {
   document.querySelectorAll('.project-card.expanded').forEach(c => { if (c !== card) c.classList.remove('expanded'); });
   card.classList.toggle('expanded', !expanded);
   if (!expanded) {
-    setTimeout(() => {
-      window.scrollTo({ top: window.pageYOffset + card.getBoundingClientRect().top - 80, behavior: 'smooth' });
-    }, 100);
+    setTimeout(() => { window.scrollTo({ top: window.pageYOffset + card.getBoundingClientRect().top - 80, behavior: 'smooth' }); }, 100);
   }
 }
 
@@ -743,7 +838,7 @@ function initSlideshow() {
   if (!c) return;
   const slides = c.querySelectorAll('img');
   let cur = 0;
-  slides.forEach((s,i) => { s.className = i === 0 ? 'slide-current' : ''; });
+  slides.forEach((s, i) => { s.className = i === 0 ? 'slide-current' : ''; });
   setInterval(() => {
     const out = slides[cur];
     cur = (cur + 1) % slides.length;
@@ -759,10 +854,8 @@ function initSlideshow() {
 window.addEventListener('DOMContentLoaded', () => {
   initSlideshow();
   initFloatingTags();
-  // Only start circuit immediately if projects page loads first (rare, but safe)
   if (document.getElementById('page-projects').classList.contains('active')) {
-    startCircuit();
-    animateCards();
+    startCircuit(); animateCards();
   }
 });
 </script>
