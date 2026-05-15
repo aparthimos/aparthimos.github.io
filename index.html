@@ -133,7 +133,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  background: transparent;
+  background: #181610;
   display: block;
 }
   .projects-hero-content {
@@ -936,10 +936,12 @@ function initCircuit() {
   const ctx = canvas.getContext('2d');
   const accent = 'rgba(201,168,76,';
 
-  function resize() {
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-  }
+
+function resize() {
+  const rect = canvas.getBoundingClientRect();
+  canvas.width  = rect.width  || canvas.parentElement.offsetWidth  || 800;
+  canvas.height = rect.height || canvas.parentElement.offsetHeight || 220;
+}
   resize();
   window.addEventListener('resize', resize);
 
@@ -1178,12 +1180,9 @@ function initSlideshow() {
 ══════════════════════════════════════════ */
 window.addEventListener('DOMContentLoaded', () => {
   initSlideshow();
-  initCircuit();
   initFloatingTags();
-  // animate cards immediately if projects page is the landing page
-  if (document.getElementById('page-projects').classList.contains('active')) {
-    animateCards();
-  }
+  // Don't init circuit yet — canvas has no size while page is hidden.
+  // It will be triggered when the user navigates to Projects.
 });
 </script>
 </body>
