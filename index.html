@@ -635,14 +635,14 @@ function startCircuit() {
       if (!n.on) return;
       const pulse = 0.35 + 0.65 * Math.abs(Math.sin(tick * 0.035 + n.phase));
       ctx.beginPath();
-      ctx.arc(n.x, n.y, 4.5, 0, Math.PI * 2);
-      ctx.strokeStyle = ACC + (pulse * 0.28) + ')';
+      ctx.arc(n.x, n.y, 3, 0, Math.PI * 2);
+      ctx.strokeStyle = ACC + (pulse * 0.14) + ')';
       ctx.lineWidth = 1;
       ctx.stroke();
 
       ctx.beginPath();
       ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
-      ctx.fillStyle = ACC + (pulse * 0.75) + ')';
+      ctx.fillStyle = ACC + (pulse * 0.35) + ')';
       ctx.fill();
     });
 
