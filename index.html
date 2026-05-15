@@ -716,7 +716,7 @@ function startCircuit() {
       ctx.moveTo(e.pts[0].x, e.pts[0].y);
       for (let i = 1; i < e.pts.length; i++) ctx.lineTo(e.pts[i].x, e.pts[i].y);
       ctx.strokeStyle = ACC + e.op + ')';
-      ctx.lineWidth = 1;
+      ctx.lineWidth = 1.2;
       ctx.stroke();
 
       /* pulse travels along path */
@@ -738,14 +738,14 @@ function startCircuit() {
         const pulse = 0.3 + 0.4 * Math.abs(Math.sin(tick * 0.025 + n.phase));
         // outer ring
         ctx.beginPath();
-        ctx.arc(n.x, n.y, 3.5, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
         ctx.strokeStyle = ACC + (pulse * 0.18) + ')';
         ctx.lineWidth = 1;
         ctx.stroke();
         // filled pad
         ctx.beginPath();
-        ctx.arc(n.x, n.y, 1.4, 0, Math.PI * 2);
-        ctx.fillStyle = ACC + (pulse * 0.38) + ')';
+        ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = ACC + (pulse * 0.6) + ')';
         ctx.fill();
       }
     }
