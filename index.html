@@ -59,20 +59,20 @@
 
   /* Primary orb — right side */
   .hero-orb {
-    position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
-    width: 320px; height: 320px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, rgba(126,184,160,0.03) 50%, transparent 70%);
-    border: 1px solid rgba(201,168,76,0.1);
+    position: absolute; right: 6%; top: 50%; transform: translateY(-50%);
+    width: 380px; height: 380px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.05) 0%, rgba(126,184,160,0.02) 50%, transparent 70%);
+    border: 1px solid rgba(201,168,76,0.07);
+    pointer-events: none;
   }
   .hero-orb::before {
     content: ''; position: absolute; inset: 22px; border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.04);
   }
   .hero-orb::after {
     content: ''; position: absolute; inset: 55px; border-radius: 50%;
-    border: 1px solid rgba(201,168,76,0.04);
+    border: 1px solid rgba(201,168,76,0.03);
   }
-  /* tick marks around the main orb */
   .hero-orb-inner {
     position: absolute; inset: 0; border-radius: 50%;
     animation: orbSpin 24s linear infinite;
@@ -82,13 +82,13 @@
     content: ''; position: absolute;
     top: -3px; left: 50%; transform: translateX(-50%);
     width: 6px; height: 6px; border-radius: 50%;
-    background: rgba(201,168,76,0.45);
+    background: rgba(201,168,76,0.35);
   }
   .hero-orb-inner::after {
     content: ''; position: absolute;
     bottom: -3px; left: 50%; transform: translateX(-50%);
     width: 4px; height: 4px; border-radius: 50%;
-    background: rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.15);
   }
 
   /* Secondary orb — bottom-left accent */
@@ -113,7 +113,82 @@
     pointer-events: none;
   }
 
-  .hero-content { padding: 0 80px; max-width: 680px; animation: pageIn 0.8s cubic-bezier(0.22,1,0.36,1) both; }
+  /* HERO SLIDESHOW */
+  .hero-slideshow {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    z-index: 2;
+    animation: pageIn 1s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+  }
+  .hero-slideshow-label {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    opacity: 0.55;
+    align-self: flex-start;
+  }
+  .hero-slideshow-inner {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/2;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(201,168,76,0.2);
+    box-shadow: 0 8px 48px rgba(0,0,0,0.55), 0 0 0 1px rgba(201,168,76,0.05), inset 0 0 0 1px rgba(255,255,255,0.02);
+  }
+  .hero-slideshow-inner img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+  }
+  .hero-slideshow-inner img.hs-active { opacity: 1; }
+  .hero-slideshow-footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .hero-slideshow-dots {
+    display: flex;
+    gap: 5px;
+  }
+  .hero-slideshow-dots span {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.22);
+    cursor: pointer;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .hero-slideshow-dots span.active {
+    background: var(--accent);
+    transform: scale(1.5);
+  }
+  .hero-slideshow-counter {
+    font-family: var(--mono);
+    font-size: 9px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+    opacity: 0.5;
+  }
+  @media (max-width: 1000px) {
+    .hero-slideshow { display: none; }
+    .hero-orb { right: 10%; width: 320px; height: 320px; }
+  }
+
+  .hero-content { padding: 0 80px; max-width: 580px; animation: pageIn 0.8s cubic-bezier(0.22,1,0.36,1) both; }
   .hero-label { font-family: var(--mono); font-size: 11px; font-style: italic; color: var(--accent); letter-spacing: 1px; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; opacity: 0.85; }
   .hero-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); opacity: 0.6; }
   h1 { font-family: var(--serif); font-size: clamp(52px, 7vw, 84px); font-weight: 700; line-height: 1.0; letter-spacing: -0.5px; color: var(--text-bright); margin-bottom: 24px; }
@@ -153,18 +228,13 @@
   .extra-item { padding: 18px 20px; background: rgba(201,168,76,0.04); border: 1px solid rgba(201,168,76,0.1); border-left: 2px solid rgba(201,168,76,0.4); border-radius: 4px; }
   .extra-title { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--accent); letter-spacing: 0.3px; margin-bottom: 6px; opacity: 0.9; }
 
-  /* ══════════════════════════════════════
-     PROJECTS — CIRCUIT HEADER
-  ══════════════════════════════════════ */
+  /* PROJECTS — CIRCUIT HEADER */
   .projects-hero {
     position: relative; width: 100%; height: 220px;
     overflow: hidden; background: #181610;
     border-bottom: 1px solid var(--border);
   }
-  #circuit-canvas {
-    position: absolute; top: 0; left: 0;
-    width: 100%; height: 100%; display: block;
-  }
+  #circuit-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: block; }
   .projects-hero-content {
     position: absolute; inset: 0; z-index: 2;
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
@@ -267,6 +337,7 @@
 
   /* PHOTOGRAPHY */
   .photo-section { margin-bottom: 60px; }
+  .photo-section + .photo-section { margin-top: 48px; }
   .photo-section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
   .photo-section-title { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--text-bright); }
   .photo-section-count { font-family: var(--mono); font-size: 9px; letter-spacing: 1.5px; color: var(--accent); opacity: 0.6; }
@@ -279,12 +350,12 @@
   .imsa-3 { grid-column: 6/7; grid-row: 1/3; height: 100%; } .imsa-4 { grid-column: 1/2; grid-row: 2; height: 100%; }
   .imsa-5 { grid-column: 2/4; grid-row: 2; height: 100%; } .imsa-6 { grid-column: 4/6; grid-row: 2; height: 100%; }
   .imsa-7 { grid-column: 1/7; grid-row: 3; height: 100%; }
-  .photo-grid-kingston { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 200px; gap: 8px; }
+  .photo-grid-kingston { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 240px 240px; gap: 8px; }
   .king-1 { grid-column: 1; grid-row: 1/3; height: 100%; } .king-2 { grid-column: 2; grid-row: 1; height: 100%; }
   .king-3 { grid-column: 3; grid-row: 1; height: 100%; } .king-4 { grid-column: 2/4; grid-row: 2; height: 100%; }
-  .photo-grid-qc { display: grid; grid-template-columns: 1.8fr 1fr; grid-template-rows: 200px 200px; gap: 8px; }
+  .photo-grid-qc { display: grid; grid-template-columns: 1.8fr 1fr; grid-template-rows: 240px 240px; gap: 8px; }
   .qc-1 { grid-column: 1; grid-row: 1/3; height: 100%; } .qc-2 { grid-column: 2; grid-row: 1; height: 100%; } .qc-3 { grid-column: 2; grid-row: 2; height: 100%; }
- 
+
   /* FOOTER */
   footer { padding: 36px 80px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; margin-top: 80px; }
   .footer-logo { font-family: var(--serif); font-size: 13px; color: var(--text-dim); font-style: italic; }
@@ -296,7 +367,7 @@
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
   .reveal.visible { opacity: 1; transform: none; }
 
-  /* SLIDESHOW */
+  /* BAJA SLIDESHOW */
   .slideshow-container { position: relative; width: 100%; max-width: 720px; margin: 12px auto; border-radius: 6px; overflow: hidden; height: 420px; background: var(--bg3); }
   .slideshow-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.6s ease; will-change: transform, opacity; }
   .slideshow-container img.slide-current  { transform: translateX(0);    opacity: 1; z-index: 2; }
@@ -348,16 +419,37 @@
   <div class="hero">
     <div class="hero-bg"></div>
 
-    <!-- Primary orb -->
+    <!-- Orb (background layer, behind slideshow) -->
     <div class="hero-orb">
       <div class="hero-orb-inner"></div>
     </div>
-
-    <!-- Secondary bottom-left orb -->
     <div class="hero-orb2"></div>
-
-    <!-- Small upper-right orb -->
     <div class="hero-orb3"></div>
+
+    <!-- Hero photo slideshow -->
+    <div class="hero-slideshow">
+      <div class="hero-slideshow-label">// PHOTOGRAPHY</div>
+      <div class="hero-slideshow-inner" id="heroSlideshow">
+        <img src="images/IMG_0983.JPG" class="hs-active" alt="">
+        <img src="images/IMG_1399.JPG" alt="">
+        <img src="images/IMG_1404.JPG" alt="">
+        <img src="images/IMG_1432.JPG" alt="">
+        <img src="images/IMG_1507.JPG" alt="">
+        <img src="images/IMG_1562.JPG" alt="">
+        <img src="images/IMG_1614.JPG" alt="">
+        <img src="images/IMG_0669.JPG" alt="">
+        <img src="images/IMG_0658-copy.jpg" alt="">
+        <img src="images/IMG_0678.JPG" alt="">
+        <img src="images/IMG_1699-copy.JPG" alt="">
+        <img src="images/QC1.jpg" alt="">
+        <img src="images/QC2.jpg" alt="">
+        <img src="images/QC3.jpg" alt="">
+      </div>
+      <div class="hero-slideshow-footer">
+        <div class="hero-slideshow-dots" id="heroSlideshowDots"></div>
+        <div class="hero-slideshow-counter" id="heroSlideshowCounter">01 / 14</div>
+      </div>
+    </div>
 
     <div class="hero-content">
       <div class="hero-label">Mechanical Engineer · Designer · Builder</div>
@@ -371,17 +463,19 @@
       <div class="hero-links">
         <button class="btn-primary" onclick="showPage('projects')">VIEW PROJECTS</button>
         <button class="btn-ghost" onclick="document.getElementById('home-contact').scrollIntoView({behavior:'smooth'})">CONTACT</button>
-        <a href="https://linkedin.com" class="social-link" target="_blank">
+        <a href="https://linkedin.com/in/alexanderparthimos" class="social-link" target="_blank">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
           LinkedIn
         </a>
       </div>
     </div>
+
     <div class="hero-stats">
       <div class="stat"><div class="stat-num">5 years<span>+</span></div><div class="stat-label">Design Experience</div></div>
       <div class="stat"><div class="stat-num">20<span>+</span></div><div class="stat-label">Completed Projects</div></div>
     </div>
   </div>
+
   <div class="section" id="home-contact">
     <div class="section-header"><span class="section-num">00</span><h2>About Me</h2></div>
     <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:64px;align-items:start;">
@@ -398,7 +492,7 @@
       </div>
     </div>
   </div>
-  <footer><div class="footer-logo">Alexander Parthimos · Portfolio</div><ul class="footer-links"><li><a href="mailto:alexanderparthimos@gmail.com">Email</a></li><li><a href="www.linkedin.com/in/alexanderparthimos" target="_blank">LinkedIn</a></li><li><a href="https://instagram.com" target="_blank">Instagram</a></li></ul></footer>
+  <footer><div class="footer-logo">Alexander Parthimos · Portfolio</div><ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com/in/alexanderparthimos" target="_blank">LinkedIn</a></li><li><a href="https://instagram.com" target="_blank">Instagram</a></li></ul></footer>
 </div>
 
 <!-- EDUCATION -->
@@ -418,16 +512,14 @@
         <div class="extracurricular-list">
           <div class="extra-item"><div class="extra-title">Concordia SAE — President</div><p>Student-run chapter of SAE International at Concordia University, comprising Formula, Baja, and Aerodesign teams. Led membership growth, fundraising, and independence as a non-profit.</p></div>
           <div class="extra-item"><div class="extra-title">SAE Baja Racing — Technical Director</div><p>Designing subsystems, creating engineering drawings, integrating systems and managing Baja toward building our next vehicle.</p></div>
-          <div class="extra-item"><div class="extra-title">SAE Baja Racing — DAQ Lead</div><p>Designing systems to attain data to determine our subsytems such as using strain gauges for our CVT efficiency or torque split during driving. Developed a custom logger for offroad applications.</p></div>
+          <div class="extra-item"><div class="extra-title">SAE Baja Racing — DAQ Lead</div><p>Designing systems to attain data to determine our subsystems such as using strain gauges for our CVT efficiency or torque split during driving. Developed a custom logger for offroad applications.</p></div>
           <div class="extra-item"><div class="extra-title">SAE Baja Racing — Steering Lead</div><p>Developed a steering system for reduced weight, improved ease of assembly and to remove previous issues with warping during welding.</p></div>
         </div>
       </div>
     </div>
     <div class="extracurricular-list">
-      <div class="extra-item" style="text-align:center;"><div class="extra-title">Concordia SAE</div><img src="images/SAElogo.jpg" style="width:100%;max-width:720px;margin:12px auto;display:block;border-radius:6px;" alt="SAE"><p>Concordia SAE is a student-run chapter of SAE International, A world-renowned engineering organization, at Concordia University. Concordia SAE is comprised of three different teams, FormulaE, Baja, as well as aerodesign, that compete at SAE international events.These yearly international competitions allow students to apply classroom knowledge to real-life situations, challenging students to design, manufacture, test, and compete with a vehicle in a dynamic environment. 
-I am incredibly proud to be the President of Concordia SAE and to be able to focus on the improvement of SAE as well as its members. For the last two years I have worked with members, students and staff to advance Concordia SAE to a new level of competition by incorporating SAE as a non-profit and gaining independence, working to increase funds, doubling SAE's membership and improving community outreach.</p></div>
-      <div class="extra-item" style="text-align:center;"><div class="extra-title">SAE Baja Racing</div><img src="images/Bajamain.jpg" style="width:100%;max-width:1080px;margin:12px auto;display:block;border-radius:6px;" alt="Baja"><p>As a member of Baja Racing I have spent hours designing, manufacturing, assembling and disassembling the vehicle. Through this I have become proficient in the use of software like Solidworks, Fusion and Ansys needed to design, manufacture and improve the vehicle. I have also developed a deep understanding of the drive-train, steering, electronics and suspension subsystems.
-</p></div>
+      <div class="extra-item" style="text-align:center;"><div class="extra-title">Concordia SAE</div><img src="images/SAElogo.jpg" style="width:100%;max-width:720px;margin:12px auto;display:block;border-radius:6px;" alt="SAE"><p>Concordia SAE is a student-run chapter of SAE International, a world-renowned engineering organization, at Concordia University. Concordia SAE is comprised of three different teams — FormulaE, Baja, and Aerodesign — that compete at SAE international events. These yearly international competitions allow students to apply classroom knowledge to real-life situations, challenging students to design, manufacture, test, and compete with a vehicle in a dynamic environment. I am incredibly proud to be the President of Concordia SAE and to focus on the improvement of SAE as well as its members. For the last two years I have worked with members, students and staff to advance Concordia SAE to a new level of competition by incorporating SAE as a non-profit and gaining independence, working to increase funds, doubling SAE's membership and improving community outreach.</p></div>
+      <div class="extra-item" style="text-align:center;"><div class="extra-title">SAE Baja Racing</div><img src="images/Bajamain.jpg" style="width:100%;max-width:1080px;margin:12px auto;display:block;border-radius:6px;" alt="Baja"><p>As a member of Baja Racing I have spent hours designing, manufacturing, assembling and disassembling the vehicle. Through this I have become proficient in the use of software like Solidworks, Fusion and Ansys needed to design, manufacture and improve the vehicle. I have also developed a deep understanding of the drive-train, steering, electronics and suspension subsystems.</p></div>
       <div class="extra-item" style="text-align:center;"><div class="extra-title"> </div>
         <div class="slideshow-container" id="bajaSlideshow">
           <img src="images/weld1.jpg" class="slide-current" alt="Baja gallery">
@@ -443,12 +535,12 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
         <div class="extra-item"><div class="extra-title">CVT Case — Fluent CFD</div><p>Thermal analysis of primary and secondary sheaves with a 120CFM puller fan.</p></div>
         <div class="extra-item"><div class="extra-title">Steering System — System Design</div><p>Design for lightweight and effective steering geometry while also removing previous issues with warping during welding.</p></div>
         <div class="extra-item"><div class="extra-title">Front Differential — Static Structural</div><p>Determine maximum deflection in the case at peak operating torque.</p></div>
-        <div class="extra-item"><div class="extra-title">CVT Case</div><p>Design to reduce weight and provide cooling to Primary and secondary Sheaves.</p></div>
+        <div class="extra-item"><div class="extra-title">CVT Case</div><p>Design to reduce weight and provide cooling to Primary and Secondary Sheaves.</p></div>
         <div class="extra-item"><div class="extra-title">Logger</div><p>Board design to log signals from up to 16 sensors at once including CAN channels to connect the rear and forward board.</p></div>
       </div>
     </div>
   </div>
-  <footer><div class="footer-logo">Alexander Parthimos · Portfolio</div><ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li></ul></footer>
+  <footer><div class="footer-logo">Alexander Parthimos · Portfolio</div><ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com/in/alexanderparthimos" target="_blank">LinkedIn</a></li></ul></footer>
 </div>
 
 <!-- PROJECTS -->
@@ -465,7 +557,7 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
     <div class="projects-bg-tags" id="bgTags"></div>
     <div class="projects-grid" id="projectsGrid">
 
-      <!-- ① STEERING LEFT -->
+      <!-- ① STEERING -->
       <div class="project-card" onclick="toggleProject(this)">
         <div class="project-summary">
           <img src="images/Steering1.png" alt="Steering" class="project-summary-img">
@@ -478,7 +570,7 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
         </div></div></div>
       </div>
 
-      <!-- ② DAQ RIGHT -->
+      <!-- ② DAQ -->
       <div class="project-card" onclick="toggleProject(this)">
         <div class="project-summary">
           <img src="images/DAQ2.png" alt="DAQ" class="project-summary-img">
@@ -491,7 +583,7 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
         </div></div></div>
       </div>
 
-      <!-- ③ STRAIN LEFT -->
+      <!-- ③ STRAIN -->
       <div class="project-card" onclick="toggleProject(this)">
         <div class="project-summary">
           <img src="images/SG1.jpg" alt="Strain gauge" class="project-summary-img">
@@ -504,20 +596,20 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
         </div></div></div>
       </div>
 
-           <!-- ⑥ Clutch -->
+      <!-- ④ CLUTCH -->
       <div class="project-card" onclick="toggleProject(this)">
         <div class="project-summary">
           <img src="images/Untitled Project (9).png" alt="Dog Clutch" class="project-summary-img">
-          <div class="project-summary-body"><div class="project-type">Baja Clutch System</div><h3>Clutch System</h3><p>Designing a clutch to disengrage 4WD allowing our car to oversteer.</p><div class="project-tags"><span class="ptag">SolidWorks</span><span class="ptag">Vehicle Design</span><span class="ptag">Ansys</span></div></div>
+          <div class="project-summary-body"><div class="project-type">Baja SAE · Drivetrain Design</div><h3>Dog Clutch System</h3><p>Designing a clutch to disengage 4WD allowing our car to oversteer for improved maneuverability at competition.</p><div class="project-tags"><span class="ptag">SolidWorks</span><span class="ptag">Vehicle Design</span><span class="ptag">ANSYS</span></div></div>
           <div class="project-expand-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 9 11 15 17 9"/></svg></div>
         </div>
         <div class="project-detail"><div class="project-detail-inner"><div class="project-detail-content">
           <div class="detail-images"><img src="images/Clutch.png" alt="" class="detail-img-main"><div class="detail-img-row"><img src="images/shifter2.jpg" alt="" class="detail-img-small"><img src="images/fork.jpg" alt="" class="detail-img-small"></div></div>
-          <div class="detail-text"><div class="detail-label">Mechanical Design · Analysis · Prototyping</div><h4>Dog Clutch</h4><p>Designed to improve performance during maneuverability compeition. Allows our vehicle to more easily oversteer to get around sharp corners.</p><ul class="detail-bullets"><li>3 Tooth ramped design for ease of manufacturing and allowing for high probability of engagement.</li><li>Simple and easy to replace design. In case of failure, default position keeps clutch engaged.</li><li>Modeled in Solidworks</li><li>Fully machinable in house on 3 axis mill and lathe.</li></ul><div class="project-tags"><span class="ptag">SolidWorks</span><span class="ptag">Machine Learning</span><span class="ptag">Machining</span><span class="ptag">Drivetain Design</span></div></div>
+          <div class="detail-text"><div class="detail-label">Mechanical Design · Analysis · Prototyping</div><h4>Dog Clutch System</h4><p>Designed to improve performance during the maneuverability competition. Allows our vehicle to more easily oversteer to get around sharp corners.</p><ul class="detail-bullets"><li>3-tooth ramped design for ease of manufacturing and high probability of engagement</li><li>Simple and easy-to-replace design — default position keeps clutch engaged on failure</li><li>Modelled in SolidWorks, fully machinable in-house on a 3-axis mill and lathe</li></ul><div class="project-tags"><span class="ptag">SolidWorks</span><span class="ptag">Machining</span><span class="ptag">Drivetrain Design</span></div></div>
         </div></div></div>
       </div>
 
-      <!-- ④ WAVE DRIVE RIGHT -->
+      <!-- ⑤ WAVE DRIVE -->
       <div class="project-card" onclick="toggleProject(this)">
         <div class="project-summary">
           <img src="images/WVD1.gif" alt="Wave Strain Drive" class="project-summary-img">
@@ -530,7 +622,7 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
         </div></div></div>
       </div>
 
-      <!-- ⑤ RC CAR LEFT -->
+      <!-- ⑥ RC CAR -->
       <div class="project-card" onclick="toggleProject(this)">
         <div class="project-summary">
           <img src="images/RCCAR1.jpg" alt="RC Car" class="project-summary-img">
@@ -539,11 +631,11 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
         </div>
         <div class="project-detail"><div class="project-detail-inner"><div class="project-detail-content">
           <div class="detail-images"><img src="images/RACCAR7.jpg" alt="" class="detail-img-main"><div class="detail-img-row"><img src="images/RCCAR2.jpg" alt="" class="detail-img-small"><img src="images/RCCAR3.png" alt="" class="detail-img-small"></div></div>
-          <div class="detail-text"><div class="detail-label">Custom Build · Mechanical Design · Electronics</div><h4>RC Car</h4><p>A fully custom RC car designed for 3D printing. Every component was modelled in Fusion 360 and printed in-house, with goals of sharp handling and a simple, easy to replace.</p><ul class="detail-bullets"><li>Custom suspension tuned for low body-roll and responsive steering</li><li>12V 800 RPM motor with 2:1 gear reduction delivering 1600 RPM to the wheels</li><li>3S battery pack with removable 21700 cells</li><li>On-board 12V / 5V / 3.3V buck-boost converter to power esp32, servo motor and motor</li></ul><div class="project-tags"><span class="ptag">Fusion360</span><span class="ptag">3D Printing</span><span class="ptag">Electronics</span><span class="ptag">Vehicle Design</span></div></div>
+          <div class="detail-text"><div class="detail-label">Custom Build · Mechanical Design · Electronics</div><h4>RC Car</h4><p>A fully custom RC car designed for 3D printing. Every component was modelled in Fusion 360 and printed in-house, with goals of sharp handling and simple, easy-to-replace parts.</p><ul class="detail-bullets"><li>Custom suspension tuned for low body-roll and responsive steering</li><li>12V 800 RPM motor with 2:1 gear reduction delivering 1600 RPM to the wheels</li><li>3S battery pack with removable 21700 cells</li><li>On-board 12V / 5V / 3.3V buck-boost converter to power ESP32, servo, and drive motor</li></ul><div class="project-tags"><span class="ptag">Fusion 360</span><span class="ptag">3D Printing</span><span class="ptag">Electronics</span><span class="ptag">Vehicle Design</span></div></div>
         </div></div></div>
       </div>
 
-      <!-- ⑥ GEARBOX RIGHT -->
+      <!-- ⑦ GEARBOX -->
       <div class="project-card" onclick="toggleProject(this)">
         <div class="project-summary">
           <img src="images/GBp1.jpg" alt="Gearbox" class="project-summary-img">
@@ -556,7 +648,7 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
         </div></div></div>
       </div>
 
-      <!-- ⑦ 3D ART LEFT -->
+      <!-- ⑧ 3D ART -->
       <div class="project-card" onclick="toggleProject(this)">
         <div class="project-summary">
           <img src="images/IB1.png" alt="3D Art" class="project-summary-img">
@@ -571,7 +663,7 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
 
     </div>
   </div>
-  <footer><div class="footer-logo">Alexander Parthimos · Portfolio</div><ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li></ul></footer>
+  <footer><div class="footer-logo">Alexander Parthimos · Portfolio</div><ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com/in/alexanderparthimos" target="_blank">LinkedIn</a></li></ul></footer>
 </div>
 
 <!-- EXPERIENCE -->
@@ -591,7 +683,7 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
       <div class="skill-group reveal" style="animation-delay:0.2s"><div class="skill-group-title">Manufacturing</div><ul class="skill-list"><li>3D Printing (FDM)</li><li>CNC Machining</li><li>MIG / TIG Welding</li><li>Woodworking</li><li>Hand Tools &amp; Fabrication</li></ul></div>
     </div>
   </div>
-  <footer><div class="footer-logo">Alexander Parthimos · Portfolio</div><ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li></ul></footer>
+  <footer><div class="footer-logo">Alexander Parthimos · Portfolio</div><ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com/in/alexanderparthimos" target="_blank">LinkedIn</a></li></ul></footer>
 </div>
 
 <!-- ARTWORK -->
@@ -607,17 +699,84 @@ I am incredibly proud to be the President of Concordia SAE and to be able to foc
       <div class="artwork-card reveal" style="animation-delay:0.15s"><div class="artwork-thumb"><img src="images/A4.jpg" alt="Artwork 04"></div><div class="artwork-info"><div class="artwork-name">Artwork 04</div><div class="artwork-medium">Add Medium</div></div></div>
     </div>
     <div style="margin-bottom:28px;margin-top:64px;"><span class="section-num" style="font-size:12px;">04.2 — Photography</span></div>
-    <div class="photo-section"><div class="photo-section-header"><div class="photo-section-title">IMSA</div><div class="photo-section-count">7 PHOTOS</div></div><div class="photo-grid-imsa"><div class="photo-card imsa-1"><img src="images/IMG_0983.JPG" alt="IMSA"></div><div class="photo-card imsa-2"><img src="images/IMG_1399.JPG" alt="IMSA"></div><div class="photo-card imsa-3"><img src="images/IMG_1404.JPG" alt="IMSA"></div><div class="photo-card imsa-4"><img src="images/IMG_1432.JPG" alt="IMSA"></div><div class="photo-card imsa-5"><img src="images/IMG_1507.JPG" alt="IMSA"></div><div class="photo-card imsa-6"><img src="images/IMG_1562.JPG" alt="IMSA"></div><div class="photo-card imsa-7"><img src="images/IMG_1614.JPG" alt="IMSA"></div></div></div>
-   <div class="photo-section"><div class="photo-section-header"><div class="photo-section-title">Kingston</div><div class="photo-section-count">4 PHOTOS</div></div><div class="photo-grid-kingston"><div class="photo-card king-1"><img src="images/IMG_0669.JPG" alt="Kingston"></div><div class="photo-card king-2"><img src="images/IMG_0658-copy.jpg" alt="Kingston"></div><div class="photo-card king-3"><img src="images/IMG_0678.JPG" alt="Kingston"></div><div class="photo-card king-4"><img src="images/IMG_1699-copy.JPG" alt="Kingston"></div></div></div>
-    <div class="photo-section"><div class="photo-section-header"><div class="photo-section-title">QC</div><div class="photo-section-count">3 PHOTOS</div></div><div class="photo-grid-qc"><div class="photo-card qc-1"><img src="images/QC1.jpg" alt="QC"></div><div class="photo-card qc-2"><img src="images/QC2.jpg" alt="QC"></div><div class="photo-card qc-3"><img src="images/QC3.jpg" alt="QC"></div></div></div>
+    <div class="photo-section">
+      <div class="photo-section-header"><div class="photo-section-title">IMSA</div><div class="photo-section-count">7 PHOTOS</div></div>
+      <div class="photo-grid-imsa">
+        <div class="photo-card imsa-1"><img src="images/IMG_0983.JPG" alt="IMSA"></div>
+        <div class="photo-card imsa-2"><img src="images/IMG_1399.JPG" alt="IMSA"></div>
+        <div class="photo-card imsa-3"><img src="images/IMG_1404.JPG" alt="IMSA"></div>
+        <div class="photo-card imsa-4"><img src="images/IMG_1432.JPG" alt="IMSA"></div>
+        <div class="photo-card imsa-5"><img src="images/IMG_1507.JPG" alt="IMSA"></div>
+        <div class="photo-card imsa-6"><img src="images/IMG_1562.JPG" alt="IMSA"></div>
+        <div class="photo-card imsa-7"><img src="images/IMG_1614.JPG" alt="IMSA"></div>
+      </div>
+    </div>
+    <div class="photo-section">
+      <div class="photo-section-header"><div class="photo-section-title">Kingston</div><div class="photo-section-count">4 PHOTOS</div></div>
+      <div class="photo-grid-kingston">
+        <div class="photo-card king-1"><img src="images/IMG_0669.JPG" alt="Kingston"></div>
+        <div class="photo-card king-2"><img src="images/IMG_0658-copy.jpg" alt="Kingston"></div>
+        <div class="photo-card king-3"><img src="images/IMG_0678.JPG" alt="Kingston"></div>
+        <div class="photo-card king-4"><img src="images/IMG_1699-copy.JPG" alt="Kingston"></div>
+      </div>
+    </div>
+    <div class="photo-section">
+      <div class="photo-section-header"><div class="photo-section-title">QC</div><div class="photo-section-count">3 PHOTOS</div></div>
+      <div class="photo-grid-qc">
+        <div class="photo-card qc-1"><img src="images/QC1.jpg" alt="QC"></div>
+        <div class="photo-card qc-2"><img src="images/QC2.jpg" alt="QC"></div>
+        <div class="photo-card qc-3"><img src="images/QC3.jpg" alt="QC"></div>
+      </div>
+    </div>
   </div>
-  <footer><div class="footer-logo">Alexander Parthimos · Portfolio</div><ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li><li><a href="https://instagram.com" target="_blank">Instagram</a></li></ul></footer>
+  <footer><div class="footer-logo">Alexander Parthimos · Portfolio</div><ul class="footer-links"><li><a href="mailto:alexander.parthimos@gmail.com">Email</a></li><li><a href="https://linkedin.com/in/alexanderparthimos" target="_blank">LinkedIn</a></li><li><a href="https://instagram.com" target="_blank">Instagram</a></li></ul></footer>
 </div>
 
 <script>
 /* ══════════════════════════════════════════
-   CIRCUIT BOARD — proper PCB routing style
-   Pulses travel along the actual wire segments
+   HERO PHOTO SLIDESHOW
+══════════════════════════════════════════ */
+function initHeroSlideshow() {
+  const container = document.getElementById('heroSlideshow');
+  const dotsEl    = document.getElementById('heroSlideshowDots');
+  const counter   = document.getElementById('heroSlideshowCounter');
+  if (!container || !dotsEl) return;
+
+  const slides = Array.from(container.querySelectorAll('img'));
+  const total  = slides.length;
+  let cur = 0;
+  let timer;
+
+  // build dots (max 14 — one per image)
+  slides.forEach((_, i) => {
+    const dot = document.createElement('span');
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', () => { goTo(i); resetTimer(); });
+    dotsEl.appendChild(dot);
+  });
+  const dots = Array.from(dotsEl.querySelectorAll('span'));
+
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+
+  function goTo(n) {
+    slides[cur].classList.remove('hs-active');
+    dots[cur].classList.remove('active');
+    cur = (n + total) % total;
+    slides[cur].classList.add('hs-active');
+    dots[cur].classList.add('active');
+    if (counter) counter.textContent = pad(cur + 1) + ' / ' + pad(total);
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(cur + 1), 3200);
+  }
+
+  resetTimer();
+}
+
+/* ══════════════════════════════════════════
+   CIRCUIT BOARD
 ══════════════════════════════════════════ */
 let circuitRAF = null;
 
@@ -635,14 +794,12 @@ function startCircuit() {
   canvas.height = hero.offsetHeight || 220;
   const W = canvas.width, H = canvas.height;
 
-  /* ── Build a sparse orthogonal grid of nodes ── */
   const COLS = 16, ROWS = 5;
   const padX = W * 0.04, padY = H * 0.14;
   const cellW = (W - padX * 2) / (COLS - 1);
   const cellH = (H - padY * 2) / (ROWS - 1);
 
-  // Only keep ~45% of grid positions as active nodes
-  const nodeGrid = []; // nodeGrid[r][c] = {x,y} or null
+  const nodeGrid = [];
   for (let r = 0; r < ROWS; r++) {
     nodeGrid[r] = [];
     for (let c = 0; c < COLS; c++) {
@@ -652,44 +809,31 @@ function startCircuit() {
           y: padY + r * cellH + (Math.random() - 0.5) * cellH * 0.25,
           phase: Math.random() * Math.PI * 2
         };
-      } else {
-        nodeGrid[r][c] = null;
-      }
+      } else { nodeGrid[r][c] = null; }
     }
   }
 
-  /* ── Build edges: only horizontal or vertical neighbours ──
-     Each edge is an array of {x,y} waypoints forming an L or straight line */
   const edges = [];
-
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const a = nodeGrid[r][c];
       if (!a) continue;
-
-      // try connect right
       if (c + 1 < COLS && nodeGrid[r][c + 1] && Math.random() < 0.55) {
         const b = nodeGrid[r][c + 1];
-        // straight horizontal
         edges.push({ pts: [{ x: a.x, y: a.y }, { x: b.x, y: b.y }], t: Math.random(), speed: 0.0008 + Math.random() * 0.0018, op: 0.08 + Math.random() * 0.1 });
       }
-      // try connect down
       if (r + 1 < ROWS && nodeGrid[r + 1][c] && Math.random() < 0.55) {
         const b = nodeGrid[r + 1][c];
-        // straight vertical
         edges.push({ pts: [{ x: a.x, y: a.y }, { x: b.x, y: b.y }], t: Math.random(), speed: 0.0008 + Math.random() * 0.0018, op: 0.08 + Math.random() * 0.1 });
       }
-      // occasional diagonal L-route (skip one row or column)
       if (c + 2 < COLS && r + 1 < ROWS && nodeGrid[r + 1][c + 2] && Math.random() < 0.22) {
         const b = nodeGrid[r + 1][c + 2];
-        // L-shape: go right then down
         const corner = { x: b.x, y: a.y };
         edges.push({ pts: [{ x: a.x, y: a.y }, corner, { x: b.x, y: b.y }], t: Math.random(), speed: 0.0006 + Math.random() * 0.0012, op: 0.06 + Math.random() * 0.08 });
       }
     }
   }
 
-  /* ── Precompute segment lengths for each edge ── */
   edges.forEach(e => {
     e.segs = [];
     let total = 0;
@@ -703,31 +847,23 @@ function startCircuit() {
     e.totalLen = total;
   });
 
-  /* ── Helper: point at fraction t along a multi-segment path ── */
   function ptOnPath(e, t) {
     const target = t * e.totalLen;
     for (let i = 0; i < e.segs.length; i++) {
       const seg = e.segs[i];
-      const segEnd = seg.cumStart + seg.len;
-      if (target <= segEnd || i === e.segs.length - 1) {
+      if (target <= seg.cumStart + seg.len || i === e.segs.length - 1) {
         const frac = seg.len > 0 ? (target - seg.cumStart) / seg.len : 0;
         const p0 = e.pts[i], p1 = e.pts[i + 1];
-        return {
-          x: p0.x + (p1.x - p0.x) * Math.max(0, Math.min(1, frac)),
-          y: p0.y + (p1.y - p0.y) * Math.max(0, Math.min(1, frac))
-        };
+        return { x: p0.x + (p1.x - p0.x) * Math.max(0, Math.min(1, frac)), y: p0.y + (p1.y - p0.y) * Math.max(0, Math.min(1, frac)) };
       }
     }
     return e.pts[e.pts.length - 1];
   }
 
   let tick = 0;
-
   function frame() {
     ctx.fillStyle = BG;
     ctx.fillRect(0, 0, W, H);
-
-    /* draw edges */
     edges.forEach(e => {
       ctx.beginPath();
       ctx.moveTo(e.pts[0].x, e.pts[0].y);
@@ -735,38 +871,25 @@ function startCircuit() {
       ctx.strokeStyle = ACC + e.op + ')';
       ctx.lineWidth = 1.2;
       ctx.stroke();
-
-      /* pulse travels along path */
       e.t += e.speed;
       if (e.t > 1) e.t = 0;
       const pt = ptOnPath(e, e.t);
-      // small bright dot
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, 1.5, 0, Math.PI * 2);
       ctx.fillStyle = ACC + (0.18 + 0.12 * Math.sin(tick * 0.06)) + ')';
       ctx.fill();
     });
-
-    /* draw nodes — tiny pads like PCB vias */
     for (let r = 0; r < ROWS; r++) {
       for (let c = 0; c < COLS; c++) {
         const n = nodeGrid[r][c];
         if (!n) continue;
         const pulse = 0.3 + 0.4 * Math.abs(Math.sin(tick * 0.025 + n.phase));
-        // outer ring
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
-        ctx.strokeStyle = ACC + (pulse * 0.18) + ')';
-        ctx.lineWidth = 1;
-        ctx.stroke();
-        // filled pad
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
-        ctx.fillStyle = ACC + (pulse * 0.6) + ')';
-        ctx.fill();
+        ctx.beginPath(); ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
+        ctx.strokeStyle = ACC + (pulse * 0.18) + ')'; ctx.lineWidth = 1; ctx.stroke();
+        ctx.beginPath(); ctx.arc(n.x, n.y, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = ACC + (pulse * 0.6) + ')'; ctx.fill();
       }
     }
-
     tick++;
     circuitRAF = requestAnimationFrame(frame);
   }
@@ -848,7 +971,7 @@ window.addEventListener('scroll', revealOnScroll);
 revealOnScroll();
 
 /* ══════════════════════════════
-   SLIDESHOW
+   BAJA SLIDESHOW
 ══════════════════════════════ */
 function initSlideshow() {
   const c = document.getElementById('bajaSlideshow');
@@ -868,8 +991,12 @@ function initSlideshow() {
   }, 4000);
 }
 
+/* ══════════════════════════════
+   INIT
+══════════════════════════════ */
 window.addEventListener('DOMContentLoaded', () => {
   initSlideshow();
+  initHeroSlideshow();
   initFloatingTags();
   if (document.getElementById('page-projects').classList.contains('active')) {
     startCircuit(); animateCards();
