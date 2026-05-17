@@ -764,13 +764,24 @@ function initHeroSlideshow() {
   function pad(n) { return n < 10 ? '0' + n : '' + n; }
 
   function goTo(n) {
+  const next = (n + total) % total;
+  const nextSlide = slides[next];
+
+  function doSwitch() {
     slides[cur].classList.remove('hs-active');
-    dots[cur].classList.remove('active');
-    cur = (n + total) % total;
+    dots[cur] && dots[cur].classList.remove('active');
+    cur = next;
     slides[cur].classList.add('hs-active');
-    dots[cur].classList.add('active');
+    dots[cur] && dots[cur].classList.add('active');
     if (counter) counter.textContent = pad(cur + 1) + ' / ' + pad(total);
   }
+
+  if (nextSlide.complete) {
+    doSwitch();
+  } else {
+    nextSlide.onload = doSwitch;
+  }
+}
 
   function resetTimer() {
     clearInterval(timer);
